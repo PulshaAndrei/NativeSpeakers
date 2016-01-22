@@ -1,7 +1,21 @@
-<discovery "Это тестовый файл локализации для русского языка">
-<slogan "Вот таким нехитрым образом работает фреймворк l20n от Mozilla">
-<home "Главная">
-<press "Пресса">
-<contact "Контакты">
-<terms "Условия">
-<privacy "Политика">
+<about "О проекте">
+<chooseLanguage "Выбрать язык">
+<contactUs "Связаться с нами">
+<slogan>
+<joinWithSocial "Войти через Вконтакте">
+<joinWithEmail "Войти с помощью Email">
+<notSupportedVideo "Ваш браузер не поддерживает тег video. Рекомендуем обновить Ваш браузер.">
+<allLanguages "Все языки">
+<popularLanguages "Популярные языки">
+<english "Английский">
+<german "Немецкий">
+<russian "Русский">
+<contactUsDetails "Мы любим обратную связь. Напишите нам Ваши пожелания.">
+<send "Отправить">
+<info "Информация">
+<products "Продукты">
+<services "Сервисы">
+<developers "Разработчики">
+<news "Новости">
+<subscribeUpdates "Подписаться на обновления">
+<social "Мы в соцсетях">
