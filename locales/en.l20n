@@ -11,9 +11,9 @@
 <german "German">
 <russian "Russian">
 <contactUsDetails "We love feedback. Fill out the form below and we'll get back to you as soon as possible.">
-<name "Name">
-<phoneNumber "Phone">
-<yourMessage "Your message here...">
+<name placeholder:"Name">
+<phoneNumber placeholder:"Phone">
+<yourMessage placeholder:"Your message here...">
 <send "Send">
 <info "Info">
 <products "Product">

@@ -11,9 +11,9 @@
 <german "Немецкий">
 <russian "Русский">
 <contactUsDetails "Мы любим обратную связь. Напишите нам Ваши пожелания.">
-<name "Имя">
-<phoneNumber "Номер телефона">
-<yourMessage "Ваше сообщение...">
+<name placeholder:"Имя">
+<phoneNumber placeholder:"Номер телефона">
+<yourMessage placeholder:"Ваше сообщение...">
 <send "Отправить">
 <info "Информация">
 <products "Продукты">
