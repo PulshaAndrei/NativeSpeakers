@@ -15,7 +15,12 @@
 <info "Info">
 <products "Product">
 <services "Services">
+<benefits "Benefits">
 <developers "Developers">
+<deliveryInformation "Delivery Information">
+<privacyPolicy "Privacy Policy">
+<termsConditions "Terms &amp; Conditions">
 <news "News">
+<inputForSubscribe title:"" placeholder:"Tell us your email">
 <subscribeUpdates "Subscribe for updates">
 <social "Follow">

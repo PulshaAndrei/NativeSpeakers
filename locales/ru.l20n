@@ -15,7 +15,12 @@
 <info "Информация">
 <products "Продукты">
 <services "Сервисы">
+<benefits "Выгоды">
 <developers "Разработчики">
+<deliveryInformation "Предоставленная информация">
+<privacyPolicy "Политика конфиденциальности">
+<termsConditions "Условия использования">
 <news "Новости">
+<inputForSubscribe title:"Без спама, мы обещаем!" placeholder:"Ваш email">
 <subscribeUpdates "Подписаться на обновления">
 <social "Мы в соцсетях">
