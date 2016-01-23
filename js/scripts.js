@@ -32,10 +32,12 @@
        $('#galleryImage').attr("src",$(e.relatedTarget).data("src"));
     });
 
+})(jQuery);
+
+window.onload = function() {
     currentLanguage = document.l10n.supportedLocales[0];
     console.log(currentLanguage);
-
-})(jQuery);
+};
 
 function changeLanguage(lang){
     document.l10n.requestLocales(lang)
