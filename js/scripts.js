@@ -35,12 +35,11 @@
 })(jQuery);
 
 window.onload = function() {
-    currentLanguage = document.l10n.supportedLocales[0];
-    console.log(currentLanguage);
+    changeLanguage(document.l10n.supportedLocales[0]);
 };
 
 function changeLanguage(lang){
     document.l10n.requestLocales(lang)
-    currentLanguage = lang;
-    console.log(currentLanguage);
+    $(".listLocales a").removeClass("currentLanguage");
+    $("#"+lang+"Language").addClass("currentLanguage");
 }
