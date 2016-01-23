@@ -4,7 +4,7 @@
 <slogan "&quot;The limits of my language are the limits of my world.&quot; ‒ Ludwig Wittgenstein">
 <joinWithSocial "Join mit Facebook">
 <joinWithEmail "Begleiten Sie mit E-Mail">
-<notSupportedVideo "Ihr Browser unterstützt nicht das Video-Tag. Ich empfehle Ihnen, Ihren Browser zu aktualisieren.">
+<video "Ihr Browser unterstützt nicht das Video-Tag. Ich empfehle Ihnen, Ihren Browser zu aktualisieren."  src:"video/de.mp4">
 <allLanguages "Alle Sprachen">
 <popularLanguages "gängigen Sprachen">
 <english "Englisch">

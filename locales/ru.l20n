@@ -4,7 +4,7 @@
 <slogan>
 <joinWithSocial "Войти через Вконтакте">
 <joinWithEmail "Войти с помощью Email">
-<notSupportedVideo "Ваш браузер не поддерживает тег video. Рекомендуем обновить Ваш браузер.">
+<video "Ваш браузер не поддерживает тег video. Рекомендуем обновить Ваш браузер." src:"video/ru.mp4">
 <allLanguages "Все языки">
 <popularLanguages "ПОПУЛЯРНЫЕ ЯЗЫКИ">
 <english "Английский">
