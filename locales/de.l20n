@@ -1,7 +1,30 @@
-<discovery "Le seul et unique ultra-proximité Dating App">
-<slogan "Rencontrez quelqu'un proche de vous Ici et maintenant">
-<home "Accueil">
-<press "Presse">
-<contact "Contact">
-<terms "Termes">
-<privacy "Intimité">
+<about "About">
+<chooseLanguage "Sprache wählen">
+<contactUs "Kontakt">
+<slogan "&quot;The limits of my language are the limits of my world.&quot; ‒ Ludwig Wittgenstein">
+<joinWithSocial "Join mit Facebook">
+<joinWithEmail "Begleiten Sie mit E-Mail">
+<notSupportedVideo "Ihr Browser unterstützt nicht das Video-Tag. Ich empfehle Ihnen, Ihren Browser zu aktualisieren.">
+<allLanguages "Alle Sprachen">
+<popularLanguages "gängigen Sprachen">
+<english "Englisch">
+<german "Deutsch">
+<russian "Russisch">
+<contactUsDetails "Wir lieben Feedback. Füllen Sie das untenstehende Formular aus und wir melden uns bei Ihnen so schnell wie möglich zu bekommen.">
+<name placeholder:"Name">
+<phoneNumber placeholder:"Telefon">
+<yourMessage placeholder:"Ihre Nachricht hier ...">
+<send "Senden">
+<info "Info">
+<products "Produkt">
+<services "Services">
+<benefits "Vorteile">
+<developers "Entwicklern">
+<aboutUs "About">
+<deliveryInformation "Versandinformationen">
+<privacyPolicy "Privacy Policy">
+<termsConditions "Terms &amp; Bedingungen">
+<news "Nachrichten">
+<inputForSubscribe title:"" placeholder:"Sagen Sie uns Ihre E-Mail">
+<subscribeUpdates "Abonnieren Aktuelles">
+<social "Sozialen">
