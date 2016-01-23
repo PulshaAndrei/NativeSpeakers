@@ -35,7 +35,8 @@
 })(jQuery);
 
 window.onload = function() {
-    changeLanguage(document.l10n.supportedLocales[0]);
+    if (document.l10n.supportedLocales[0] != "ru")
+        changeLanguage(document.l10n.supportedLocales[0]);
 };
 
 function changeLanguage(lang){
