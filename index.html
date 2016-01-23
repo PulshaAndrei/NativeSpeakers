@@ -45,12 +45,9 @@
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     <li class="listLocales">
-                        <a class="page-scroll currentLanguage" href="#">RU</a>
-                        <p class="page-scroll listLocalesTitle">Выберите язык:</p>
-                        <div>
-                            <a class="page-scroll" href="#" onclick="document.l10n.requestLocales('ru')">Русский</a>
-                            <a class="page-scroll" href="#" onclick="document.l10n.requestLocales('en')">Английский</a>
-                        </div>
+                        <a class="page-scroll" href="#" id="enLanguage" onclick="document.l10n.requestLocales('en'); console.log(document.l10n)">EN</a>
+                        <a class="page-scroll" href="#" id="deLanguage"onclick="document.l10n.requestLocales('en')">DE</a>
+                        <a class="page-scroll currentLanguage" href="#" id="ruLanguage" onclick="document.l10n.requestLocales('ru')">RU</a>
                     </li>
                 </ul>
             </div>
