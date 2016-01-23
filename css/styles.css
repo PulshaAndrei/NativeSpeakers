@@ -175,6 +175,22 @@ footer {
     background-color: transparent;
 }
 
+.listLocales div{
+    /*position:fixed;*/
+    display: none;
+}
+.listLocalesTitle{
+    display: none!important;
+}
+.listLocales:hover .currentLanguage{
+    display: none!important;
+}
+.listLocales:hover .listLocalesTitle{
+    display: block!important;
+}
+.listLocales:hover div{
+    display: block;
+}
 
 @media(min-width:768px) {
     .navbar-default {

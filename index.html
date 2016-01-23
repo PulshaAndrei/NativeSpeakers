@@ -44,8 +44,13 @@
                     </li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
-                    <li>
-                        <a class="page-scroll" title="A free Bootstrap video landing theme" href="#" onclick="document.l10n.requestLocales('en')">Ru</a>
+                    <li class="listLocales">
+                        <a class="page-scroll currentLanguage" href="#">RU</a>
+                        <p class="page-scroll listLocalesTitle">Выберите язык:</p>
+                        <div>
+                            <a class="page-scroll" href="#" onclick="document.l10n.requestLocales('ru')">Русский</a>
+                            <a class="page-scroll" href="#" onclick="document.l10n.requestLocales('en')">Английский</a>
+                        </div>
                     </li>
                 </ul>
             </div>
