@@ -44,7 +44,8 @@ function changeLanguage(lang){
     $("#"+lang+"Language").addClass("currentLanguage");
 
     document.l10n.localize(['video'], function(l10n) { 
-        $("#video-background").find("source").attr("src", l10n.entities.video.attributes.src) 
+        $("#video-background").find("source").attr("src", l10n.entities.video.attributes.src);
+        $("#video-background").load();
     });
     
 }
