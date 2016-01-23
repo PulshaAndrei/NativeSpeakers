@@ -15,9 +15,10 @@
     new WOW().init();
     
     $('a.page-scroll').bind('click', function(event) {
-        var $ele = $(this);
+        var link = $(this).attr('href');
+        link = link == "#" ? "#first" : link;
         $('html, body').stop().animate({
-            scrollTop: ($($ele.attr('href')).offset().top - 60)
+            scrollTop: ($(link).offset().top - 60)
         }, 1450, 'easeInOutExpo');
         event.preventDefault();
     });
