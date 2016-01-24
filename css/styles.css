@@ -191,7 +191,8 @@ footer {
     transition: all .35s;
 }
 a.currentLanguage{
-    display: inline-block!important;
+    visibility: visible;
+    opacity: 1;
 }
 .listLocales:hover a{
     visibility: visible;
