@@ -183,13 +183,19 @@ footer {
     font-size: 13px;
     font-weight: 700;
     line-height: 20px;
-    display: none!important;
+    visibility: hidden;
+    opacity: 0;
+    display: inline-block!important;
+    -webkit-transition: all .35s;
+    -moz-transition: all .35s;
+    transition: all .35s;
 }
 a.currentLanguage{
-    display: block!important;
+    display: inline-block!important;
 }
 .listLocales:hover a{
-    display: inline-block!important;
+    visibility: visible;
+    opacity: 1;    
 }
 
 @media(min-width:768px) {
