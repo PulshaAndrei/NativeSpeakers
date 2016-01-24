@@ -188,9 +188,9 @@ footer {
     width: 0;
     padding: 0!important;
     display: inline-block!important;
-    -webkit-transition: all .35s;
-    -moz-transition: all .35s;
-    transition: all .35s;
+    -webkit-transition: all .5s;
+    -moz-transition: all .5s;
+    transition: all .5s;
 }
 a.currentLanguage{
     visibility: visible;
