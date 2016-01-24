@@ -185,6 +185,8 @@ footer {
     line-height: 20px;
     visibility: hidden;
     opacity: 0;
+    width: 0;
+    padding: 0!important;
     display: inline-block!important;
     -webkit-transition: all .35s;
     -moz-transition: all .35s;
@@ -193,10 +195,14 @@ footer {
 a.currentLanguage{
     visibility: visible;
     opacity: 1;
+    width: auto;
+    padding: 20px!important;
 }
 .listLocales:hover a{
     visibility: visible;
     opacity: 1;    
+    width: auto;
+    padding: 20px!important;
 }
 
 @media(min-width:768px) {
