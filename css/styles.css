@@ -205,6 +205,24 @@ a.currentLanguage{
     padding: 20px!important;
 }
 
+.logotype {
+    height: 20px;
+    width: 20px;
+    background: url(../image/logo1.png);
+    background-size: 20px;
+    display: inline-block!important;
+    vertical-align: middle;
+    opacity: 0.7;
+}
+
+.navbar-brand:hover .logotype{
+    opacity: 1;
+}
+
+.navbar-brand span {
+    vertical-align: middle;
+} 
+
 @media(min-width:768px) {
     .navbar-default {
         border-color: transparent;
@@ -582,4 +600,9 @@ img::selection {
 img::-moz-selection {
     color: #fff;
     background: 0 0;
+}
+
+.affix .logotype{
+    background: url(../image/logo.png);
+    background-size: 20px;
 }
