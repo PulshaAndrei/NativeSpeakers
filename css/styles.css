@@ -223,6 +223,12 @@ a.currentLanguage{
     vertical-align: middle;
 } 
 
+.navbar-default .logotype {
+    background: url(../image/logo.png);
+    background-size: 20px;
+    opacity: 1;
+}
+
 @media(min-width:768px) {
     .navbar-default {
         border-color: transparent;
@@ -280,6 +286,18 @@ a.currentLanguage{
     .navbar-default.affix .nav>li>a:focus:hover {
         color: #9c27b0;
     }
+
+    .navbar-default .logotype {
+        background: url(../image/logo1.png);
+        background-size: 20px;
+        opacity: 0.7;
+    }
+}
+
+.affix .logotype{
+    background: url(../image/logo.png);
+    background-size: 20px;
+    opacity: 1;
 }
 
 header {
@@ -600,10 +618,4 @@ img::selection {
 img::-moz-selection {
     color: #fff;
     background: 0 0;
-}
-
-.affix .logotype{
-    background: url(../image/logo.png);
-    background-size: 20px;
-    opacity: 1;
 }
