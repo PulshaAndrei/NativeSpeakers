@@ -1,12 +1,12 @@
-<about "About">
+<about "Über das Projekt">
 <chooseLanguage "Sprache wählen">
 <contactUs "Kontakt">
 <slogan "&quot;The limits of my language are the limits of my world.&quot; ‒ Ludwig Wittgenstein">
-<joinWithSocial "Join mit Facebook">
+<joinWithSocial "Begleiten Sie mit Facebook">
 <joinWithEmail "Begleiten Sie mit E-Mail">
 <video "Ihr Browser unterstützt nicht das Video-Tag. Ich empfehle Ihnen, Ihren Browser zu aktualisieren."  src:"video/de.mp4">
 <allLanguages "Alle Sprachen">
-<popularLanguages "gängigen Sprachen">
+<popularLanguages "GÄNGIGEN SPRACHEN">
 <english "Englisch">
 <german "Deutsch">
 <russian "Russisch">
@@ -20,7 +20,7 @@
 <services "Services">
 <benefits "Vorteile">
 <developers "Entwicklern">
-<aboutUs "About">
+<aboutUs "Über uns">
 <deliveryInformation "Versandinformationen">
 <privacyPolicy "Privacy Policy">
 <termsConditions "Terms &amp; Bedingungen">
