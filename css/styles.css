@@ -605,4 +605,5 @@ img::-moz-selection {
 .affix .logotype{
     background: url(../image/logo.png);
     background-size: 20px;
+    opacity: 1;
 }
