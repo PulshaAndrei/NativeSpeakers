@@ -2,8 +2,8 @@
 <chooseLanguage "Choose language">
 <contactUs "Contact us">
 <slogan "&quot;The limits of my language are the limits of my world.&quot; ‒ Ludwig Wittgenstein">
-<joinWithSocial "Join with Facebook">
-<joinWithEmail "Join with Email">
+<logIn "Log In">
+<signUp "Sign Up">
 <video "Your browser does not support the video tag. I suggest you upgrade your browser." src:"video/en.mp4">
 <allLanguages "All languages">
 <popularLanguages "POPULAR LANGUAGES">

@@ -2,8 +2,8 @@
 <chooseLanguage "Sprache wählen">
 <contactUs "Kontakt">
 <slogan "&quot;The limits of my language are the limits of my world.&quot; ‒ Ludwig Wittgenstein">
-<joinWithSocial "Begleiten Sie mit Facebook">
-<joinWithEmail "Begleiten Sie mit E-Mail">
+<logIn "Eingeben">
+<signUp "Registrieren">
 <video "Ihr Browser unterstützt nicht das Video-Tag. Ich empfehle Ihnen, Ihren Browser zu aktualisieren."  src:"video/de.mp4">
 <allLanguages "Alle Sprachen">
 <popularLanguages "GÄNGIGEN SPRACHEN">

@@ -2,8 +2,8 @@
 <chooseLanguage "Выбрать язык">
 <contactUs "Связаться с нами">
 <slogan>
-<joinWithSocial "Войти через Вконтакте" href:"https://oauth.vk.com/authorize?client_id=5270457&redirect_uri=http://pulshaandrei.github.io/NativeSpeakers/dashboard.html&display=popup&scope=email&response_type=code&v=5.44">
-<joinWithEmail "Войти с помощью Email">
+<logIn "Войти">
+<signUp "Зарегистрироваться">
 <video "Ваш браузер не поддерживает тег video. Рекомендуем обновить Ваш браузер." src:"video/ru.mp4">
 <allLanguages "Все языки">
 <popularLanguages "ПОПУЛЯРНЫЕ ЯЗЫКИ">
