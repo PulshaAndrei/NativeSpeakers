@@ -138,3 +138,4 @@ img::-moz-selection{color:#fff;background:0 0;}
 .modal-body{text-align:center;padding:35px;}
 .modal-open .modal{display:flex!important}
 .modal-dialog{align-items:center;display:flex;}
+.img-responsive{width: 100%!important}
