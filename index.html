@@ -55,7 +55,7 @@
                 <h1 class="cursive">Native Speakers</h1>
                 <h4 data-l10n-id="slogan">"The limits of my language are the limits of my world." ‒ Ludwig Wittgenstein</h4>
                 <hr>
-                <a href="https://oauth.vk.com/authorize?client_id=5270457&redirect_uri=http://pulshaandrei.github.io/NativeSpeakers/dashboard.html&display=popup&scope=email&response_type=code&v=5.44" class="btn btn-primary btn-xl header-link" data-l10n-id="logIn">Войти</a> &nbsp;
+                <a href="https://oauth.vk.com/authorize?client_id=5270457&redirect_uri=http://pulshaandrei.github.io/NativeSpeakers/dashboard.html&display=popup&scope=email&response_type=code&v=5.44" class="btn btn-primary btn-xl header-link" data-l10n-id="logIn" data-toggle="modal" data-target="#alertModalLogin">Войти</a> &nbsp;
                 <a href="#" class="btn btn-primary btn-xl header-link" data-l10n-id="signUp">Зарегистрироваться</a>
             </div>
         </div>
@@ -274,7 +274,23 @@
         	</div>
         </div>
         </div>
-    </div>      
+    </div>  
+    <div id="alertModalLogin" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-body">
+                 <h2 class="margin-top-0 text-primary">Вход</h2>
+                    <br>
+                    <input type="text" class="form-control" data-l10n-id="name" placeholder="Логин" style="margin-bottom: 1px">
+                    <input type="password" class="form-control" data-l10n-id="name" placeholder="Пароль">
+                    <br>
+                    <a href="#three" class="btn btn-default btn-xl page-scroll wow fadeIn" style="visibility: visible; animation-name: fadeIn;">Войти</a>
+                    <hr class="primary">
+                    <p class="text-faded">... или войти через:</p>
+            </div>
+        </div>
+        </div>
+    </div>     
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" />
     <link rel="stylesheet" href="css/styles.css" />  
     <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" rel="stylesheet" />

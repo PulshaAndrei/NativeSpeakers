@@ -135,3 +135,6 @@ fieldset[disabled] .btn-default.active{border-color:#fff;background-color:#fff;o
 ::selection{text-shadow:none;color:#fff;background:#222;}
 img::selection{color:#fff;background:0 0;}
 img::-moz-selection{color:#fff;background:0 0;}
+.modal-body{text-align:center;padding:35px;}
+.modal-open .modal{display:flex!important}
+.modal-dialog{align-items:center;display:flex;}
