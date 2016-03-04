@@ -152,3 +152,6 @@ video{
 .r5-overlay, .r5-content, .r5-controls {
 	display: none!important;
 }
+.contact-form label{
+	padding-top: 15px;
+}

@@ -7410,9 +7410,13 @@
 
 	var _reactDom = __webpack_require__(231);
 
-	var _Home = __webpack_require__(232);
+	var _Home = __webpack_require__(294);
 
 	var _Home2 = _interopRequireDefault(_Home);
+
+	var _App = __webpack_require__(295);
+
+	var _App2 = _interopRequireDefault(_App);
 
 	var _reactRouter = __webpack_require__(237);
 
@@ -7421,7 +7425,7 @@
 	(0, _reactDom.render)(_react2.default.createElement(
 	  _reactRouter.Router,
 	  { history: _reactRouter.hashHistory },
-	  _react2.default.createElement(_reactRouter.Route, { path: '/', component: _Home2.default })
+	  _react2.default.createElement(_reactRouter.Route, { path: '/', component: _App2.default })
 	), document.getElementById('app'));
 
 /***/ },
@@ -26929,558 +26933,7 @@
 
 
 /***/ },
-/* 232 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	var React = __webpack_require__(75);
-	var Video = __webpack_require__(233);
-
-	var HomeNavigation = React.createClass({
-		displayName: 'HomeNavigation',
-		render: function render() {
-			return React.createElement(
-				'nav',
-				{ id: 'topNav', className: 'navbar navbar-default navbar-fixed-top' },
-				React.createElement(
-					'div',
-					{ className: 'container-fluid' },
-					React.createElement(
-						'div',
-						{ className: 'navbar-header' },
-						React.createElement(
-							'button',
-							{ type: 'button', className: 'navbar-toggle collapsed', 'data-toggle': 'collapse', 'data-target': '#bs-navbar' },
-							React.createElement(
-								'span',
-								{ className: 'sr-only' },
-								'Toggle navigation'
-							),
-							React.createElement('span', { className: 'icon-bar' }),
-							React.createElement('span', { className: 'icon-bar' }),
-							React.createElement('span', { className: 'icon-bar' })
-						),
-						React.createElement(
-							'a',
-							{ className: 'navbar-brand roll page-scroll', href: '#first' },
-							React.createElement('div', { className: 'logotype' }),
-							React.createElement(
-								'span',
-								null,
-								' Native Speakers'
-							)
-						)
-					),
-					React.createElement(
-						'div',
-						{ className: 'navbar-collapse collapse', id: 'bs-navbar' },
-						React.createElement(
-							'ul',
-							{ className: 'nav navbar-nav' },
-							React.createElement(
-								'li',
-								null,
-								React.createElement(
-									'a',
-									{ className: 'page-scroll', href: '#two', 'data-l10n-id': 'about' },
-									'О проекте'
-								)
-							),
-							React.createElement(
-								'li',
-								null,
-								React.createElement(
-									'a',
-									{ className: 'page-scroll', href: '#three', 'data-l10n-id': 'chooseLanguage' },
-									'Выбрать язык'
-								)
-							),
-							React.createElement(
-								'li',
-								null,
-								React.createElement(
-									'a',
-									{ className: 'page-scroll', href: '#last', 'data-l10n-id': 'contactUs' },
-									'Связаться с нами'
-								)
-							)
-						),
-						React.createElement(
-							'ul',
-							{ className: 'nav navbar-nav navbar-right' },
-							React.createElement(
-								'li',
-								{ className: 'listLocales' },
-								React.createElement(
-									'a',
-									{ className: 'page-scroll', href: '#', id: 'enLanguage', onclick: 'changeLanguage(\'en\')' },
-									'EN'
-								),
-								React.createElement(
-									'a',
-									{ className: 'page-scroll', href: '#', id: 'deLanguage', onclick: 'changeLanguage(\'de\')' },
-									'DE'
-								),
-								React.createElement(
-									'a',
-									{ className: 'page-scroll currentLanguage', href: '#', id: 'ruLanguage', onclick: 'changeLanguage(\'ru\')' },
-									'RU'
-								)
-							)
-						)
-					)
-				)
-			);
-		}
-	});
-
-	var Header = React.createClass({
-		displayName: 'Header',
-		render: function render() {
-			return React.createElement(
-				'header',
-				{ id: 'first' },
-				React.createElement(
-					'div',
-					{ className: 'header-content' },
-					React.createElement(
-						'div',
-						{ className: 'inner' },
-						React.createElement(
-							'h1',
-							{ className: 'cursive' },
-							'Native Speakers'
-						),
-						React.createElement(
-							'h4',
-							{ 'data-l10n-id': 'slogan' },
-							'"The limits of my language are the limits of my world." ‒ Ludwig Wittgenstein'
-						),
-						React.createElement('hr', null),
-						React.createElement(
-							'a',
-							{ className: 'btn btn-primary btn-xl header-link', id: 'login', 'data-l10n-id': 'logIn' },
-							'Войти'
-						),
-						'  ',
-						React.createElement(
-							'a',
-							{ href: '#', className: 'btn btn-primary btn-xl header-link', 'data-l10n-id': 'signUp' },
-							'Зарегистрироваться'
-						)
-					)
-				),
-				React.createElement(Video, { sources: ["video/ru.mp4"], autoPlay: true, constrols: false, width: '100%', height: 'auto', loop: true })
-			);
-		}
-	});
-
-	var About = React.createClass({
-		displayName: 'About',
-		render: function render() {
-			return React.createElement('section', { id: 'two' });
-		}
-	});
-
-	var PopularLanguages = React.createClass({
-		displayName: 'PopularLanguages',
-		render: function render() {
-			return React.createElement(
-				'section',
-				{ id: 'three', className: 'no-padding' },
-				React.createElement(
-					'div',
-					{ className: 'container-fluid text-center' },
-					React.createElement(
-						'div',
-						{ className: 'call-to-action chooseLanguage-header' },
-						React.createElement(
-							'h2',
-							{ className: 'text-primary', 'data-l10n-id': 'chooseLanguage' },
-							'Выбрать язык'
-						),
-						React.createElement(
-							'a',
-							{ href: '#', className: 'btn btn-default btn-lg wow flipInX', 'data-l10n-id': 'allLanguages' },
-							'Все языки'
-						)
-					),
-					React.createElement('br', null),
-					React.createElement('hr', null),
-					React.createElement('br', null),
-					React.createElement(
-						'h4',
-						{ className: 'wide-space text-center', 'data-l10n-id': 'popularLanguages' },
-						'ПОПУЛЯРНЫЕ ЯЗЫКИ'
-					),
-					React.createElement('br', null),
-					React.createElement(
-						'div',
-						{ className: 'row no-gutter' },
-						React.createElement(
-							'div',
-							{ className: 'col-lg-4 col-sm-6' },
-							React.createElement(
-								'a',
-								{ href: '#', className: 'gallery-box', 'data-src': 'image/english.jpg' },
-								React.createElement('img', { src: 'image/english.jpg', className: 'img-responsive' }),
-								React.createElement(
-									'div',
-									{ className: 'gallery-box-caption' },
-									React.createElement(
-										'div',
-										{ className: 'gallery-box-content' },
-										React.createElement(
-											'div',
-											{ 'data-l10n-id': 'english' },
-											'Английский'
-										)
-									)
-								)
-							)
-						),
-						React.createElement(
-							'div',
-							{ className: 'col-lg-4 col-sm-6' },
-							React.createElement(
-								'a',
-								{ href: '#', className: 'gallery-box', 'data-src': 'image/germany.jpg' },
-								React.createElement('img', { src: 'image/germany.jpg', className: 'img-responsive' }),
-								React.createElement(
-									'div',
-									{ className: 'gallery-box-caption' },
-									React.createElement(
-										'div',
-										{ className: 'gallery-box-content' },
-										React.createElement(
-											'div',
-											{ 'data-l10n-id': 'german' },
-											'Немецкий'
-										)
-									)
-								)
-							)
-						),
-						React.createElement(
-							'div',
-							{ className: 'col-lg-4 col-sm-6' },
-							React.createElement(
-								'a',
-								{ href: '#', className: 'gallery-box', 'data-src': 'image/russia.jpg' },
-								React.createElement('img', { src: 'image/russia.jpg', className: 'img-responsive' }),
-								React.createElement(
-									'div',
-									{ className: 'gallery-box-caption' },
-									React.createElement(
-										'div',
-										{ className: 'gallery-box-content' },
-										React.createElement(
-											'div',
-											{ 'data-l10n-id': 'russian' },
-											'Русский'
-										)
-									)
-								)
-							)
-						)
-					)
-				)
-			);
-		}
-	});
-
-	var ContactUs = React.createClass({
-		displayName: 'ContactUs',
-		render: function render() {
-			return React.createElement(
-				'section',
-				{ id: 'last' },
-				React.createElement(
-					'div',
-					{ className: 'container' },
-					React.createElement(
-						'div',
-						{ className: 'row' },
-						React.createElement(
-							'div',
-							{ className: 'col-lg-8 col-lg-offset-2 text-center' },
-							React.createElement(
-								'h2',
-								{ className: 'margin-top-0 wow fadeIn', 'data-l10n-id': 'contactUs' },
-								'Связаться с нами'
-							),
-							React.createElement('hr', { className: 'primary' }),
-							React.createElement(
-								'p',
-								{ 'data-l10n-id': 'contactUsDetails' },
-								'Мы любим обратную связь. Напишите нам Ваши пожелания.'
-							)
-						),
-						React.createElement(
-							'div',
-							{ className: 'col-lg-10 col-lg-offset-1 text-center' },
-							React.createElement(
-								'form',
-								{ className: 'contact-form row' },
-								React.createElement(
-									'div',
-									{ className: 'col-md-4' },
-									React.createElement('label', null),
-									React.createElement('input', { type: 'text', className: 'form-control', 'data-l10n-id': 'name', placeholder: 'Имя' })
-								),
-								React.createElement(
-									'div',
-									{ className: 'col-md-4' },
-									React.createElement('label', null),
-									React.createElement('input', { type: 'text', className: 'form-control', placeholder: 'Email' })
-								),
-								React.createElement(
-									'div',
-									{ className: 'col-md-4' },
-									React.createElement('label', null),
-									React.createElement('input', { type: 'text', className: 'form-control', 'data-l10n-id': 'phoneNumber', placeholder: 'Номер телефона' })
-								),
-								React.createElement(
-									'div',
-									{ className: 'col-md-12' },
-									React.createElement('label', null),
-									React.createElement('textarea', { className: 'form-control', rows: '9', 'data-l10n-id': 'yourMessage', placeholder: 'Ваше сообщение...' })
-								),
-								React.createElement(
-									'div',
-									{ className: 'col-md-4 col-md-offset-4' },
-									React.createElement('label', null),
-									React.createElement(
-										'button',
-										{ type: 'button', 'data-toggle': 'modal', 'data-target': '#alertModal', className: 'btn btn-primary btn-block btn-lg' },
-										React.createElement(
-											'span',
-											{ 'data-l10n-id': 'send' },
-											'Отправить'
-										),
-										' ',
-										React.createElement('i', { className: 'ion-android-arrow-forward' })
-									)
-								)
-							)
-						)
-					)
-				)
-			);
-		}
-	});
-
-	var Footer = React.createClass({
-		displayName: 'Footer',
-		render: function render() {
-			return React.createElement(
-				'footer',
-				{ id: 'footer' },
-				React.createElement(
-					'div',
-					{ className: 'container-fluid' },
-					React.createElement(
-						'div',
-						{ className: 'row' },
-						React.createElement(
-							'div',
-							{ className: 'col-xs-6 col-sm-3 column' },
-							React.createElement(
-								'h4',
-								{ 'data-l10n-id': 'info' },
-								'Информация'
-							),
-							React.createElement(
-								'ul',
-								{ className: 'list-unstyled' },
-								React.createElement(
-									'li',
-									null,
-									React.createElement(
-										'a',
-										{ href: '#', 'data-l10n-id': 'products' },
-										'Продукты'
-									)
-								),
-								React.createElement(
-									'li',
-									null,
-									React.createElement(
-										'a',
-										{ href: '#', 'data-l10n-id': 'services' },
-										'Сервисы'
-									)
-								),
-								React.createElement(
-									'li',
-									null,
-									React.createElement(
-										'a',
-										{ href: '#', 'data-l10n-id': 'benefits' },
-										'Выгоды'
-									)
-								),
-								React.createElement(
-									'li',
-									null,
-									React.createElement(
-										'a',
-										{ href: '#', 'data-l10n-id': 'developers' },
-										'Разработчики'
-									)
-								)
-							)
-						),
-						React.createElement(
-							'div',
-							{ className: 'col-xs-6 col-sm-3 column' },
-							React.createElement(
-								'h4',
-								{ 'data-l10n-id': 'aboutUs' },
-								'О нас'
-							),
-							React.createElement(
-								'ul',
-								{ className: 'list-unstyled' },
-								React.createElement(
-									'li',
-									null,
-									React.createElement(
-										'a',
-										{ href: '#', 'data-l10n-id': 'contactUs' },
-										'Связаться с нами'
-									)
-								),
-								React.createElement(
-									'li',
-									null,
-									React.createElement(
-										'a',
-										{ href: '#', 'data-l10n-id': 'deliveryInformation' },
-										'Предоставленная информация'
-									)
-								),
-								React.createElement(
-									'li',
-									null,
-									React.createElement(
-										'a',
-										{ href: '#', 'data-l10n-id': 'privacyPolicy' },
-										'Политика конфиденциальности'
-									)
-								),
-								React.createElement(
-									'li',
-									null,
-									React.createElement(
-										'a',
-										{ href: '#', 'data-l10n-id': 'termsConditions' },
-										'Условия использования'
-									)
-								)
-							)
-						),
-						React.createElement(
-							'div',
-							{ className: 'col-xs-12 col-sm-3 column' },
-							React.createElement(
-								'h4',
-								{ 'data-l10n-id': 'news' },
-								'Новости'
-							),
-							React.createElement(
-								'form',
-								null,
-								React.createElement(
-									'div',
-									{ className: 'form-group' },
-									React.createElement('input', { type: 'text', className: 'form-control', title: 'Без спама, мы обещаем!', placeholder: 'Ваш email', 'data-l10n-id': 'inputForSubscribe' })
-								),
-								React.createElement(
-									'div',
-									{ className: 'form-group' },
-									React.createElement(
-										'button',
-										{ className: 'btn btn-primary', 'data-toggle': 'modal', 'data-target': '#alertModal', type: 'button', 'data-l10n-id': 'subscribeUpdates' },
-										'Подписаться на обновления'
-									)
-								)
-							)
-						),
-						React.createElement(
-							'div',
-							{ className: 'col-xs-12 col-sm-3 text-right' },
-							React.createElement(
-								'h4',
-								{ 'data-l10n-id': 'social' },
-								'Мы в соцсетях'
-							),
-							React.createElement(
-								'ul',
-								{ className: 'list-inline' },
-								React.createElement(
-									'li',
-									null,
-									React.createElement(
-										'a',
-										{ rel: 'nofollow', href: '', title: 'Twitter' },
-										React.createElement('i', { className: 'icon-lg ion-social-twitter-outline' })
-									),
-									' '
-								),
-								React.createElement(
-									'li',
-									null,
-									React.createElement(
-										'a',
-										{ rel: 'nofollow', href: '', title: 'Facebook' },
-										React.createElement('i', { className: 'icon-lg ion-social-facebook-outline' })
-									),
-									' '
-								),
-								React.createElement(
-									'li',
-									null,
-									React.createElement(
-										'a',
-										{ rel: 'nofollow', href: '', title: 'Dribble' },
-										React.createElement('i', { className: 'icon-lg ion-social-dribbble-outline' })
-									)
-								)
-							)
-						)
-					),
-					React.createElement('br', null),
-					React.createElement(
-						'span',
-						{ className: 'pull-right text-muted small' },
-						'©2015 - 2016 Native Speakers'
-					)
-				)
-			);
-		}
-	});
-
-	var Home = React.createClass({
-		displayName: 'Home',
-		render: function render() {
-			return React.createElement(
-				'div',
-				null,
-				React.createElement(HomeNavigation, null),
-				React.createElement(Header, null),
-				React.createElement(About, null),
-				React.createElement(PopularLanguages, null),
-				React.createElement(ContactUs, null),
-				React.createElement(Footer, null)
-			);
-		}
-	});
-
-	module.exports = Home;
-
-/***/ },
+/* 232 */,
 /* 233 */
 /***/ function(module, exports, __webpack_require__) {
 
@@ -32781,6 +32234,616 @@
 
 	exports['default'] = _createRouterHistory2['default'](_historyLibCreateHashHistory2['default']);
 	module.exports = exports['default'];
+
+/***/ },
+/* 294 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var React = __webpack_require__(75);
+	var Video = __webpack_require__(233);
+
+	var HomeNavigation = React.createClass({
+		displayName: 'HomeNavigation',
+		render: function render() {
+			return React.createElement(
+				'nav',
+				{ id: 'topNav', className: 'navbar navbar-default navbar-fixed-top' },
+				React.createElement(
+					'div',
+					{ className: 'container-fluid' },
+					React.createElement(
+						'div',
+						{ className: 'navbar-header' },
+						React.createElement(
+							'button',
+							{ type: 'button', className: 'navbar-toggle collapsed', 'data-toggle': 'collapse', 'data-target': '#bs-navbar' },
+							React.createElement(
+								'span',
+								{ className: 'sr-only' },
+								'Toggle navigation'
+							),
+							React.createElement('span', { className: 'icon-bar' }),
+							React.createElement('span', { className: 'icon-bar' }),
+							React.createElement('span', { className: 'icon-bar' })
+						),
+						React.createElement(
+							'a',
+							{ className: 'navbar-brand roll page-scroll', href: '#first' },
+							React.createElement('div', { className: 'logotype' }),
+							React.createElement(
+								'span',
+								null,
+								' Native Speakers'
+							)
+						)
+					),
+					React.createElement(
+						'div',
+						{ className: 'navbar-collapse collapse', id: 'bs-navbar' },
+						React.createElement(
+							'ul',
+							{ className: 'nav navbar-nav' },
+							React.createElement(
+								'li',
+								null,
+								React.createElement(
+									'a',
+									{ className: 'page-scroll', href: '#two', 'data-l10n-id': 'about' },
+									'О проекте'
+								)
+							),
+							React.createElement(
+								'li',
+								null,
+								React.createElement(
+									'a',
+									{ className: 'page-scroll', href: '#three', 'data-l10n-id': 'chooseLanguage' },
+									'Выбрать язык'
+								)
+							),
+							React.createElement(
+								'li',
+								null,
+								React.createElement(
+									'a',
+									{ className: 'page-scroll', href: '#last', 'data-l10n-id': 'contactUs' },
+									'Связаться с нами'
+								)
+							)
+						),
+						React.createElement(
+							'ul',
+							{ className: 'nav navbar-nav navbar-right' },
+							React.createElement(
+								'li',
+								{ className: 'listLocales' },
+								React.createElement(
+									'a',
+									{ className: 'page-scroll', href: '#', id: 'enLanguage', onclick: 'changeLanguage(\'en\')' },
+									'EN'
+								),
+								React.createElement(
+									'a',
+									{ className: 'page-scroll', href: '#', id: 'deLanguage', onclick: 'changeLanguage(\'de\')' },
+									'DE'
+								),
+								React.createElement(
+									'a',
+									{ className: 'page-scroll currentLanguage', href: '#', id: 'ruLanguage', onclick: 'changeLanguage(\'ru\')' },
+									'RU'
+								)
+							)
+						)
+					)
+				)
+			);
+		}
+	});
+
+	var Header = React.createClass({
+		displayName: 'Header',
+
+		showLock: function showLock() {
+			this.props.lock.show();
+		},
+		render: function render() {
+			return React.createElement(
+				'header',
+				{ id: 'first' },
+				React.createElement(
+					'div',
+					{ className: 'header-content' },
+					React.createElement(
+						'div',
+						{ className: 'inner' },
+						React.createElement(
+							'h1',
+							{ className: 'cursive' },
+							'Native Speakers'
+						),
+						React.createElement(
+							'h4',
+							{ 'data-l10n-id': 'slogan' },
+							'"The limits of my language are the limits of my world." ‒ Ludwig Wittgenstein'
+						),
+						React.createElement('hr', null),
+						React.createElement(
+							'a',
+							{ onClick: this.showLock, className: 'btn btn-primary btn-xl header-link', id: 'login', 'data-l10n-id': 'logIn' },
+							'Войти или зарегистрироваться'
+						)
+					)
+				),
+				React.createElement(Video, { sources: ["video/Globe_SouthAmerica1_Videvo.mp4"], autoPlay: true, constrols: false, width: '100%', height: 'auto', loop: true })
+			);
+		}
+	});
+
+	var About = React.createClass({
+		displayName: 'About',
+		render: function render() {
+			return React.createElement('section', { id: 'two' });
+		}
+	});
+
+	var PopularLanguages = React.createClass({
+		displayName: 'PopularLanguages',
+		render: function render() {
+			return React.createElement(
+				'section',
+				{ id: 'three', className: 'no-padding' },
+				React.createElement(
+					'div',
+					{ className: 'container-fluid text-center' },
+					React.createElement(
+						'div',
+						{ className: 'call-to-action chooseLanguage-header' },
+						React.createElement(
+							'h2',
+							{ className: 'text-primary', 'data-l10n-id': 'chooseLanguage' },
+							'Выбрать язык'
+						),
+						React.createElement(
+							'a',
+							{ href: '#', className: 'btn btn-default btn-lg wow flipInX', 'data-l10n-id': 'allLanguages' },
+							'Все языки'
+						)
+					),
+					React.createElement('br', null),
+					React.createElement('hr', null),
+					React.createElement('br', null),
+					React.createElement(
+						'h4',
+						{ className: 'wide-space text-center', 'data-l10n-id': 'popularLanguages' },
+						'ПОПУЛЯРНЫЕ ЯЗЫКИ'
+					),
+					React.createElement('br', null),
+					React.createElement(
+						'div',
+						{ className: 'row no-gutter' },
+						React.createElement(
+							'div',
+							{ className: 'col-lg-4 col-sm-6' },
+							React.createElement(
+								'a',
+								{ href: '#', className: 'gallery-box', 'data-src': 'image/english.jpg' },
+								React.createElement('img', { src: 'image/english.jpg', className: 'img-responsive' }),
+								React.createElement(
+									'div',
+									{ className: 'gallery-box-caption' },
+									React.createElement(
+										'div',
+										{ className: 'gallery-box-content' },
+										React.createElement(
+											'div',
+											{ 'data-l10n-id': 'english' },
+											'Английский'
+										)
+									)
+								)
+							)
+						),
+						React.createElement(
+							'div',
+							{ className: 'col-lg-4 col-sm-6' },
+							React.createElement(
+								'a',
+								{ href: '#', className: 'gallery-box', 'data-src': 'image/germany.jpg' },
+								React.createElement('img', { src: 'image/germany.jpg', className: 'img-responsive' }),
+								React.createElement(
+									'div',
+									{ className: 'gallery-box-caption' },
+									React.createElement(
+										'div',
+										{ className: 'gallery-box-content' },
+										React.createElement(
+											'div',
+											{ 'data-l10n-id': 'german' },
+											'Немецкий'
+										)
+									)
+								)
+							)
+						),
+						React.createElement(
+							'div',
+							{ className: 'col-lg-4 col-sm-6' },
+							React.createElement(
+								'a',
+								{ href: '#', className: 'gallery-box', 'data-src': 'image/russia.jpg' },
+								React.createElement('img', { src: 'image/russia.jpg', className: 'img-responsive' }),
+								React.createElement(
+									'div',
+									{ className: 'gallery-box-caption' },
+									React.createElement(
+										'div',
+										{ className: 'gallery-box-content' },
+										React.createElement(
+											'div',
+											{ 'data-l10n-id': 'russian' },
+											'Русский'
+										)
+									)
+								)
+							)
+						)
+					)
+				)
+			);
+		}
+	});
+
+	var ContactUs = React.createClass({
+		displayName: 'ContactUs',
+		render: function render() {
+			return React.createElement(
+				'section',
+				{ id: 'last' },
+				React.createElement(
+					'div',
+					{ className: 'container' },
+					React.createElement(
+						'div',
+						{ className: 'row' },
+						React.createElement(
+							'div',
+							{ className: 'col-lg-8 col-lg-offset-2 text-center' },
+							React.createElement(
+								'h2',
+								{ className: 'margin-top-0 wow fadeIn', 'data-l10n-id': 'contactUs' },
+								'Связаться с нами'
+							),
+							React.createElement('hr', { className: 'primary' }),
+							React.createElement(
+								'p',
+								{ 'data-l10n-id': 'contactUsDetails' },
+								'Мы любим обратную связь. Напишите нам Ваши пожелания.'
+							)
+						),
+						React.createElement(
+							'div',
+							{ className: 'col-lg-10 col-lg-offset-1 text-center' },
+							React.createElement(
+								'form',
+								{ className: 'contact-form row' },
+								React.createElement(
+									'div',
+									{ className: 'col-md-4' },
+									React.createElement('label', null),
+									React.createElement('input', { type: 'text', className: 'form-control', 'data-l10n-id': 'name', placeholder: 'Имя' })
+								),
+								React.createElement(
+									'div',
+									{ className: 'col-md-4' },
+									React.createElement('label', null),
+									React.createElement('input', { type: 'text', className: 'form-control', placeholder: 'Email' })
+								),
+								React.createElement(
+									'div',
+									{ className: 'col-md-4' },
+									React.createElement('label', null),
+									React.createElement('input', { type: 'text', className: 'form-control', 'data-l10n-id': 'phoneNumber', placeholder: 'Номер телефона' })
+								),
+								React.createElement(
+									'div',
+									{ className: 'col-md-12' },
+									React.createElement('label', null),
+									React.createElement('textarea', { className: 'form-control', rows: '9', 'data-l10n-id': 'yourMessage', placeholder: 'Ваше сообщение...' })
+								),
+								React.createElement(
+									'div',
+									{ className: 'col-md-4 col-md-offset-4' },
+									React.createElement('label', null),
+									React.createElement(
+										'button',
+										{ type: 'button', 'data-toggle': 'modal', 'data-target': '#alertModal', className: 'btn btn-primary btn-block btn-lg' },
+										React.createElement(
+											'span',
+											{ 'data-l10n-id': 'send' },
+											'Отправить'
+										),
+										' ',
+										React.createElement('i', { className: 'ion-android-arrow-forward' })
+									)
+								)
+							)
+						)
+					)
+				)
+			);
+		}
+	});
+
+	var Footer = React.createClass({
+		displayName: 'Footer',
+		render: function render() {
+			return React.createElement(
+				'footer',
+				{ id: 'footer' },
+				React.createElement(
+					'div',
+					{ className: 'container-fluid' },
+					React.createElement(
+						'div',
+						{ className: 'row' },
+						React.createElement(
+							'div',
+							{ className: 'col-xs-6 col-sm-3 column' },
+							React.createElement(
+								'h4',
+								{ 'data-l10n-id': 'info' },
+								'Информация'
+							),
+							React.createElement(
+								'ul',
+								{ className: 'list-unstyled' },
+								React.createElement(
+									'li',
+									null,
+									React.createElement(
+										'a',
+										{ href: '#', 'data-l10n-id': 'products' },
+										'Продукты'
+									)
+								),
+								React.createElement(
+									'li',
+									null,
+									React.createElement(
+										'a',
+										{ href: '#', 'data-l10n-id': 'services' },
+										'Сервисы'
+									)
+								),
+								React.createElement(
+									'li',
+									null,
+									React.createElement(
+										'a',
+										{ href: '#', 'data-l10n-id': 'benefits' },
+										'Выгоды'
+									)
+								),
+								React.createElement(
+									'li',
+									null,
+									React.createElement(
+										'a',
+										{ href: '#', 'data-l10n-id': 'developers' },
+										'Разработчики'
+									)
+								)
+							)
+						),
+						React.createElement(
+							'div',
+							{ className: 'col-xs-6 col-sm-3 column' },
+							React.createElement(
+								'h4',
+								{ 'data-l10n-id': 'aboutUs' },
+								'О нас'
+							),
+							React.createElement(
+								'ul',
+								{ className: 'list-unstyled' },
+								React.createElement(
+									'li',
+									null,
+									React.createElement(
+										'a',
+										{ href: '#', 'data-l10n-id': 'contactUs' },
+										'Связаться с нами'
+									)
+								),
+								React.createElement(
+									'li',
+									null,
+									React.createElement(
+										'a',
+										{ href: '#', 'data-l10n-id': 'deliveryInformation' },
+										'Предоставленная информация'
+									)
+								),
+								React.createElement(
+									'li',
+									null,
+									React.createElement(
+										'a',
+										{ href: '#', 'data-l10n-id': 'privacyPolicy' },
+										'Политика конфиденциальности'
+									)
+								),
+								React.createElement(
+									'li',
+									null,
+									React.createElement(
+										'a',
+										{ href: '#', 'data-l10n-id': 'termsConditions' },
+										'Условия использования'
+									)
+								)
+							)
+						),
+						React.createElement(
+							'div',
+							{ className: 'col-xs-12 col-sm-3 column' },
+							React.createElement(
+								'h4',
+								{ 'data-l10n-id': 'news' },
+								'Новости'
+							),
+							React.createElement(
+								'form',
+								null,
+								React.createElement(
+									'div',
+									{ className: 'form-group' },
+									React.createElement('input', { type: 'text', className: 'form-control', title: 'Без спама, мы обещаем!', placeholder: 'Ваш email', 'data-l10n-id': 'inputForSubscribe' })
+								),
+								React.createElement(
+									'div',
+									{ className: 'form-group' },
+									React.createElement(
+										'button',
+										{ className: 'btn btn-primary', 'data-toggle': 'modal', 'data-target': '#alertModal', type: 'button', 'data-l10n-id': 'subscribeUpdates' },
+										'Подписаться на обновления'
+									)
+								)
+							)
+						),
+						React.createElement(
+							'div',
+							{ className: 'col-xs-12 col-sm-3 text-right' },
+							React.createElement(
+								'h4',
+								{ 'data-l10n-id': 'social' },
+								'Мы в соцсетях'
+							),
+							React.createElement(
+								'ul',
+								{ className: 'list-inline' },
+								React.createElement(
+									'li',
+									null,
+									React.createElement(
+										'a',
+										{ rel: 'nofollow', href: '', title: 'Twitter' },
+										React.createElement('i', { className: 'icon-lg ion-social-twitter-outline' })
+									),
+									' '
+								),
+								React.createElement(
+									'li',
+									null,
+									React.createElement(
+										'a',
+										{ rel: 'nofollow', href: '', title: 'Facebook' },
+										React.createElement('i', { className: 'icon-lg ion-social-facebook-outline' })
+									),
+									' '
+								),
+								React.createElement(
+									'li',
+									null,
+									React.createElement(
+										'a',
+										{ rel: 'nofollow', href: '', title: 'Dribble' },
+										React.createElement('i', { className: 'icon-lg ion-social-dribbble-outline' })
+									)
+								)
+							)
+						)
+					),
+					React.createElement('br', null),
+					React.createElement(
+						'span',
+						{ className: 'pull-right text-muted small' },
+						'©2015 - 2016 Native Speakers'
+					)
+				)
+			);
+		}
+	});
+
+	var Home = React.createClass({
+		displayName: 'Home',
+		render: function render() {
+			return React.createElement(
+				'div',
+				null,
+				React.createElement(HomeNavigation, null),
+				React.createElement(Header, { lock: this.props.lock }),
+				React.createElement(About, null),
+				React.createElement(PopularLanguages, null),
+				React.createElement(ContactUs, null),
+				React.createElement(Footer, null)
+			);
+		}
+	});
+
+	module.exports = Home;
+
+/***/ },
+/* 295 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var React = __webpack_require__(75);
+	var Home = __webpack_require__(294);
+
+	var App = React.createClass({
+	  displayName: 'App',
+
+	  componentWillMount: function componentWillMount() {
+	    this.setupAjax();
+	    this.createLock();
+	    this.setState({ idToken: this.getIdToken() });
+	  },
+	  createLock: function createLock() {
+	    this.lock = new Auth0Lock("hTlDLKhkjGBxA2DDJphkBNFSbZmEqy43", "nativespeakers.eu.auth0.com");
+	  },
+	  setupAjax: function setupAjax() {
+	    $.ajaxSetup({
+	      'beforeSend': function beforeSend(xhr) {
+	        if (localStorage.getItem('userToken')) {
+	          xhr.setRequestHeader('Authorization', 'Bearer ' + localStorage.getItem('userToken'));
+	        }
+	      }
+	    });
+	  },
+	  getIdToken: function getIdToken() {
+	    var idToken = localStorage.getItem('userToken');
+	    var authHash = this.lock.parseHash(window.location.hash);
+	    if (!idToken && authHash) {
+	      if (authHash.id_token) {
+	        idToken = authHash.id_token;
+	        localStorage.setItem('userToken', authHash.id_token);
+	      }
+	      if (authHash.error) {
+	        console.log("Error signing in", authHash);
+	      }
+	    }
+	    return idToken;
+	  },
+	  render: function render() {
+	    if (this.state.idToken) {
+	      console.log("LoggedIn");
+	    } else {
+	      console.log("Home");
+	    }
+	    /*if (this.state.idToken) {
+	      return React.createElement(LoggedIn, { lock: this.lock, idToken: this.state.idToken });
+	    } else {*/
+	    return React.createElement(Home, { lock: this.lock });
+	    //}
+	  }
+
+	});
+
+	module.exports = App;
 
 /***/ }
 /******/ ]);
