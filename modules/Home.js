@@ -82,7 +82,7 @@ var PopularLanguages = React.createClass({
 					<h4 className="wide-space text-center"  data-l10n-id="popularLanguages">ПОПУЛЯРНЫЕ ЯЗЫКИ</h4>
 					<br/>
 					<div className="row no-gutter">
-						<div className="col-lg-4 col-sm-6">
+						<div className="col-lg-4 col-md-4 col-sm-6">
 							<a href="#" className="gallery-box" data-src="image/english.jpg">
 								<img src="image/english.jpg" className="img-responsive" />
 								<div className="gallery-box-caption">
@@ -92,7 +92,7 @@ var PopularLanguages = React.createClass({
 								</div>
 							</a>
 						</div>
-						<div className="col-lg-4 col-sm-6">
+						<div className="col-lg-4 col-md-4 col-sm-6">
 							<a href="#" className="gallery-box" data-src="image/germany.jpg">
 								<img src="image/germany.jpg" className="img-responsive" />
 								<div className="gallery-box-caption">
@@ -102,7 +102,7 @@ var PopularLanguages = React.createClass({
 								</div>
 							</a>
 						</div>
-						<div className="col-lg-4 col-sm-6">
+						<div className="col-lg-4 col-md-4 col-sm-6">
 							<a href="#" className="gallery-box" data-src="image/russia.jpg">
 								<img src="image/russia.jpg" className="img-responsive" />
 								<div className="gallery-box-caption">
