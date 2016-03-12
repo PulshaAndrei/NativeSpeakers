@@ -32231,7 +32231,7 @@
 								React.createElement(
 									'a',
 									{ className: 'page-scroll', href: '#three', 'data-l10n-id': 'chooseLanguage' },
-									'Р’С‹Р±СЂР°С‚СЊ СЏР·С‹Рє'
+									'Выбрать язык'
 								)
 							),
 							React.createElement(
@@ -32240,7 +32240,7 @@
 								React.createElement(
 									'a',
 									{ className: 'page-scroll', href: '#last', 'data-l10n-id': 'contactUs' },
-									'РЎРІСЏР·Р°С‚СЊСЃСЏ СЃ РЅР°РјРё'
+									'Связаться с нами'
 								)
 							)
 						),
@@ -32314,13 +32314,13 @@
 						React.createElement(
 							'h4',
 							{ 'data-l10n-id': 'slogan' },
-							'"The limits of my language are the limits of my world." вЂ’ Ludwig Wittgenstein'
+							'"The limits of my language are the limits of my world." ‒ Ludwig Wittgenstein'
 						),
 						React.createElement('hr', null),
 						React.createElement(
 							'a',
 							{ onClick: this.showLock, className: 'btn btn-primary btn-xl header-link', id: 'login', 'data-l10n-id': 'logIn' },
-							'Р’РѕР№С‚Рё РёР»Рё Р·Р°СЂРµРіРёСЃС‚СЂРёСЂРѕРІР°С‚СЊСЃСЏ'
+							'Войти или зарегистрироваться'
 						)
 					)
 				),
@@ -32351,12 +32351,12 @@
 						React.createElement(
 							'h2',
 							{ className: 'text-primary', 'data-l10n-id': 'chooseLanguage' },
-							'Р’С‹Р±СЂР°С‚СЊ СЏР·С‹Рє'
+							'Выбрать язык'
 						),
 						React.createElement(
 							'a',
 							{ href: '#', className: 'btn btn-default btn-lg wow flipInX', 'data-l10n-id': 'allLanguages' },
-							'Р’СЃРµ СЏР·С‹РєРё'
+							'Все языки'
 						)
 					),
 					React.createElement('br', null),
@@ -32365,7 +32365,7 @@
 					React.createElement(
 						'h4',
 						{ className: 'wide-space text-center', 'data-l10n-id': 'popularLanguages' },
-						'РџРћРџРЈР›РЇР РќР«Р• РЇР—Р«РљР'
+						'ПОПУЛЯРНЫЕ ЯЗЫКИ'
 					),
 					React.createElement('br', null),
 					React.createElement(
@@ -32387,7 +32387,7 @@
 										React.createElement(
 											'div',
 											{ 'data-l10n-id': 'english' },
-											'РђРЅРіР»РёР№СЃРєРёР№'
+											'Английский'
 										)
 									)
 								)
@@ -32409,7 +32409,7 @@
 										React.createElement(
 											'div',
 											{ 'data-l10n-id': 'german' },
-											'РќРµРјРµС†РєРёР№'
+											'Немецкий'
 										)
 									)
 								)
@@ -32431,7 +32431,7 @@
 										React.createElement(
 											'div',
 											{ 'data-l10n-id': 'russian' },
-											'Р СѓСЃСЃРєРёР№'
+											'Русский'
 										)
 									)
 								)
@@ -32461,13 +32461,13 @@
 							React.createElement(
 								'h2',
 								{ className: 'margin-top-0 wow fadeIn', 'data-l10n-id': 'contactUs' },
-								'РЎРІСЏР·Р°С‚СЊСЃСЏ СЃ РЅР°РјРё'
+								'Связаться с нами'
 							),
 							React.createElement('hr', { className: 'primary' }),
 							React.createElement(
 								'p',
 								{ 'data-l10n-id': 'contactUsDetails' },
-								'РњС‹ Р»СЋР±РёРј РѕР±СЂР°С‚РЅСѓСЋ СЃРІСЏР·СЊ. РќР°РїРёС€РёС‚Рµ РЅР°Рј Р’Р°С€Рё РїРѕР¶РµР»Р°РЅРёСЏ.'
+								'Мы любим обратную связь. Напишите нам Ваши пожелания.'
 							)
 						),
 						React.createElement(
@@ -32480,7 +32480,7 @@
 									'div',
 									{ className: 'col-md-4' },
 									React.createElement('label', null),
-									React.createElement('input', { type: 'text', className: 'form-control', 'data-l10n-id': 'name', placeholder: 'РРјСЏ' })
+									React.createElement('input', { type: 'text', className: 'form-control', 'data-l10n-id': 'name', placeholder: 'Имя' })
 								),
 								React.createElement(
 									'div',
@@ -32492,13 +32492,13 @@
 									'div',
 									{ className: 'col-md-4' },
 									React.createElement('label', null),
-									React.createElement('input', { type: 'text', className: 'form-control', 'data-l10n-id': 'phoneNumber', placeholder: 'РќРѕРјРµСЂ С‚РµР»РµС„РѕРЅР°' })
+									React.createElement('input', { type: 'text', className: 'form-control', 'data-l10n-id': 'phoneNumber', placeholder: 'Номер телефона' })
 								),
 								React.createElement(
 									'div',
 									{ className: 'col-md-12' },
 									React.createElement('label', null),
-									React.createElement('textarea', { className: 'form-control', rows: '9', 'data-l10n-id': 'yourMessage', placeholder: 'Р’Р°С€Рµ СЃРѕРѕР±С‰РµРЅРёРµ...' })
+									React.createElement('textarea', { className: 'form-control', rows: '9', 'data-l10n-id': 'yourMessage', placeholder: 'Ваше сообщение...' })
 								),
 								React.createElement(
 									'div',
@@ -32510,7 +32510,7 @@
 										React.createElement(
 											'span',
 											{ 'data-l10n-id': 'send' },
-											'РћС‚РїСЂР°РІРёС‚СЊ'
+											'Отправить'
 										),
 										' ',
 										React.createElement('i', { className: 'ion-android-arrow-forward' })
@@ -32542,7 +32542,7 @@
 							React.createElement(
 								'h4',
 								{ 'data-l10n-id': 'info' },
-								'РРЅС„РѕСЂРјР°С†РёСЏ'
+								'Информация'
 							),
 							React.createElement(
 								'ul',
@@ -32553,7 +32553,7 @@
 									React.createElement(
 										'a',
 										{ href: '#', 'data-l10n-id': 'products' },
-										'РџСЂРѕРґСѓРєС‚С‹'
+										'Продукты'
 									)
 								),
 								React.createElement(
@@ -32562,7 +32562,7 @@
 									React.createElement(
 										'a',
 										{ href: '#', 'data-l10n-id': 'services' },
-										'РЎРµСЂРІРёСЃС‹'
+										'Сервисы'
 									)
 								),
 								React.createElement(
@@ -32571,7 +32571,7 @@
 									React.createElement(
 										'a',
 										{ href: '#', 'data-l10n-id': 'benefits' },
-										'Р’С‹РіРѕРґС‹'
+										'Выгоды'
 									)
 								),
 								React.createElement(
@@ -32580,7 +32580,7 @@
 									React.createElement(
 										'a',
 										{ href: '#', 'data-l10n-id': 'developers' },
-										'Р Р°Р·СЂР°Р±РѕС‚С‡РёРєРё'
+										'Разработчики'
 									)
 								)
 							)
@@ -32591,7 +32591,7 @@
 							React.createElement(
 								'h4',
 								{ 'data-l10n-id': 'aboutUs' },
-								'Рћ РЅР°СЃ'
+								'О нас'
 							),
 							React.createElement(
 								'ul',
@@ -32602,7 +32602,7 @@
 									React.createElement(
 										'a',
 										{ href: '#', 'data-l10n-id': 'contactUs' },
-										'РЎРІСЏР·Р°С‚СЊСЃСЏ СЃ РЅР°РјРё'
+										'Связаться с нами'
 									)
 								),
 								React.createElement(
@@ -32611,7 +32611,7 @@
 									React.createElement(
 										'a',
 										{ href: '#', 'data-l10n-id': 'deliveryInformation' },
-										'РџСЂРµРґРѕСЃС‚Р°РІР»РµРЅРЅР°СЏ РёРЅС„РѕСЂРјР°С†РёСЏ'
+										'Предоставленная информация'
 									)
 								),
 								React.createElement(
@@ -32620,7 +32620,7 @@
 									React.createElement(
 										'a',
 										{ href: '#', 'data-l10n-id': 'privacyPolicy' },
-										'РџРѕР»РёС‚РёРєР° РєРѕРЅС„РёРґРµРЅС†РёР°Р»СЊРЅРѕСЃС‚Рё'
+										'Политика конфиденциальности'
 									)
 								),
 								React.createElement(
@@ -32629,7 +32629,7 @@
 									React.createElement(
 										'a',
 										{ href: '#', 'data-l10n-id': 'termsConditions' },
-										'РЈСЃР»РѕРІРёСЏ РёСЃРїРѕР»СЊР·РѕРІР°РЅРёСЏ'
+										'Условия использования'
 									)
 								)
 							)
@@ -32640,7 +32640,7 @@
 							React.createElement(
 								'h4',
 								{ 'data-l10n-id': 'news' },
-								'РќРѕРІРѕСЃС‚Рё'
+								'Новости'
 							),
 							React.createElement(
 								'form',
@@ -32648,7 +32648,7 @@
 								React.createElement(
 									'div',
 									{ className: 'form-group' },
-									React.createElement('input', { type: 'text', className: 'form-control', title: 'Р‘РµР· СЃРїР°РјР°, РјС‹ РѕР±РµС‰Р°РµРј!', placeholder: 'Р’Р°С€ email', 'data-l10n-id': 'inputForSubscribe' })
+									React.createElement('input', { type: 'text', className: 'form-control', title: 'Без спама, мы обещаем!', placeholder: 'Ваш email', 'data-l10n-id': 'inputForSubscribe' })
 								),
 								React.createElement(
 									'div',
@@ -32656,7 +32656,7 @@
 									React.createElement(
 										'button',
 										{ className: 'btn btn-primary', 'data-toggle': 'modal', 'data-target': '#alertModal', type: 'button', 'data-l10n-id': 'subscribeUpdates' },
-										'РџРѕРґРїРёСЃР°С‚СЊСЃСЏ РЅР° РѕР±РЅРѕРІР»РµРЅРёСЏ'
+										'Подписаться на обновления'
 									)
 								)
 							)
@@ -32667,7 +32667,7 @@
 							React.createElement(
 								'h4',
 								{ 'data-l10n-id': 'social' },
-								'РњС‹ РІ СЃРѕС†СЃРµС‚СЏС…'
+								'Мы в соцсетях'
 							),
 							React.createElement(
 								'ul',
@@ -32680,7 +32680,7 @@
 										{ rel: 'nofollow', href: '', title: 'Twitter' },
 										React.createElement('i', { className: 'icon-lg ion-social-twitter-outline' })
 									),
-									'В '
+									' '
 								),
 								React.createElement(
 									'li',
@@ -32690,7 +32690,7 @@
 										{ rel: 'nofollow', href: '', title: 'Facebook' },
 										React.createElement('i', { className: 'icon-lg ion-social-facebook-outline' })
 									),
-									'В '
+									' '
 								),
 								React.createElement(
 									'li',
@@ -32708,7 +32708,7 @@
 					React.createElement(
 						'span',
 						{ className: 'pull-right text-muted small' },
-						'В©2015 - 2016 Native Speakers'
+						'©2015 - 2016 Native Speakers'
 					)
 				)
 			);
@@ -53336,7 +53336,7 @@
 
 	        value = values[id];
 
-	        // Recursively format plural and select parts' option вЂ” which can be a
+	        // Recursively format plural and select parts' option — which can be a
 	        // nested pattern structure. The choosing of the option to use is
 	        // abstracted-by and delegated-to the part helper object.
 	        if (part.options) {
@@ -56571,7 +56571,7 @@
 		englishName: 'English'
 	}, {
 		shortName: 'ru',
-		localName: 'Р СѓСЃСЃРєРёР№',
+		localName: 'Русский',
 		englishName: 'Russian'
 	}];
 
@@ -56603,7 +56603,7 @@
 	"use strict";
 
 	module.exports = {
-	  "about_project": "Рћ РїСЂРѕРµРєС‚Рµ (СЂСѓСЃ)"
+	  "about_project": "О проекте (рус)"
 	};
 
 /***/ },
