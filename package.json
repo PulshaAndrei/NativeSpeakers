@@ -9,6 +9,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "history": "^2.0.1",
     "react": "^0.14.7",
     "react-dom": "^0.14.7",
     "react-h5-video": "^1.0.0",

@@ -1,7 +1,15 @@
 var React = require('react');
 var Video = require('react-h5-video');
+import { browserHistory } from 'react-router'
 
 var HomeNavigation = React.createClass({
+	/*					<ul className="nav navbar-nav navbar-right">
+						<li className="listLocales">
+							<a className="page-scroll" href="#" id="enLanguage" onclick="changeLanguage('en')">EN</a>
+							<a className="page-scroll" href="#" id="deLanguage"onclick="changeLanguage('de')">DE</a>
+							<a className="page-scroll currentLanguage" href="#" id="ruLanguage" onclick="changeLanguage('ru')">RU</a>
+						</li>
+					</ul>*/
 	render() {
 		return <nav id="topNav" className="navbar navbar-default navbar-fixed-top">
 			<div className="container-fluid">
@@ -26,13 +34,6 @@ var HomeNavigation = React.createClass({
 							<a className="page-scroll" href="#last" data-l10n-id="contactUs">Связаться с нами</a>
 						</li>
 					</ul>
-					<ul className="nav navbar-nav navbar-right">
-						<li className="listLocales">
-							<a className="page-scroll" href="#" id="enLanguage" onclick="changeLanguage('en')">EN</a>
-							<a className="page-scroll" href="#" id="deLanguage"onclick="changeLanguage('de')">DE</a>
-							<a className="page-scroll currentLanguage" href="#" id="ruLanguage" onclick="changeLanguage('ru')">RU</a>
-						</li>
-					</ul>
 				</div>
 			</div>
 		</nav>
@@ -40,10 +41,29 @@ var HomeNavigation = React.createClass({
 })
 
 var Header = React.createClass({
+	goToDashboard: function goToDashboard() {
+		window.location = "/"
+	},
+
 	showLock: function showLock() {
+		var self = this;
 		this.props.lock.show({
 			icon: 'image/logo.png',
 			primaryColor: '#9C27B0'
+		}, function (err, profile, token) {
+			console.log(err, profile, token)
+			if (!err) {
+				localStorage.setItem('userToken', token);
+				$.ajax({
+					url: 'http://ec2-52-50-43-215.eu-west-1.compute.amazonaws.com/login',
+					method: 'POST',
+					data: profile
+				}).then(function (data, textStatus, jqXHR) {
+					self.goToDashboard();
+				}, function (err) {
+					console.log(err);
+				});
+			}			
 		});
 	},
 	render() {
@@ -209,15 +229,15 @@ var Footer = React.createClass({
 })
 
 var Home = React.createClass({
-  render() {
-	return <div>
-		<HomeNavigation />
-		<Header lock={this.props.lock} />
-		<About />
-		<PopularLanguages />
-		<ContactUs />
-		<Footer />
-	</div>
+	render() {
+		return <div>
+			<HomeNavigation />
+			<Header lock={this.props.lock} />
+			<About />
+			<PopularLanguages />
+			<ContactUs />
+			<Footer />
+		</div>
   }
 })
 
