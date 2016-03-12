@@ -155,3 +155,6 @@ video{
 .contact-form label{
 	padding-top: 15px;
 }
+.currentLocaleMobile{
+    color: #9c27b0 !important;
+}

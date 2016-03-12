@@ -1,16 +1,23 @@
 var React = require('react');
 var Video = require('react-h5-video');
-import { browserHistory } from 'react-router'
+var IntlMixin = require('react-intl').IntlMixin;
+import messages from './messages';
+import { browserHistory } from 'react-router';
 
 var HomeNavigation = React.createClass({
-	/*					<ul className="nav navbar-nav navbar-right">
-						<li className="listLocales">
-							<a className="page-scroll" href="#" id="enLanguage" onclick="changeLanguage('en')">EN</a>
-							<a className="page-scroll" href="#" id="deLanguage"onclick="changeLanguage('de')">DE</a>
-							<a className="page-scroll currentLanguage" href="#" id="ruLanguage" onclick="changeLanguage('ru')">RU</a>
-						</li>
-					</ul>*/
+	mixins: [IntlMixin],
 	render() {
+		var self = this;
+		var setCurrentLocale = function(locale) {
+			self.props.setCurrentLocale(locale)
+		}
+		var listLocales = this.props.supportedLocales.map(function(locale){
+			return <a className={self.props.currentLocale == locale.shortName ? "currentLanguage" : ""} href="#" key={locale.shortName} onClick={setCurrentLocale.bind(this, locale.shortName)}>{locale.shortName}</a>
+		});
+		var listLocalesMobile = this.props.supportedLocales.map(function(locale){
+			return <a className={self.props.currentLocale == locale.shortName ? "currentLanguage currentLocaleMobile" : "currentLanguage"} href="#" key={locale.shortName} onClick={setCurrentLocale.bind(this, locale.shortName)}>{locale.shortName}</a>
+		});
+
 		return <nav id="topNav" className="navbar navbar-default navbar-fixed-top">
 			<div className="container-fluid">
 				<div className="navbar-header">
@@ -25,7 +32,7 @@ var HomeNavigation = React.createClass({
 				<div className="navbar-collapse collapse" id="bs-navbar">
 					<ul className="nav navbar-nav">
 						<li>
-							<a className="page-scroll" href="#two" data-l10n-id="about">О проекте</a>
+							<a className="page-scroll" href="#two" data-l10n-id="about">{this.getIntlMessage('about_project')}</a>
 						</li>
 						<li>
 							<a className="page-scroll" href="#three" data-l10n-id="chooseLanguage">Выбрать язык</a>
@@ -33,6 +40,10 @@ var HomeNavigation = React.createClass({
 						<li>
 							<a className="page-scroll" href="#last" data-l10n-id="contactUs">Связаться с нами</a>
 						</li>
+					</ul>
+					<ul className="nav navbar-nav navbar-right">
+						<li className="listLocales hidden-xs">{listLocales}</li>
+						<li className="listLocales visible-xs-inline-block">{listLocalesMobile}</li>
 					</ul>
 				</div>
 			</div>
@@ -42,12 +53,16 @@ var HomeNavigation = React.createClass({
 
 var Header = React.createClass({
 	goToDashboard: function goToDashboard() {
-		window.location = "/"
+		window.location = "./"
 	},
 
 	showLock: function showLock() {
+		var serverName = "ec2-52-50-43-215.eu-west-1.compute.amazonaws.com";
+		//var serverName = "localhost";
+		
 		var self = this;
 		this.props.lock.show({
+			dict: this.props.currentLocale,
 			icon: 'image/logo.png',
 			primaryColor: '#9C27B0'
 		}, function (err, profile, token) {
@@ -55,7 +70,7 @@ var Header = React.createClass({
 			if (!err) {
 				localStorage.setItem('userToken', token);
 				$.ajax({
-					url: 'http://ec2-52-50-43-215.eu-west-1.compute.amazonaws.com/login',
+					url: 'http://'+serverName+'/login',
 					method: 'POST',
 					data: profile
 				}).then(function (data, textStatus, jqXHR) {
@@ -229,10 +244,34 @@ var Footer = React.createClass({
 })
 
 var Home = React.createClass({
+	getInitialState: function getInitialState() {
+		var locale = navigator.language.split('-')
+		locale = locale[1] ? `${locale[0]}-${locale[1].toUpperCase()}` : navigator.language
+		var strings = messages[locale] ? messages[locale] : messages['en']  
+		//strings = Object.assign(messages['en'], strings);
+
+		return {
+			currentLocale: locale,
+			messages: strings
+		};
+	},
+	setCurrentLocale: function setCurrentLocale(locale) {
+		this.state.currentLocale = locale
+		var strings = messages[locale] ? messages[locale] : messages['en']  
+		//strings = Object.assign(messages['en'], strings);
+		this.state.messages = strings
+	},
 	render() {
 		return <div>
-			<HomeNavigation />
-			<Header lock={this.props.lock} />
+			<HomeNavigation  
+				messages={this.state.messages} 
+				currentLocale={this.state.currentLocale} 
+				supportedLocales={messages.supportLanguages}
+				setCurrentLocale={this.setCurrentLocale}/>
+			<Header 
+				lock={this.props.lock} 
+				messages={this.state.messages} 
+				currentLocale={this.state.currentLocale}/>
 			<About />
 			<PopularLanguages />
 			<ContactUs />

@@ -49,7 +49,7 @@ var Dashboard = React.createClass({
 			}
 			if (authHash.error) {
 				console.log("Error signing in", authHash);
-				window.location = "/"
+				window.location = "./"
 			}
 		}
 		return idToken;
@@ -58,7 +58,7 @@ var Dashboard = React.createClass({
 		this.lock.getProfile(this.state.idToken, function (err, profile) {
 			if (err) {
 				console.log("Error loading the Profile", err);
-				window.location = "/"
+				window.location = "./"
 			}
 			this.setState({ profile: profile });
 		}.bind(this));
