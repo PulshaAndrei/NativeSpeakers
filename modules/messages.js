@@ -13,6 +13,11 @@ exports.supportLanguages = [
 		englishName: 'English'
 	},
 	{
+		shortName: 'de',
+		localName: 'Deutsch',
+		englishName: 'German'
+	},
+	{
 		shortName: 'ru',
 		localName: 'Русский',
 		englishName: 'Russian'
