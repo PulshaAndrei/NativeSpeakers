@@ -26,5 +26,11 @@
   "your_email":"Ваш Email",
   "subscribe_updates":"Подписаться на обновления",
   "social":"Мы в соцсетях",
-  "about_us":"О нас"
+  "about_us":"О нас",
+  "profile": "Профиль",
+  "search_people": "Поиск людей",
+  "events": "Мероприятия",
+  "generaly": "Основное",
+  "languages": "Языки",
+  "my_events": "Мои мероприятия"
 }

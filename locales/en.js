@@ -26,5 +26,11 @@
   "your_email":"Your Email",
   "subscribe_updates":"Subscribe updates",
   "social":"Social",
-  "about_us":"About"
+  "about_us":"About",
+  "profile": "Profile",
+  "search_people": "Search people",
+  "events": "Events",
+  "generaly": "Generaly",
+  "languages": "Languages",
+  "my_events": "My events"
 }

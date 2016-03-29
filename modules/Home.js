@@ -1,6 +1,7 @@
 var React = require('react');
 var Video = require('react-h5-video');
 var IntlMixin = require('react-intl').IntlMixin;
+var Footer = require('./elements/Footer');
 import messages from './messages';
 import { browserHistory } from 'react-router';
 
@@ -54,12 +55,12 @@ var HomeNavigation = React.createClass({
 var Header = React.createClass({
 	mixins: [IntlMixin],
 	goToDashboard: function goToDashboard() {
-		window.location = "./"
+		window.location = "./#/dashboard"
 	},
 
 	showLock: function showLock() {
-		var serverName = "ec2-52-50-43-215.eu-west-1.compute.amazonaws.com";
-		//var serverName = "localhost";
+		//var serverName = "ec2-52-50-43-215.eu-west-1.compute.amazonaws.com";
+		var serverName = "localhost";
 		
 		var self = this;
 		this.props.lock.show({
@@ -196,64 +197,12 @@ var ContactUs = React.createClass({
 	}
 })
 
-var Footer = React.createClass({
-	mixins: [IntlMixin],
-	render() {
-		return <footer id="footer">
-				<div className="container-fluid">
-					<div className="row">
-						<div className="col-xs-6 col-sm-3 column">
-							<h4>{this.getIntlMessage('info')}</h4>
-							<ul className="list-unstyled">
-								<li><a href="#">{this.getIntlMessage('products')}</a></li>
-								<li><a href="#">{this.getIntlMessage('services')}</a></li>
-								<li><a href="#">{this.getIntlMessage('benefits')}</a></li>
-								<li><a href="#">{this.getIntlMessage('developers')}</a></li>
-							</ul>
-						</div>
-						<div className="col-xs-6 col-sm-3 column">
-							<h4>{this.getIntlMessage('about_us')}</h4>
-							<ul className="list-unstyled">
-								<li><a href="#">{this.getIntlMessage('contact_us')}</a></li>
-								<li><a href="#">{this.getIntlMessage('delivery_information')}</a></li>
-								<li><a href="#">{this.getIntlMessage('privacy_policy')}</a></li>
-								<li><a href="#">{this.getIntlMessage('terms_conditions')}</a></li>
-							</ul>
-						</div>
-						<div className="col-xs-12 col-sm-3 column">
-							<h4>{this.getIntlMessage('news')}</h4>
-							<form>
-								<div className="form-group">
-								  <input type="text" className="form-control" title={this.getIntlMessage('no_spam')} placeholder={this.getIntlMessage('your_email')}/>
-								</div>
-								<div className="form-group">
-								  <button className="btn btn-primary" data-toggle="modal" data-target="#alertModal" type="button">{this.getIntlMessage('subscribe_updates')}</button>
-								</div>
-							</form>
-						</div>
-						<div className="col-xs-12 col-sm-3 text-right">
-							<h4>{this.getIntlMessage('social')}</h4>
-							<ul className="list-inline">
-							  <li><a rel="nofollow" href="" title="Twitter"><i className="icon-lg ion-social-twitter-outline"></i></a>&nbsp;</li>
-							  <li><a rel="nofollow" href="" title="Facebook"><i className="icon-lg ion-social-facebook-outline"></i></a>&nbsp;</li>
-							  <li><a rel="nofollow" href="" title="Dribble"><i className="icon-lg ion-social-dribbble-outline"></i></a></li>
-							</ul>
-						</div>
-					</div>
-					<br/>
-					<span className="pull-right text-muted small">©2015 - 2016 Native Speakers</span>
-				</div>
-			</footer>
-	}
-})
-
 var Home = React.createClass({
 	getInitialState: function getInitialState() {
 		var locale = navigator.language.split('-')
-		locale = locale[1] ? `${locale[0]}-${locale[1].toUpperCase()}` : navigator.language
-		locale ='en'
-		var strings = messages[locale] ? messages[locale] : messages['en']  
-		//strings = Object.assign(messages['en'], strings);
+		locale = localStorage.getItem('userLocale') ? localStorage.getItem('userLocale') 
+			: locale[1] ? `${locale[0]}-${locale[1].toUpperCase()}` : navigator.language
+		var strings = messages[locale] ? messages[locale] : messages['en']
 
 		return {
 			currentLocale: locale,
@@ -262,12 +211,12 @@ var Home = React.createClass({
 	},
 	setCurrentLocale: function setCurrentLocale(locale) {
 		this.state.currentLocale = locale
-		var strings = messages[locale] ? messages[locale] : messages['en']  
-		//strings = Object.assign(messages['en'], strings);
+		localStorage.setItem('userLocale', locale);
+		var strings = messages[locale] ? messages[locale] : messages['en']
 		this.state.messages = strings
 	},
 	render() {
-		return <div>
+		return <div style={{backgroundColor:'#282828'}}>
 			<HomeNavigation  
 				messages={this.state.messages} 
 				currentLocale={this.state.currentLocale} 

@@ -37,6 +37,8 @@ var App = React.createClass({
 		return idToken;
 	},
 	render: function render() {
+		//May be need to dashboard???
+
 		if (this.state.idToken){
 			browserHistory.push('#/dashboard');
 			return null;

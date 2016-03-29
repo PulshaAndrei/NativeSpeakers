@@ -1,10 +1,21 @@
 var React = require('react');
+var IntlMixin = require('react-intl').IntlMixin;
+import messages from './messages';
 import { browserHistory } from 'react-router'
+
+var MenuDashboard = require('./elements/MenuDashboard');
 
 var Dashboard = React.createClass({
 
 	getInitialState: function getInitialState() {
+		var locale = navigator.language.split('-')
+		locale = localStorage.getItem('userLocale') ? localStorage.getItem('userLocale') 
+			: locale[1] ? `${locale[0]}-${locale[1].toUpperCase()}` : navigator.language
+		var strings = messages[locale] ? messages[locale] : messages['en']
+
 		return {
+			currentLocale: locale,
+			messages: strings,
 			profile: null
 		};
 	},
@@ -22,8 +33,8 @@ var Dashboard = React.createClass({
 	},
 	componentDidMount: function componentDidMount() {
 		$.ajax({
-			//url: 'http://localhost/secured/profile',
-			url: 'http://ec2-52-50-43-215.eu-west-1.compute.amazonaws.com/secured/profile',
+			url: 'http://localhost/secured/profile',
+			//url: 'http://ec2-52-50-43-215.eu-west-1.compute.amazonaws.com/secured/profile',
 			method: 'GET'
 		}).then(function (data, textStatus, jqXHR) {
 			this.setState({ profile: data });
@@ -32,9 +43,23 @@ var Dashboard = React.createClass({
 		});
 	},
 
+	setCurrentLocale: function setCurrentLocale(locale) {
+		localStorage.setItem('userLocale', locale);
+		var strings = messages[locale] ? messages[locale] : messages['en']
+		this.setState({
+			currentLocale: locale,
+			messages: strings
+		})
+	},
+
 	render: function render() {
-		console.log(this.state.profile)
-		return <div>Profile: {this.state.profile ? this.state.profile.user_id : ""}</div>
+		return <div>
+			<MenuDashboard
+				messages={this.state.messages} 
+				currentLocale={this.state.currentLocale} 
+				supportedLocales={messages.supportLanguages}
+				setCurrentLocale={this.setCurrentLocale} />
+		</div>
 	}
 })
 
