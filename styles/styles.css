@@ -161,13 +161,35 @@ video{
 .header-profile{
     min-height: 200px;
 }
-.imageProfileHeader{
+.imageProfileHeaderBlock>div{
+    display: none;
+    background: black;
+    opacity: 0.75;
+    position: absolute;
+    top:0;
+    width: 100%;
+    height: 100%;
+    line-height: 160px;
+    border-radius: 100%;
+    box-shadow: 0 0 10px rgba(0,0,0,0.5);
+}
+.imageProfileHeaderBlock:hover>div{
+    display: block;
+}
+.imageProfileHeaderBlock {
     position: absolute;
     bottom: -35px;
     left: 80px;
     border-radius: 100%;
     width: 160px;
     height: 160px;
+    cursor: pointer;
+}
+.imageProfileHeader{
+    width: 160px;
+    height: 160px;
+    border-radius: 100%;
+    box-shadow: 0 0 10px rgba(0,0,0,0.5);
 }
 .labelProfileHeader{
     position: absolute;
@@ -256,4 +278,29 @@ video{
     font-weight: bold;
     color: #555;
     margin: 20px;
+}
+
+.loading_svg {
+    margin: 30% 0;
+}
+.loading_svg>div{
+    
+}
+.vertical-align {
+  display: flex;
+  flex-direction: row;
+}
+
+.vertical-align > [class^="col-"],
+.vertical-align > [class*=" col-"] {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.languageBlock {
+    background: #fff;
+    min-height: 200px;
+    box-shadow: 1px 2px 8px rgba(0,0,0,0.2);
+    border-radius: 5px;
+    margin: 10px 0;
 }

@@ -1,7 +1,7 @@
 import React from 'react'
 import { render } from 'react-dom'
 import Dashboard from './modules/Dashboard'
-import Profile from './modules/Profile'
+import Profile from './modules/Profile/Profile'
 import App from './modules/App'
 import { Router, Route, hashHistory } from 'react-router'
 
