@@ -1,8 +1,11 @@
+var host = "ec2-52-48-222-111.eu-west-1.compute.amazonaws.com";
+//var host = "localhost"
+
 var React = require('react');
 var Video = require('react-h5-video');
 var IntlMixin = require('react-intl').IntlMixin;
 var Footer = require('./elements/Footer');
-import messages from './messages';
+import messages from './localization/messages';
 import { browserHistory } from 'react-router';
 
 var HomeNavigation = React.createClass({
@@ -58,10 +61,7 @@ var Header = React.createClass({
 		window.location = "./#/dashboard"
 	},
 
-	showLock: function showLock() {
-		//var serverName = "ec2-52-50-43-215.eu-west-1.compute.amazonaws.com";
-		var serverName = "localhost";
-		
+	showLock: function showLock() {	
 		var self = this;
 		this.props.lock.show({
 			dict: this.props.currentLocale,
@@ -72,7 +72,7 @@ var Header = React.createClass({
 			if (!err) {
 				localStorage.setItem('userToken', token);
 				$.ajax({
-					url: 'http://'+serverName+'/login',
+					url: 'http://'+host+'/login',
 					method: 'POST',
 					data: profile
 				}).then(function (data, textStatus, jqXHR) {
@@ -216,7 +216,7 @@ var Home = React.createClass({
 		this.state.messages = strings
 	},
 	render() {
-		return <div style={{backgroundColor:'#282828'}}>
+		return <div style={{backgroundColor:'#282828'}} className="bodyHome">
 			<HomeNavigation  
 				messages={this.state.messages} 
 				currentLocale={this.state.currentLocale} 

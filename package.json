@@ -10,14 +10,18 @@
   "license": "ISC",
   "dependencies": {
     "history": "^2.0.1",
+    "normalize.css": "^4.0.0",
     "react": "^0.14.7",
     "react-addons-linked-state-mixin": "^0.14.8",
+    "react-avatar-cropper": "^0.1.1",
     "react-bootstrap-datetimepicker": "0.0.22",
     "react-dom": "^0.14.7",
+    "react-fileupload": "^2.0.0",
     "react-h5-video": "^1.0.0",
     "react-intl": "^1.2.2",
     "react-loading": "0.0.9",
-    "react-router": "^2.0.0"
+    "react-router": "^2.0.0",
+    "react-select": "1.0.0-beta9"
   },
   "devDependencies": {
     "babel-core": "^6.5.1",

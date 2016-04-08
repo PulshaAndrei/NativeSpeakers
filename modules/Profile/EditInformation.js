@@ -5,7 +5,7 @@ var moment = require('moment');
 var LinkedStateMixin = require('react-addons-linked-state-mixin');
 
 var EditInformation = React.createClass({
-	mixins: [LinkedStateMixin],
+	mixins: [LinkedStateMixin, IntlMixin],
 	getInitialState: function getInitialState() {
 
 		$('body').scrollspy({target:'.navbar-fixed-top',offset:60});
@@ -47,61 +47,61 @@ var EditInformation = React.createClass({
 			<div className="container">
 				<div className="row">
 					<div className="col-md-12">
-						<h5 className="contacts_header">Information</h5>
+						<h5 className="contacts_header">{this.getIntlMessage('information')}</h5>
 					</div>
 					<div className="col-md-4">
 						<div className="field">
-							<div className="field-title">Given name</div>
+							<div className="field-title">{this.getIntlMessage('given_name')}</div>
 							<input className="form-control-bootstrap" type="text" valueLink={this.linkState('given_name')}/>
 						</div>
 						<div className="field">
-							<div className="field-title">Family name</div>
+							<div className="field-title">{this.getIntlMessage('family_name')}</div>
 							<input className="form-control-bootstrap" type="text" valueLink={this.linkState('family_name')}/>
 						</div>
 						<div className="field">
-							<div className="field-title">Gender</div>
-							<div className="btn-group field-radio" data-toggle="buttons">
-							  <label className={"btn btn-info" + (this.state.gender == "male" ? " active" : "")} onClick={this.changeGender.bind(null,"male")}>
-							    <input type="radio" name="options" id="option1" autoComplete="off" /> Male
+							<div className="field-title">{this.getIntlMessage('gender')}</div>
+							<div className="btn-group field-radio btn-group-justified" data-toggle="buttons">
+							  <label className={"btn btn-secondary" + (this.state.gender == "male" ? " active" : "")} onClick={this.changeGender.bind(null,"male")}>
+							    <input type="radio" name="options" id="option1" autoComplete="off" /> {this.getIntlMessage('male')}
 							  </label>
-							  <label className={"btn btn-info" + (this.state.gender == "female" ? " active" : "")} onClick={this.changeGender.bind(null,"female")}>
-							    <input type="radio" name="options" id="option2" autoComplete="off" /> Female
+							  <label className={"btn btn-secondary" + (this.state.gender == "female" ? " active" : "")} onClick={this.changeGender.bind(null,"female")}>
+							    <input type="radio" name="options" id="option2" autoComplete="off" /> {this.getIntlMessage('female')}
 							  </label>
 							</div>
 						</div>
 						<div className="field">
-							<div className="field-title">Birthday</div>
+							<div className="field-title">{this.getIntlMessage('birthday')}</div>
 							<DateTimeField inputFormat="DD.MM.YYYY" showToday={false} mode="date" defaultText={moment(new Date(this.state.birthday)).format("DD.MM.YYYY")} onChange={this.changeBirthday}/>
 						</div>
 					</div>
 					<div className="col-md-4">
 						<div className="field">
-							<div className="field-title">Country</div>
+							<div className="field-title">{this.getIntlMessage('country')}</div>
 							<input className="form-control-bootstrap" type="text" valueLink={this.linkState('country')}/>
 						</div>
 						<div className="field">
-							<div className="field-title">City</div>
+							<div className="field-title">{this.getIntlMessage('city')}</div>
 							<input className="form-control-bootstrap" type="text" valueLink={this.linkState('city')}/>
 						</div>
 						<div className="field">
-							<div className="field-title">Education</div>
+							<div className="field-title">{this.getIntlMessage('education')}</div>
 							<input className="form-control-bootstrap" type="text" valueLink={this.linkState('education')}/>
 						</div>
 						<div className="field">
-							<div className="field-title">Profession</div>
+							<div className="field-title">{this.getIntlMessage('occupation')}</div>
 							<input className="form-control-bootstrap" type="text" valueLink={this.linkState('occupation')}/>
 						</div>
 					</div>
 					<div className="col-md-4">
 						<div className="field">
-							<div className="field-title">About me</div>
+							<div className="field-title">{this.getIntlMessage('about_me')}</div>
 							<textarea className="form-control-bootstrap" rows="14" style={{height:'287px'}} valueLink={this.linkState('about_me')}></textarea>
 						</div>
 					</div>
 				</div>
 				<div className="row">
 					<div className="col-md-12">
-						<h5 className="contacts_header">Contacts</h5>
+						<h5 className="contacts_header">{this.getIntlMessage('contacts')}</h5>
 					</div>
 					<div className="field" style={{marginTop: '30px'}}>
 						<div className="col-md-3">
@@ -140,10 +140,10 @@ var EditInformation = React.createClass({
 				</div>
 				<div className="row text-center" style={{marginTop: '20px'}}>
 					<div className="col-md-6 text-center"  style={{margin: '20px 0'}}>
-						<button type="button" className="btn btn-success btn-lg" style={{minWidth: '280px'}} onClick={this.submit}>Submit</button>
+						<button type="button" className="btn btn-success btn-lg" style={{minWidth: '280px'}} onClick={this.submit}>{this.getIntlMessage('submit')}</button>
 					</div>
 					<div className="col-md-6 text-center"  style={{margin: '20px 0'}}>
-						<button type="button" className="btn btn-danger btn-lg" style={{minWidth: '280px'}} onClick={this.logout}>Logout</button>
+						<button type="button" className="btn btn-danger btn-lg" style={{minWidth: '280px'}} onClick={this.logout}>{this.getIntlMessage('logout')}</button>
 					</div>
 				</div>
 			</div>
