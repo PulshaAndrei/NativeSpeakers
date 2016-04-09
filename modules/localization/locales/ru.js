@@ -62,5 +62,13 @@
   "language_proficiency_level": "Уровень владения",
   "native_language":"Родной язык",
   "add_language":"Добавить язык",
-  "cancel":"Отменить"
+  "cancel":"Отменить",
+  "search_events":"Поиск мероприятий",
+  "studying_languages":"Изучает языки",
+  "fluenting_languages":"Владеет языками",
+  "age":"Возраст",
+  "search":"Найти",
+  "does_not_matter":"Не важно",
+  "from":"от",
+  "to":"до"
 }

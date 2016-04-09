@@ -410,18 +410,42 @@ video{
 }
 .parametrsSearch{
     padding: 20px 40px;
+    -webkit-box-shadow: 3px 0 10px -2px #888;
+            box-shadow: 3px 0 10px -2px #888;
 }
 .parametrsSearch>div{
     margin: 10px 0 15px 0;
 }
-.row {
+.searchPeoplePage .row {
   display: -webkit-box!important;
   display: -webkit-flex!important;
   display: -ms-flexbox!important;
   display:         flex!important;
   flex-wrap: wrap!important;
 }
-.row > [class*='col-'] {
+.searchPeoplePage .row > [class*='col-'] {
   display: flex!important;
   flex-direction: column!important;
+}
+.Select-menu-outer {
+    z-index: 5!important;
+}
+.hrefTouser, .hrefTouser:hover, .hrefTouser:focus{
+    color: black;
+    text-decoration: none;
+}
+.imageSearchPeople{
+    margin-right: 35px;
+}
+.imageSearchPeople img{
+    width: 140px;
+    height: 140px;
+    border-radius: 100%;
+}
+.listPeople {
+    background: #fff;
+    box-shadow: 1px 2px 8px rgba(0,0,0,0.2);
+    border-radius: 5px;
+    padding: 25px 40px;
+    margin-bottom: 25px;
 }

@@ -64,6 +64,11 @@ var Profile = React.createClass({
 			localStorage.removeItem('userToken');
 			window.location = "./";
 		});
+		setTimeout(function(){
+			$('body').scrollspy({target:'.navbar-fixed-top',offset:60});
+			$('#topNav').affix({offset:{top:50}});
+			new WOW().init();
+		}, 500);
 	},
 
 	setCurrentLocale: function setCurrentLocale(locale) {

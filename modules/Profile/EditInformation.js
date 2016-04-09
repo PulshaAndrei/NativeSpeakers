@@ -7,11 +7,6 @@ var LinkedStateMixin = require('react-addons-linked-state-mixin');
 var EditInformation = React.createClass({
 	mixins: [LinkedStateMixin, IntlMixin],
 	getInitialState: function getInitialState() {
-
-		$('body').scrollspy({target:'.navbar-fixed-top',offset:60});
-		$('#topNav').affix({offset:{top:50}});
-		new WOW().init();
-
 		var profile = this.props.profile;
 		return {
 			given_name: profile.given_name,

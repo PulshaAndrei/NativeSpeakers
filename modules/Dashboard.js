@@ -17,8 +17,8 @@ var Header = React.createClass({
 					<h1 className="cursive">Native Speakers</h1>
 					<h4>"The limits of my language are the limits of my world." ‒ Ludwig Wittgenstein</h4>
 					<br />
-					<a className="btn btn-primary btn-xl header-link">Поиск людей</a><span> &nbsp;&nbsp;&nbsp; </span>
-					<a className="btn btn-primary btn-xl header-link">Поиск мероприятий</a>
+					<a className="btn btn-primary btn-xl header-link" href="#/search_people">{this.getIntlMessage('search_people')}</a><span> &nbsp;&nbsp;&nbsp; </span>
+					<a className="btn btn-primary btn-xl header-link" href="#/dashboard">{this.getIntlMessage('search_events')}</a>
 				</div>
 			</div>
 		</header>
@@ -94,6 +94,12 @@ var Dashboard = React.createClass({
 			localStorage.removeItem('userToken');
 			window.location = "./";
 		});
+
+		setTimeout(function(){
+			$('body').scrollspy({target:'.navbar-fixed-top',offset:60});
+			$('#topNav').affix({offset:{top:50}});
+			new WOW().init();
+		}, 500);
 	},
 
 	setCurrentLocale: function setCurrentLocale(locale) {

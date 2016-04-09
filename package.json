@@ -19,7 +19,9 @@
     "react-fileupload": "^2.0.0",
     "react-h5-video": "^1.0.0",
     "react-intl": "^1.2.2",
+    "react-js-pagination": "^1.1.15",
     "react-loading": "0.0.9",
+    "react-paginator": "0.0.5",
     "react-router": "^2.0.0",
     "react-select": "1.0.0-beta9"
   },

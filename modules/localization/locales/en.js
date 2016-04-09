@@ -62,5 +62,13 @@
   "language_proficiency_level": "Language proficiency level",
   "native_language":"Native language",
   "add_language":"Add language",
-  "cancel":"Cancel"
+  "cancel":"Cancel",
+  "search_events":"Search events",
+  "studying_languages":"Studying languages",
+  "fluenting_languages":"Fluenting languages",
+  "age":"Age",
+  "search":"Search",
+  "does_not_matter":"No matter",
+  "from":"from",
+  "to":"to"
 }
