@@ -413,6 +413,11 @@ video{
     -webkit-box-shadow: 3px 0 10px -2px #888;
             box-shadow: 3px 0 10px -2px #888;
 }
+@media(max-width:400px){
+    .parametrsSearch{
+        padding: 0 20px 20px 20px;
+    }
+}
 .parametrsSearch>div{
     margin: 10px 0 15px 0;
 }
@@ -435,11 +440,13 @@ video{
     text-decoration: none;
 }
 .imageSearchPeople{
-    margin-right: 35px;
+ /*   margin-right: 35px;*/
 }
 .imageSearchPeople img{
-    width: 140px;
-    height: 140px;
+    /*width: 140px;
+    height: 140px;*/
+    max-width: 140px;
+
     border-radius: 100%;
 }
 .listPeople {
@@ -448,4 +455,12 @@ video{
     border-radius: 5px;
     padding: 25px 40px;
     margin-bottom: 25px;
+}
+.listPeopleDiv{
+    padding: 50px 70px;
+}
+@media(max-width:640px){
+    .listPeopleDiv{
+        padding: 20px;
+    }
 }

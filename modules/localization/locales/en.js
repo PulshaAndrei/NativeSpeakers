@@ -70,5 +70,6 @@
   "search":"Search",
   "does_not_matter":"No matter",
   "from":"from",
-  "to":"to"
+  "to":"to",
+  "about_self":"About myself"
 }

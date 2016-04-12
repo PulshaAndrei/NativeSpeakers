@@ -1,5 +1,5 @@
-//var host = "ec2-52-48-222-111.eu-west-1.compute.amazonaws.com";
-var host = "localhost"
+var host = "ec2-52-48-222-111.eu-west-1.compute.amazonaws.com";
+//var host = "localhost"
 
 var React = require('react');
 var IntlMixin = require('react-intl').IntlMixin;
@@ -36,16 +36,18 @@ var SearchResults = React.createClass({
 		var list = this.props.results.map(function(el, i) {
 			var stud_lang = "";
 			var teach_lang = "";
-			el.student_languages.forEach(function(el, i) {stud_lang += (i == 0 ? "" : ", ") + LanguagesList[el.language].nativeName });
-			el.teacher_languages.forEach(function(el, i) {teach_lang += (i == 0 ? "" : ", ") + LanguagesList[el.language].nativeName });
+			el.languages.forEach(function(el, i) {
+				if (el.student) stud_lang += (i == 0 ? "" : ", ") + LanguagesList[el.language].nativeName;
+				if (el.teacher) teach_lang += (i == 0 ? "" : ", ") + LanguagesList[el.language].nativeName;
+			});
 			if (i>=(self.state.activePage-1)*3 && i<=self.state.activePage*3-1)
 			return <div className="row listPeople" key={"listpeople"+i}>
-				<div className="col-md-3" className="imageSearchPeople">
+				<div className="col-md-3 imageSearchPeople">
 					<a href={"#user?id="+el.user_id} className="hrefTouser">
-						<img src={(el.gender == "female" ? "image/female_icon.png" : "image/male_icon.png")} />
+						<img src={el.photo_link ? el.photo_link : (el.gender == "female" ? "image/female_icon.png" : "image/male_icon.png")} className="img-responsive pull-left"/>
 					</a>
 				</div>
-				<div>
+				<div className="col-md-9">
 					<a href={"#user?id="+el.user_id} className="hrefTouser"><h2>{el.given_name + " " + el.family_name}</h2></a>
 					<p style={{marginBottom: '5px'}}><b>{self.getIntlMessage('studying_languages')+": "}</b> {stud_lang}</p>
 					<p><b>{self.getIntlMessage('fluenting_languages')+"; "}</b> {teach_lang}</p>
@@ -117,7 +119,7 @@ var Search = React.createClass({
 		});
 		return <div className="container-fluid">
 			<div className="row">
-				<div className="col-md-4 parametrsSearch" style={{zIndex: 1}}>
+				<div className="col-sm-12 col-md-4 parametrsSearch" style={{zIndex: 1}}>
 					<h2>{this.getIntlMessage('search_people')}</h2>
 					<div>
 						<div className="field-title">{this.getIntlMessage('language')}</div>
@@ -165,7 +167,7 @@ var Search = React.createClass({
 					</div>
 				</div>
 				{this.state.loading && 
-					<div className="col-md-8" style={{paddingRight: 0, background: '#f9f9f9'}}>
+					<div className="col-sm-12 col-md-8" style={{paddingRight: 0, background: '#f9f9f9'}}>
 						<div className="row vertical-align" style={{margin: 0, position:'relative'}}>
 							<div className="col-md-12" style={{minHeight: '80%', padding: '0'}}>
 								<Loading type='bubbles' color='#9C27B0' />
@@ -173,7 +175,7 @@ var Search = React.createClass({
 						</div>
 					</div>}
 				{this.state.no_result && 
-					<div className="col-md-8" style={{paddingRight: 0, background: '#f9f9f9'}}>
+					<div className="col-sm-12 col-md-8" style={{paddingRight: 0, background: '#f9f9f9'}}>
 						<div className="row vertical-align" style={{margin: 0, position:'relative'}}>
 							<div className="col-md-12" style={{minHeight: '80%', padding: '0'}}>
 								<h4>{this.getIntlMessage('no_results_found')}</h4>
@@ -181,8 +183,8 @@ var Search = React.createClass({
 						</div>
 					</div>}
 				{this.state.results && this.state.results.length>0 &&
-					<div className="col-md-8" style={{background: '#f9f9f9'}}>
-						<div style={{padding: '50px 70px'}}>
+					<div className="col-sm-12 col-md-8" style={{background: '#f9f9f9'}}>
+						<div className="listPeopleDiv">
 							<SearchResults 
 								messages={this.state.messages} 
 								results={this.state.results} />

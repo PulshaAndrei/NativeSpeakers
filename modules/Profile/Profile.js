@@ -111,55 +111,19 @@ var Profile = React.createClass({
 		});
 	},
 	uploadAvatar: function uploadAvatar(dataUri) {
-		/*$.ajax({
-			url: 'http://'+'localhost'+'/secured/uploadPhoto',
+		$.ajax({
+			url: 'http://'+host+'/secured/uploadPhoto',
 			method: 'POST',
-			processData: false,
-    		contentType: false,
-    		dataType: 'text',
-			data: dataUri
+			contentType: "application/x-www-form-urlencoded",
+			cache: false,
+			data: { img_data:dataUri }			
 		}).then(function (dt, textStatus, jqXHR) {
 			alert("success");
+			console.log(dt)
 		}.bind(this), function (err) {
+			console.log(err)
 			alert("error")
 		});
-		var data = new FormData();
-        data.append('uploadFile', dataUri);
-         $.ajax({
-            url: 'http://'+'localhost'+'/secured/uploadPhoto',
-            data: data,
-            cache: false,
-            contentType: false,
-            processData: false,
-            type: 'POST',
-            success: function(response) {
-                //var message = file.element.find('td.message');
-                if(response.status == 'ok') {
-                	alert('ok')
-                    //message.html(response.text);
-                    //file.element.find('button.uploadButton').remove();
-                }
-                else {
-                	alert(response.errors)
-                    //message.html(response.errors);
-                }
-            },
-            xhr: function() {
-                var xhr = $.ajaxSettings.xhr();
-                if ( xhr.upload ) {
-                    console.log('xhr upload');
-                    xhr.upload.onprogress = function(e) {
-                        /*file.progressDone = e.position || e.loaded;
-                        file.progressTotal = e.totalSize || e.total;
-                        //обновляем прогресс для файла
-                        baseClass.updateFileProgress(index, file.progressDone, file.progressTotal, file.element);
-                        //обновляем общий прогресс
-                        baseClass.totalProgressUpdated();
-                    };
-                }
-                return xhr;
-            }
-        });*/
 	},
 	render: function render() {
 		return <div>

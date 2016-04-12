@@ -70,5 +70,6 @@
   "search":"Найти",
   "does_not_matter":"Не важно",
   "from":"от",
-  "to":"до"
+  "to":"до",
+  "about_self":"О себе"
 }
