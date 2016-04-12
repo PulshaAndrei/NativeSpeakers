@@ -7463,7 +7463,11 @@
 
 	var _SearchPeople2 = _interopRequireDefault(_SearchPeople);
 
-	var _App = __webpack_require__(855);
+	var _User = __webpack_require__(864);
+
+	var _User2 = _interopRequireDefault(_User);
+
+	var _App = __webpack_require__(858);
 
 	var _App2 = _interopRequireDefault(_App);
 
@@ -7477,7 +7481,8 @@
 		_react2.default.createElement(_reactRouter.Route, { path: '/', component: _App2.default }),
 		_react2.default.createElement(_reactRouter.Route, { path: '/dashboard', component: _Dashboard2.default }),
 		_react2.default.createElement(_reactRouter.Route, { path: '/profile', component: _Profile2.default }),
-		_react2.default.createElement(_reactRouter.Route, { path: '/search_people', component: _SearchPeople2.default })
+		_react2.default.createElement(_reactRouter.Route, { path: '/search_people', component: _SearchPeople2.default }),
+		_react2.default.createElement(_reactRouter.Route, { path: '/user', component: _User2.default })
 	), document.getElementById('app'));
 
 /***/ },
@@ -27038,8 +27043,8 @@
 						React.createElement('br', null),
 						React.createElement(
 							'a',
-							{ className: 'btn btn-primary btn-xl header-link' },
-							'Поиск людей'
+							{ className: 'btn btn-primary btn-xl header-link', href: '#/search_people' },
+							this.getIntlMessage('search_people')
 						),
 						React.createElement(
 							'span',
@@ -27048,8 +27053,8 @@
 						),
 						React.createElement(
 							'a',
-							{ className: 'btn btn-primary btn-xl header-link' },
-							'Поиск мероприятий'
+							{ className: 'btn btn-primary btn-xl header-link', href: '#/dashboard' },
+							this.getIntlMessage('search_events')
 						)
 					)
 				)
@@ -27161,6 +27166,12 @@
 				localStorage.removeItem('userToken');
 				window.location = "./";
 			});
+
+			setTimeout(function () {
+				$('body').scrollspy({ target: '.navbar-fixed-top', offset: 60 });
+				$('#topNav').affix({ offset: { top: 50 } });
+				new WOW().init();
+			}, 500);
 		},
 
 		setCurrentLocale: function setCurrentLocale(locale) {
@@ -27386,7 +27397,16 @@
 	  "language_proficiency_level": "Language proficiency level",
 	  "native_language": "Native language",
 	  "add_language": "Add language",
-	  "cancel": "Cancel"
+	  "cancel": "Cancel",
+	  "search_events": "Search events",
+	  "studying_languages": "Studying languages",
+	  "fluenting_languages": "Fluenting languages",
+	  "age": "Age",
+	  "search": "Search",
+	  "does_not_matter": "No matter",
+	  "from": "from",
+	  "to": "to",
+	  "about_self": "About myself"
 	};
 
 /***/ },
@@ -27459,7 +27479,16 @@
 	  "language_proficiency_level": "Уровень владения",
 	  "native_language": "Родной язык",
 	  "add_language": "Добавить язык",
-	  "cancel": "Отменить"
+	  "cancel": "Отменить",
+	  "search_events": "Поиск мероприятий",
+	  "studying_languages": "Изучает языки",
+	  "fluenting_languages": "Владеет языками",
+	  "age": "Возраст",
+	  "search": "Найти",
+	  "does_not_matter": "Не важно",
+	  "from": "от",
+	  "to": "до",
+	  "about_self": "О себе"
 	};
 
 /***/ },
@@ -56504,6 +56533,11 @@
 				localStorage.removeItem('userToken');
 				window.location = "./";
 			});
+			setTimeout(function () {
+				$('body').scrollspy({ target: '.navbar-fixed-top', offset: 60 });
+				$('#topNav').affix({ offset: { top: 50 } });
+				new WOW().init();
+			}, 500);
 		},
 
 		setCurrentLocale: function setCurrentLocale(locale) {
@@ -56546,55 +56580,19 @@
 			});
 		},
 		uploadAvatar: function uploadAvatar(dataUri) {
-			/*$.ajax({
-	  	url: 'http://'+'localhost'+'/secured/uploadPhoto',
-	  	method: 'POST',
-	  	processData: false,
-	    		contentType: false,
-	    		dataType: 'text',
-	  	data: dataUri
-	  }).then(function (dt, textStatus, jqXHR) {
-	  	alert("success");
-	  }.bind(this), function (err) {
-	  	alert("error")
-	  });
-	  var data = new FormData();
-	        data.append('uploadFile', dataUri);
-	         $.ajax({
-	            url: 'http://'+'localhost'+'/secured/uploadPhoto',
-	            data: data,
-	            cache: false,
-	            contentType: false,
-	            processData: false,
-	            type: 'POST',
-	            success: function(response) {
-	                //var message = file.element.find('td.message');
-	                if(response.status == 'ok') {
-	                	alert('ok')
-	                    //message.html(response.text);
-	                    //file.element.find('button.uploadButton').remove();
-	                }
-	                else {
-	                	alert(response.errors)
-	                    //message.html(response.errors);
-	                }
-	            },
-	            xhr: function() {
-	                var xhr = $.ajaxSettings.xhr();
-	                if ( xhr.upload ) {
-	                    console.log('xhr upload');
-	                    xhr.upload.onprogress = function(e) {
-	                        /*file.progressDone = e.position || e.loaded;
-	                        file.progressTotal = e.totalSize || e.total;
-	                        //обновляем прогресс для файла
-	                        baseClass.updateFileProgress(index, file.progressDone, file.progressTotal, file.element);
-	                        //обновляем общий прогресс
-	                        baseClass.totalProgressUpdated();
-	                    };
-	                }
-	                return xhr;
-	            }
-	        });*/
+			$.ajax({
+				url: 'http://' + host + '/secured/uploadPhoto',
+				method: 'POST',
+				contentType: "application/x-www-form-urlencoded",
+				cache: false,
+				data: { img_data: dataUri }
+			}).then(function (dt, textStatus, jqXHR) {
+				alert("success");
+				console.log(dt);
+			}.bind(this), function (err) {
+				console.log(err);
+				alert("error");
+			});
 		},
 		render: function render() {
 			return React.createElement(
@@ -56656,11 +56654,6 @@
 
 		mixins: [LinkedStateMixin, IntlMixin],
 		getInitialState: function getInitialState() {
-
-			$('body').scrollspy({ target: '.navbar-fixed-top', offset: 60 });
-			$('#topNav').affix({ offset: { top: 50 } });
-			new WOW().init();
-
 			var profile = this.props.profile;
 			return {
 				given_name: profile.given_name,
@@ -74916,7 +74909,7 @@
 							React.createElement(
 									"div",
 									{ className: "imageProfileHeaderBlock" },
-									React.createElement("img", { className: "imageProfileHeader", src: this.state.croppedImg ? this.state.croppedImg : this.props.profile && this.props.profile.gender == "female" ? "image/female_icon.png" : "image/male_icon.png" }),
+									this.props.profile && React.createElement("img", { className: "imageProfileHeader", src: this.state.croppedImg ? this.state.croppedImg : this.props.profile.photo_link ? this.props.profile.photo_link : this.props.profile.gender == "female" ? "image/female_icon.png" : "image/male_icon.png" }),
 									React.createElement(
 											"div",
 											{ className: "text-center uploadFile" },
@@ -90449,6 +90442,10 @@
 
 	var _reactRouter = __webpack_require__(238);
 
+	var _reactJsPagination = __webpack_require__(855);
+
+	var _reactJsPagination2 = _interopRequireDefault(_reactJsPagination);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	var host = "ec2-52-48-222-111.eu-west-1.compute.amazonaws.com";
@@ -90461,6 +90458,7 @@
 	var Footer = __webpack_require__(484);
 	var LanguagesList = __webpack_require__(647);
 	var Loading = __webpack_require__(648);
+	var LinkedStateMixin = __webpack_require__(636);
 
 
 	var Header = React.createClass({
@@ -90472,21 +90470,135 @@
 		}
 	});
 
+	var SearchResults = React.createClass({
+		displayName: 'SearchResults',
+
+		mixins: [LinkedStateMixin, IntlMixin],
+		getInitialState: function getInitialState() {
+			return {
+				activePage: 1
+			};
+		},
+		onChangePage: function onChangePage(pageNumber) {
+			this.setState({ activePage: pageNumber });
+		},
+		render: function render() {
+			var self = this;
+			var list = this.props.results.map(function (el, i) {
+				var stud_lang = "";
+				var teach_lang = "";
+				el.languages.forEach(function (el, i) {
+					if (el.student) stud_lang += (i == 0 ? "" : ", ") + LanguagesList[el.language].nativeName;
+					if (el.teacher) teach_lang += (i == 0 ? "" : ", ") + LanguagesList[el.language].nativeName;
+				});
+				if (i >= (self.state.activePage - 1) * 3 && i <= self.state.activePage * 3 - 1) return React.createElement(
+					'div',
+					{ className: 'row listPeople', key: "listpeople" + i },
+					React.createElement(
+						'div',
+						{ className: 'col-md-3 imageSearchPeople' },
+						React.createElement(
+							'a',
+							{ href: "#user?id=" + el.user_id, className: 'hrefTouser' },
+							React.createElement('img', { src: el.photo_link ? el.photo_link : el.gender == "female" ? "image/female_icon.png" : "image/male_icon.png", className: 'img-responsive pull-left' })
+						)
+					),
+					React.createElement(
+						'div',
+						{ className: 'col-md-9' },
+						React.createElement(
+							'a',
+							{ href: "#user?id=" + el.user_id, className: 'hrefTouser' },
+							React.createElement(
+								'h2',
+								null,
+								el.given_name + " " + el.family_name
+							)
+						),
+						React.createElement(
+							'p',
+							{ style: { marginBottom: '5px' } },
+							React.createElement(
+								'b',
+								null,
+								self.getIntlMessage('studying_languages') + ": "
+							),
+							' ',
+							stud_lang
+						),
+						React.createElement(
+							'p',
+							null,
+							React.createElement(
+								'b',
+								null,
+								self.getIntlMessage('fluenting_languages') + "; "
+							),
+							' ',
+							teach_lang
+						)
+					)
+				);
+			});
+			return React.createElement(
+				'div',
+				null,
+				list,
+				this.props.results.length > 3 && React.createElement(
+					'div',
+					{ className: 'text-center' },
+					React.createElement(_reactJsPagination2.default, {
+						activePage: this.state.activePage,
+						totalItemsCount: this.props.results.length,
+						itemsCountPerPage: 3,
+						onChange: this.onChangePage.bind(this) })
+				)
+			);
+		}
+	});
+
 	var Search = React.createClass({
 		displayName: 'Search',
 
-		mixins: [IntlMixin],
+		mixins: [LinkedStateMixin, IntlMixin],
 		getInitialState: function getInitialState() {
 			return {
-				lang: null
+				lang: null,
+				gender: null,
+				age_from: null,
+				age_to: null,
+				country: null,
+				city: null,
+				results: null,
+				loading: false,
+				no_result: false
 			};
 		},
+		componentWillMount: function componentWillMount() {
+			this.submit();
+		},
 		langChange: function langChange(e) {
-			this.setState({
-				lang: e.value
+			this.setState({ lang: e.value });
+		},
+		changeGender: function changeGender(gender) {
+			this.setState({ gender: gender });
+		},
+		submit: function submit() {
+			this.setState({ loading: true });
+			$.ajax({
+				url: 'http://' + host + '/secured/users?gender=' + (this.state.gender ? this.state.gender : "") + '&age_from=' + (this.state.age_from ? this.state.age_from : "") + '&age_to=' + (this.state.age_to ? this.state.age_to : "") + '&country=' + (this.state.country ? this.state.country : "") + '&city=' + (this.state.city ? this.state.city : "") + '&teacher_for=' + (this.state.lang ? this.state.lang : ""),
+				method: 'GET'
+			}).then(function (data, textStatus, jqXHR) {
+				console.log(data);
+				this.setState({
+					loading: false,
+					no_result: data.length == 0,
+					results: data
+				});
+			}.bind(this), function () {
+				alert("Server error!");
 			});
 		},
-		changeGender: function changeGender() {},
 		render: function render() {
 			var options = LanguagesList.map(function (el, i) {
 				return { value: i, label: el.name + " (" + el.nativeName + ")" };
@@ -90499,11 +90611,11 @@
 					{ className: 'row' },
 					React.createElement(
 						'div',
-						{ className: 'col-md-4 parametrsSearch' },
+						{ className: 'col-sm-12 col-md-4 parametrsSearch', style: { zIndex: 1 } },
 						React.createElement(
 							'h2',
 							null,
-							'Поиск людей'
+							this.getIntlMessage('search_people')
 						),
 						React.createElement(
 							'div',
@@ -90511,7 +90623,7 @@
 							React.createElement(
 								'div',
 								{ className: 'field-title' },
-								'Язык, который хотите изучить'
+								this.getIntlMessage('language')
 							),
 							React.createElement(Select, {
 								value: this.state.lang,
@@ -90529,38 +90641,20 @@
 							React.createElement(
 								'div',
 								{ className: 'field-title' },
-								'Язык, с которым можете помочь в изучении'
-							),
-							React.createElement(Select, {
-								value: this.state.lang,
-								placeholder: this.getIntlMessage('choose_language_please'),
-								noResultsText: this.getIntlMessage('no_results_found'),
-								options: options,
-								clearable: false,
-								backspaceRemoves: false,
-								autosize: true,
-								onChange: this.langChange })
-						),
-						React.createElement(
-							'div',
-							null,
-							React.createElement(
-								'div',
-								{ className: 'field-title' },
-								'Возраст'
+								this.getIntlMessage('age')
 							),
 							React.createElement(
 								'label',
-								null,
-								'от'
+								{ style: { color: '#999', marginRight: '10px' } },
+								this.getIntlMessage('from')
 							),
-							React.createElement('input', { className: 'form-control-bootstrap form-inline-bootstrap', type: 'number' }),
+							React.createElement('input', { className: 'form-control-bootstrap form-inline-bootstrap', type: 'number', valueLink: this.linkState('age_from') }),
 							React.createElement(
 								'label',
-								null,
-								'до'
+								{ style: { color: '#999', marginLeft: '10px', marginRight: '10px' } },
+								this.getIntlMessage('to')
 							),
-							React.createElement('input', { className: 'form-control-bootstrap form-inline-bootstrap', type: 'number' })
+							React.createElement('input', { className: 'form-control-bootstrap form-inline-bootstrap', type: 'number', valueLink: this.linkState('age_to') })
 						),
 						React.createElement(
 							'div',
@@ -90586,6 +90680,13 @@
 									React.createElement('input', { type: 'radio', name: 'options', id: 'option2', autoComplete: 'off' }),
 									' ',
 									this.getIntlMessage('female')
+								),
+								React.createElement(
+									'label',
+									{ className: "btn btn-secondary" + (this.state.gender == null ? " active" : ""), onClick: this.changeGender.bind(null, null) },
+									React.createElement('input', { type: 'radio', name: 'options', id: 'option2', autoComplete: 'off' }),
+									' ',
+									this.getIntlMessage('does_not_matter')
 								)
 							)
 						),
@@ -90595,9 +90696,9 @@
 							React.createElement(
 								'div',
 								{ className: 'field-title' },
-								'Cтрана'
+								this.getIntlMessage('country')
 							),
-							React.createElement('input', { className: 'form-control-bootstrap', type: 'text' })
+							React.createElement('input', { className: 'form-control-bootstrap', type: 'text', valueLink: this.linkState('country') })
 						),
 						React.createElement(
 							'div',
@@ -90605,24 +90706,64 @@
 							React.createElement(
 								'div',
 								{ className: 'field-title' },
-								'Город'
+								this.getIntlMessage('city')
 							),
-							React.createElement('input', { className: 'form-control-bootstrap', type: 'text' })
+							React.createElement('input', { className: 'form-control-bootstrap', type: 'text', valueLink: this.linkState('city') })
+						),
+						React.createElement(
+							'div',
+							{ className: 'text-center' },
+							React.createElement(
+								'button',
+								{ type: 'button', className: 'btn btn-success btn-lg', style: { minWidth: '280px', marginTop: '10px' }, onClick: this.submit },
+								this.getIntlMessage('search')
+							)
 						)
 					),
-					React.createElement(
+					this.state.loading && React.createElement(
 						'div',
-						{ className: 'col-md-8', style: { paddingRight: 0, background: '#f9f9f9' } },
-						React.createElement(Loading, { type: 'bubbles', color: '#9C27B0' })
+						{ className: 'col-sm-12 col-md-8', style: { paddingRight: 0, background: '#f9f9f9' } },
+						React.createElement(
+							'div',
+							{ className: 'row vertical-align', style: { margin: 0, position: 'relative' } },
+							React.createElement(
+								'div',
+								{ className: 'col-md-12', style: { minHeight: '80%', padding: '0' } },
+								React.createElement(Loading, { type: 'bubbles', color: '#9C27B0' })
+							)
+						)
+					),
+					this.state.no_result && React.createElement(
+						'div',
+						{ className: 'col-sm-12 col-md-8', style: { paddingRight: 0, background: '#f9f9f9' } },
+						React.createElement(
+							'div',
+							{ className: 'row vertical-align', style: { margin: 0, position: 'relative' } },
+							React.createElement(
+								'div',
+								{ className: 'col-md-12', style: { minHeight: '80%', padding: '0' } },
+								React.createElement(
+									'h4',
+									null,
+									this.getIntlMessage('no_results_found')
+								)
+							)
+						)
+					),
+					this.state.results && this.state.results.length > 0 && React.createElement(
+						'div',
+						{ className: 'col-sm-12 col-md-8', style: { background: '#f9f9f9' } },
+						React.createElement(
+							'div',
+							{ className: 'listPeopleDiv' },
+							React.createElement(SearchResults, {
+								messages: this.state.messages,
+								results: this.state.results })
+						)
 					)
 				)
 			);
 		}
-		/*<div className="row vertical-align" style={{margin: 0, height:'100%'}}>
-	 					<div className="col-md-12" style={{height: '100%', padding: '0', background: '#f9f9f9'}}>
-	 						<Loading type='bubbles' color='#9C27B0' />
-	 					</div>
-	 				</div>*/
 	});
 
 	var SearchPeople = React.createClass({
@@ -90653,15 +90794,11 @@
 			});
 		},
 		componentDidMount: function componentDidMount() {
-			$.ajax({
-				url: 'http://' + host + '/secured/profile',
-				method: 'GET'
-			}).then(function (data, textStatus, jqXHR) {
-				this.setState({ profile: data });
-			}.bind(this), function () {
-				localStorage.removeItem('userToken');
-				window.location = "./";
-			});
+			setTimeout(function () {
+				$('body').scrollspy({ target: '.navbar-fixed-top', offset: 60 });
+				$('#topNav').affix({ offset: { top: 50 } });
+				new WOW().init();
+			}, 500);
 		},
 
 		setCurrentLocale: function setCurrentLocale(locale) {
@@ -90676,7 +90813,7 @@
 		render: function render() {
 			return React.createElement(
 				'div',
-				null,
+				{ className: 'searchPeoplePage' },
 				React.createElement(MenuDashboard, {
 					messages: this.state.messages,
 					currentLocale: this.state.currentLocale,
@@ -90698,12 +90835,332 @@
 /* 855 */
 /***/ function(module, exports, __webpack_require__) {
 
+	"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+
+	var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
+
+	var _get = function get(_x, _x2, _x3) { var _again = true; _function: while (_again) { var object = _x, property = _x2, receiver = _x3; _again = false; if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { _x = parent; _x2 = property; _x3 = receiver; _again = true; desc = parent = undefined; continue _function; } } else if ("value" in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } } };
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var _react = __webpack_require__(75);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _paginator = __webpack_require__(856);
+
+	var _paginator2 = _interopRequireDefault(_paginator);
+
+	var _classnames = __webpack_require__(623);
+
+	var _classnames2 = _interopRequireDefault(_classnames);
+
+	var _Page = __webpack_require__(857);
+
+	var _Page2 = _interopRequireDefault(_Page);
+
+	var Pagination = (function (_React$Component) {
+	    _inherits(Pagination, _React$Component);
+
+	    function Pagination() {
+	        _classCallCheck(this, Pagination);
+
+	        _get(Object.getPrototypeOf(Pagination.prototype), "constructor", this).apply(this, arguments);
+	    }
+
+	    _createClass(Pagination, [{
+	        key: "onClick",
+	        value: function onClick(page, e) {
+	            e.preventDefault();
+	            this.props.onChange(page);
+	        }
+	    }, {
+	        key: "buildPages",
+	        value: function buildPages() {
+	            var pages = [];
+	            var _props = this.props;
+	            var itemsCountPerPage = _props.itemsCountPerPage;
+	            var pageRangeDisplayed = _props.pageRangeDisplayed;
+	            var activePage = _props.activePage;
+	            var prevPageText = _props.prevPageText;
+	            var nextPageText = _props.nextPageText;
+	            var firstPageText = _props.firstPageText;
+	            var lastPageText = _props.lastPageText;
+	            var totalItemsCount = _props.totalItemsCount;
+
+	            var paginationInfo = new _paginator2["default"](itemsCountPerPage, pageRangeDisplayed).build(totalItemsCount, activePage);
+
+	            if (paginationInfo.first_page !== paginationInfo.last_page) {
+	                for (var i = paginationInfo.first_page; i <= paginationInfo.last_page; i++) {
+	                    pages.push(_react2["default"].createElement(_Page2["default"], {
+	                        isActive: i === activePage,
+	                        key: i,
+	                        pageNumber: i,
+	                        onClick: this.onClick.bind(this)
+	                    }));
+	                }
+	            }
+
+	            paginationInfo.has_previous_page && pages.unshift(_react2["default"].createElement(_Page2["default"], {
+	                isActive: false,
+	                key: "prev" + paginationInfo.previous_page,
+	                pageNumber: paginationInfo.previous_page,
+	                onClick: this.onClick.bind(this),
+	                pageText: prevPageText
+	            }));
+
+	            paginationInfo.first_page > 1 && pages.unshift(_react2["default"].createElement(_Page2["default"], {
+	                isActive: false,
+	                key: 1,
+	                pageNumber: 1,
+	                onClick: this.onClick.bind(this),
+	                pageText: firstPageText
+	            }));
+
+	            paginationInfo.has_next_page && pages.push(_react2["default"].createElement(_Page2["default"], {
+	                isActive: false,
+	                key: "next" + paginationInfo.next_page,
+	                pageNumber: paginationInfo.next_page,
+	                onClick: this.onClick.bind(this),
+	                pageText: nextPageText
+	            }));
+
+	            paginationInfo.last_page !== paginationInfo.total_pages && pages.push(_react2["default"].createElement(_Page2["default"], {
+	                isActive: false,
+	                key: paginationInfo.total_pages,
+	                pageNumber: paginationInfo.total_pages,
+	                onClick: this.onClick.bind(this),
+	                pageText: lastPageText
+	            }));
+
+	            return pages;
+	        }
+	    }, {
+	        key: "render",
+	        value: function render() {
+	            var pages = this.buildPages();
+	            return _react2["default"].createElement(
+	                "ul",
+	                { className: "pagination" },
+	                pages
+	            );
+	        }
+	    }], [{
+	        key: "propTypes",
+	        value: {
+	            totalItemsCount: _react.PropTypes.number.isRequired,
+	            onChange: _react.PropTypes.func.isRequired,
+	            activePage: _react.PropTypes.number,
+	            pageRangeDisplayed: _react.PropTypes.number,
+	            itemsCountPerPage: _react.PropTypes.number,
+	            prevPageText: _react.PropTypes.oneOfType([_react.PropTypes.string, _react.PropTypes.element]),
+	            nextPageText: _react.PropTypes.oneOfType([_react.PropTypes.string, _react.PropTypes.element]),
+	            lastPageText: _react.PropTypes.oneOfType([_react.PropTypes.string, _react.PropTypes.element]),
+	            firstPageText: _react.PropTypes.oneOfType([_react.PropTypes.string, _react.PropTypes.element])
+	        },
+	        enumerable: true
+	    }, {
+	        key: "defaultProps",
+	        value: {
+	            itemsCountPerPage: 10,
+	            pageRangeDisplayed: 5,
+	            activePage: 1,
+	            prevPageText: "⟨",
+	            firstPageText: "«",
+	            nextPageText: "⟩",
+	            lastPageText: "»"
+	        },
+	        enumerable: true
+	    }]);
+
+	    return Pagination;
+	})(_react2["default"].Component);
+
+	exports["default"] = Pagination;
+	module.exports = exports["default"];
+
+/***/ },
+/* 856 */
+/***/ function(module, exports) {
+
+	module.exports = Paginator;
+
+	// Paginator constructor
+	//
+	// `per_page` is the number of results per page, `length` is the number of
+	// pages to display. They default to `25` and `10` respectively.
+	function Paginator(per_page, length) {
+	  // You really should be calling this with `new Paginator`, but WHATEVER.
+	  if (!(this instanceof Paginator)) {
+	    return new Paginator(per_page, length);
+	  }
+
+	  // Woo, defaults!
+	  this.per_page = per_page || 25;
+	  this.length = length || 10;
+	}
+
+	// Build an object with all the necessary information for outputting pagination
+	// controls.
+	//
+	// (new Pagianator(paginator.build(100, 2)
+	Paginator.prototype.build = function(total_results, current_page) {
+	  // We want the number of pages, rounded up to the nearest page.
+	  var total_pages = Math.ceil(total_results / this.per_page);
+
+	  // Obviously we can't be on a negative or 0 page.
+	  if (current_page < 1) { current_page = 1; }
+	  // If the user has done something like /page/99999 we want to clamp that back
+	  // down.
+	  if (current_page > total_pages) { current_page = total_pages; }
+
+	  // This is the first page to be displayed as a numbered link.
+	  var first_page = Math.max(1, current_page - Math.floor(this.length / 2));
+
+	  // And here's the last page to be displayed specifically.
+	  var last_page = Math.min(total_pages, current_page + Math.floor(this.length / 2));
+
+	  // This is triggered if we're at or near one of the extremes; we won't have
+	  // enough page links. We need to adjust our bounds accordingly.
+	  if (last_page - first_page + 1 < this.length) {
+	    if (current_page < (total_pages / 2)) {
+	      last_page = Math.min(total_pages, last_page + (this.length - (last_page - first_page)));
+	    } else {
+	      first_page = Math.max(1, first_page - (this.length - (last_page - first_page)));
+	    }
+	  }
+
+	  // This can be triggered if the user wants an odd number of pages.
+	  if (last_page - first_page + 1 > this.length) {
+	    // We want to move towards whatever extreme we're closest to at the time.
+	    if (current_page > (total_pages / 2)) {
+	      first_page++;
+	    } else {
+	      last_page--;
+	    }
+	  }
+
+	  // First result on the page. This, along with the field below, can be used to
+	  // do "showing x to y of z results" style things.
+	  var first_result = this.per_page * (current_page - 1);
+	  if (first_result < 0) { first_result = 0; }
+
+	  // Last result on the page.
+	  var last_result = (this.per_page * current_page) - 1;
+	  if (last_result < 0) { last_result = 0; }
+	  if (last_result > Math.max(total_results - 1, 0)) { last_result = Math.max(total_results - 1, 0); }
+
+	  // GIMME THAT OBJECT
+	  return {
+	    total_pages: total_pages,
+	    pages: Math.min(last_page - first_page + 1, total_pages),
+	    current_page: current_page,
+	    first_page: first_page,
+	    last_page: last_page,
+	    previous_page: current_page - 1,
+	    next_page: current_page + 1,
+	    has_previous_page: current_page > 1,
+	    has_next_page: current_page < total_pages,
+	    total_results: total_results,
+	    results: Math.min(last_result - first_result + 1, total_results),
+	    first_result: first_result,
+	    last_result: last_result,
+	  };
+	};
+
+
+/***/ },
+/* 857 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+
+	var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
+
+	var _get = function get(_x, _x2, _x3) { var _again = true; _function: while (_again) { var object = _x, property = _x2, receiver = _x3; _again = false; if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { _x = parent; _x2 = property; _x3 = receiver; _again = true; desc = parent = undefined; continue _function; } } else if ("value" in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } } };
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var _react = __webpack_require__(75);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _classnames = __webpack_require__(623);
+
+	var _classnames2 = _interopRequireDefault(_classnames);
+
+	var Page = (function (_Component) {
+	    _inherits(Page, _Component);
+
+	    function Page() {
+	        _classCallCheck(this, Page);
+
+	        _get(Object.getPrototypeOf(Page.prototype), "constructor", this).apply(this, arguments);
+	    }
+
+	    _createClass(Page, [{
+	        key: "render",
+	        value: function render() {
+	            var className = (0, _classnames2["default"])({
+	                "active": this.props.isActive
+	            });
+
+	            var text = this.props.pageText || this.props.pageNumber;
+	            if (_react2["default"].isValidElement(text)) return text;
+
+	            return _react2["default"].createElement(
+	                "li",
+	                { className: className },
+	                _react2["default"].createElement(
+	                    "a",
+	                    { onClick: this.props.onClick.bind(this, this.props.pageNumber), href: "#" },
+	                    text
+	                )
+	            );
+	        }
+	    }], [{
+	        key: "propTypes",
+	        value: {
+	            pageText: _react.PropTypes.oneOfType([_react.PropTypes.string, _react.PropTypes.element]),
+	            pageNumber: _react.PropTypes.number.isRequired,
+	            onClick: _react.PropTypes.func.isRequired,
+	            isActive: _react.PropTypes.bool.isRequired
+	        },
+	        enumerable: true
+	    }]);
+
+	    return Page;
+	})(_react.Component);
+
+	exports["default"] = Page;
+	module.exports = exports["default"];
+
+/***/ },
+/* 858 */
+/***/ function(module, exports, __webpack_require__) {
+
 	'use strict';
 
 	var _reactRouter = __webpack_require__(238);
 
 	var React = __webpack_require__(75);
-	var Home = __webpack_require__(856);
+	var Home = __webpack_require__(859);
 
 
 	var App = React.createClass({
@@ -90758,7 +91215,7 @@
 	module.exports = App;
 
 /***/ },
-/* 856 */
+/* 859 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -90775,7 +91232,7 @@
 	//var host = "localhost"
 
 	var React = __webpack_require__(75);
-	var Video = __webpack_require__(857);
+	var Video = __webpack_require__(860);
 	var IntlMixin = __webpack_require__(295).IntlMixin;
 	var Footer = __webpack_require__(484);
 
@@ -91195,20 +91652,20 @@
 	module.exports = Home;
 
 /***/ },
-/* 857 */
+/* 860 */
 /***/ function(module, exports, __webpack_require__) {
 
 	
-	module.exports = __webpack_require__(858);
+	module.exports = __webpack_require__(861);
 
 /***/ },
-/* 858 */
+/* 861 */
 /***/ function(module, exports, __webpack_require__) {
 
-	"use strict";function _interopRequireDefault(e){return e&&e.__esModule?e:{"default":e}}function _classCallCheck(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}function _inherits(e,t){if("function"!=typeof t&&null!==t)throw new TypeError("Super expression must either be null or a function, not "+typeof t);e.prototype=Object.create(t&&t.prototype,{constructor:{value:e,enumerable:!1,writable:!0,configurable:!0}}),t&&(e.__proto__=t)}Object.defineProperty(exports,"__esModule",{value:!0});var _extends=Object.assign||function(e){for(var t=1;t<arguments.length;t++){var a=arguments[t];for(var r in a)Object.prototype.hasOwnProperty.call(a,r)&&(e[r]=a[r])}return e},_createClass=function(){function e(e,t){for(var a=0;a<t.length;a++){var r=t[a];r.enumerable=r.enumerable||!1,r.configurable=!0,"value"in r&&(r.writable=!0),Object.defineProperty(e,r.key,r)}}return function(t,a,r){return a&&e(t.prototype,a),r&&e(t,r),t}}(),_get=function(e,t,a){for(var r=!0;r;){var i=e,l=t,s=a;o=u=n=void 0,r=!1;var o=Object.getOwnPropertyDescriptor(i,l);if(void 0!==o){if("value"in o)return o.value;var n=o.get;return void 0===n?void 0:n.call(s)}var u=Object.getPrototypeOf(i);if(null===u)return void 0;e=u,t=l,a=s,r=!0}},_react=__webpack_require__(75),_react2=_interopRequireDefault(_react),_path=__webpack_require__(859),_path2=_interopRequireDefault(_path),_utilsDateTimeJs=__webpack_require__(860),videoEvents=["play","pause","playing","abort","progress","ratechange","canplay","canplaythrough","durationchange","emptied","ended","loadeddata","loadedmetadata","loadstart","seeked","seeking","stalled","suspend","timeupdate","volumechange","waiting","error","encrypted","mozaudioavailable","interruptbegin","interruptend"],Video=function(e){function t(){var e=this;_classCallCheck(this,t),_get(Object.getPrototypeOf(t.prototype),"constructor",this).call(this),this.api={};var a=["togglePlay","setTime","fullscreen","volume"];a.forEach(function(t){e["_"+t]=e.api[t]=e["_"+t].bind(e)});var r=["metaDataLoaded","timeupdate","durationchange","progress"];r.forEach(function(t){return e["_"+t]=e["_"+t].bind(e)})}return _inherits(t,e),_createClass(t,[{key:"componentDidMount",value:function(){this.$wraper=_react2["default"].findDOMNode(this);var e=this.$video=this.api.$video=_react2["default"].findDOMNode(this.refs.video);e.addEventListener("loadedmetadata",this._metaDataLoaded),e.addEventListener("progress",this._progress),this.props.autoPlay&&!this.seekbarUpdateTimer&&this.seekbarUpdateInterval()}},{key:"_metaDataLoaded",value:function(e){this.props.metaDataLoaded&&"function"==typeof this.props.metaDataLoaded&&this.props.metaDataLoaded(this.api),this.$seekbarWraper=_react2["default"].findDOMNode(this.refs.seekbarWraper),this.setState({duration:_utilsDateTimeJs.formatTime(this.$video.duration)})}},{key:"seekbarUpdateInterval",value:function(){this.seekbarUpdateTimer=setInterval(this._timeupdate,80)}},{key:"_setTime",value:function(e,t){if(!(t&&e>100)){var a=t?e*this.$video.duration/100:e;this.$video.fastSeek?this.$video.fastSeek(a):this.$video.currentTime=a,this.setState({seekProgress:e})}}},{key:"_timeupdate",value:function(e){var t=this.$video.currentTime/this.$video.duration*100,a={seekProgress:t,currentTime:_utilsDateTimeJs.formatTime(this.$video.currentTime)};this.$video.currentTime>=this.$video.duration&&(a.isPlaying=!1),this.setState(a)}},{key:"_durationchange",value:function(){}},{key:"_progress",value:function(e){for(var t=this.$video.buffered,a=0,r=0;r<t.length;r++)a+=t.end(r)-t.start(r);this.setState({loadedProgress:a/this.$video.duration*100})}},{key:"_togglePlay",value:function(){this.seekbarUpdateTimer||this.seekbarUpdateInterval(),this.state.isPlaying?(this.$video.pause(),this.setState({isPlaying:!1})):(this.$video.currentTime>=this.$video.duration&&(this.$video.currentTime=0),this.$video.play(),this.setState({isPlaying:!0}))}},{key:"_fullscreen",value:function(e){for(var t=["requestFullScreen","mozRequestFullScreen","webkitRequestFullscreen","msRequestFullscreen"],a=0;a<t.length;a++)if(this.$video[t[a]])return this.$video[t[a]]()}},{key:"_volume",value:function(e){0>=e&&(e=0),e>1&&(e=1),this.$video.volume=e;var t={volume:e,isMuted:.05>=e?!0:!1};this.setState(t)}},{key:"_setSubtitle",value:function(e){this.$video.textTracks[this.state.activeSubtitle]&&(this.$video.textTracks[this.state.activeSubtitle].mode="disabled"),this.$video.textTracks[e].mode="showing",this.setState({activeSubtitle:e})}},{key:"$getSubtitleTracksMenu",value:function(){var e=this,t=[];if(!this.$video||this.$video.textTracks.length<=0)return t;for(var a=function(a){var r=e.$video.textTracks[a];t.push(_react2["default"].createElement("li",{key:a},_react2["default"].createElement("button",{onClick:function(t){return e._setSubtitle(a)}},r.label)))},r=0;r<this.$video.textTracks.length;r++)a(r);return this.subTitleMenu=_react2["default"].createElement("span",{className:"r5-subtitle"},_react2["default"].createElement("button",null,this.icons.subtitles),_react2["default"].createElement("ul",{className:"r5-subtitle-menu"},t)),this.subTitleMenu}},{key:"$getSubtitleTracks",value:function(e){if(!Array.isArray(e))return"";for(var t=[],a=0;a<e.length;a++){var r=e[a];t.push(_react2["default"].createElement("track",{src:r.src,kind:"subtitles",srclang:r.lang,label:r.label,key:a}))}return t}},{key:"$getSource",value:function(e){if(!Array.isArray(e))return[];for(var t=[],a=0;a<e.length;a++){var r=e[a],i=_path2["default"].extname(r).substr(1);t.push(_react2["default"].createElement("source",{src:r,type:"video/"+i,key:a}))}return t}},{key:"render",value:function(){var e=this,t=this.props,a=t.subtitles,r=t.loop,i=t.autoPlay,l=t.poster,s=t.preload,o=t.sources,n=t.controlPanelStyle,u=t.autoHideControls,c={loop:r,autoPlay:i,poster:l,preload:s},d={},h={},v=this.$video||{},p=this.props.width||v.videoWidth||v.clientWidth,f=this.props.height||v.videoHeight||v.clientHeight;c.width=p,c.height=f,d.width=p+"px",d.height=h.height=f+"px","fixed"==this.props.controlPanelStyle&&(d.height=f+50+"px");var m="r5-controls r5-controls--"+n+" "+(u?"r5-auto-hide":"")+" ";return this.props.controls||(m="r5-controls-hidden"),_react2["default"].createElement("div",{className:"r5-wraper",style:d},_react2["default"].createElement("video",_extends({ref:"video"},c),this.$getSource(o),a&&a.length>0?this.$getSubtitleTracks(a):""),_react2["default"].createElement("div",{className:"r5-overlay",onClick:this._togglePlay},!this.$video||this.$video.currentTime<=0?this.icons.playCircle:""),_react2["default"].createElement("div",{className:"r5-content",style:h},this.props.children),_react2["default"].createElement("div",{className:m},_react2["default"].createElement("div",{className:"r5-seekbar-wraper",ref:"seekbarWraper"},_react2["default"].createElement("div",{className:"r5-seekbar-loaded",ref:"seekbar",style:{width:this.state.loadedProgress+"%"}}),_react2["default"].createElement("div",{className:"r5-seekbar",ref:"loadedbar",style:{width:this.state.seekProgress+"%"}}),_react2["default"].createElement("input",{type:"range",min:"0.0",max:"100.0",step:"0.5",value:this.state.seekProgress,onChange:function(t){return e._setTime(t.target.value,!0)}})),_react2["default"].createElement("div",{className:"r5-panel"},_react2["default"].createElement("button",{className:"r5-play",onClick:this._togglePlay},this.state.isPlaying?this.icons.pause:this.icons.play),_react2["default"].createElement("div",{className:"r5-volume"},_react2["default"].createElement("button",null,this.state.isMuted?this.icons.mute:this.state.volume>.7?this.icons.volumeUp:this.icons.volumeDown),_react2["default"].createElement("div",{className:"r5-volume-inner",style:{width:"80px"}},_react2["default"].createElement("div",{className:"r5-volume-bar",style:{width:100*this.state.volume+"%"}}),_react2["default"].createElement("input",{type:"range",min:"0",max:"1",step:"0.05",value:this.state.volume,onChange:function(t){return e._volume(t.target.value)}}))),_react2["default"].createElement("span",{className:"r5-timecode"},this.state.currentTime+" / "+this.state.duration),_react2["default"].createElement("div",{className:"r5-pull-right"},this.$subTitleMenu||this.$getSubtitleTracksMenu()||"",_react2["default"].createElement("button",{className:"r5-fullscreen",onClick:this._fullscreen},this.icons.fullscreen)))))}},{key:"componentWillMount",value:function(){this.state={isPlaying:this.props.autoPlay?!0:!1,isMuted:!1,currentTime:"00:00",duration:"00:00",loadedProgress:0,seekProgress:0,volume:this.props.volume,activeSubtitle:null};var e="#ffffff";this.icons={},this.icons.play=_react2["default"].createElement("svg",{xmlns:"http://www.w3.org/2000/svg",width:"24",height:"24",viewBox:"0 0 24 24"},_react2["default"].createElement("path",{d:"M8 5v14l11-7z",fill:e}),_react2["default"].createElement("path",{d:"M0 0h24v24H0z",fill:"none"})),this.icons.pause=_react2["default"].createElement("svg",{xmlns:"http://www.w3.org/2000/svg",width:"24",height:"24",viewBox:"0 0 24 24"},_react2["default"].createElement("path",{d:"M6 19h4V5H6v14zm8-14v14h4V5h-4z",fill:e}),_react2["default"].createElement("path",{d:"M0 0h24v24H0z",fill:"none"})),this.icons.playCircle=_react2["default"].createElement("svg",{xmlns:"http://www.w3.org/2000/svg",viewBox:"0 0 24 24"},_react2["default"].createElement("path",{d:"M0 0h24v24H0z",fill:"none"}),_react2["default"].createElement("path",{d:"M10 16.5l6-4.5-6-4.5v9zM12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z",fill:e})),this.icons.volumeUp=_react2["default"].createElement("svg",{xmlns:"http://www.w3.org/2000/svg",width:"24",height:"24",viewBox:"0 0 24 24"},_react2["default"].createElement("path",{d:"M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z",fill:e}),_react2["default"].createElement("path",{d:"M0 0h24v24H0z",fill:"none"})),this.icons.volumeDown=_react2["default"].createElement("svg",{xmlns:"http://www.w3.org/2000/svg",width:"24",height:"24",viewBox:"0 0 24 24"},_react2["default"].createElement("path",{d:"M18.5 12c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM5 9v6h4l5 5V4L9 9H5z",fill:e}),_react2["default"].createElement("path",{d:"M0 0h24v24H0z",fill:"none"})),this.icons.mute=_react2["default"].createElement("svg",{xmlns:"http://www.w3.org/2000/svg",width:"24",height:"24",viewBox:"0 0 24 24"},_react2["default"].createElement("path",{d:"M7 9v6h4l5 5V4l-5 5H7z",fill:e}),_react2["default"].createElement("path",{d:"M0 0h24v24H0z",fill:"none"})),this.icons.subtitles=_react2["default"].createElement("svg",{xmlns:"http://www.w3.org/2000/svg",width:"24",height:"24",viewBox:"0 0 24 24"},_react2["default"].createElement("path",{d:"M0 0h24v24H0z",fill:"none"}),_react2["default"].createElement("path",{d:"M19 4H5c-1.11 0-2 .9-2 2v12c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm-8 7H9.5v-.5h-2v3h2V13H11v1c0 .55-.45 1-1 1H7c-.55 0-1-.45-1-1v-4c0-.55.45-1 1-1h3c.55 0 1 .45 1 1v1zm7 0h-1.5v-.5h-2v3h2V13H18v1c0 .55-.45 1-1 1h-3c-.55 0-1-.45-1-1v-4c0-.55.45-1 1-1h3c.55 0 1 .45 1 1v1z",fill:e})),this.icons.fullscreen=_react2["default"].createElement("svg",{xmlns:"http://www.w3.org/2000/svg",width:"24",height:"24",viewBox:"0 0 24 24"},_react2["default"].createElement("path",{d:"M0 0h24v24H0z",fill:"none"}),_react2["default"].createElement("path",{d:"M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z",fill:e}))}},{key:"componentWillUnmount",value:function(){this.seekbarUpdateTimer&&clearInterval(this.seekbarUpdateTimer)}}]),t}(_react2["default"].Component);Video.propTypes={metaDataLoaded:_react2["default"].PropTypes.func,sources:_react2["default"].PropTypes.array,subtitles:_react2["default"].PropTypes.array,autoPlay:_react2["default"].PropTypes.bool,controls:_react2["default"].PropTypes.bool,autoHideControls:_react2["default"].PropTypes.bool,controlPanelStyle:_react2["default"].PropTypes.oneOf(["overlay","fixed"]),preload:_react2["default"].PropTypes.oneOf(["auto","none","metadata"]),loop:_react2["default"].PropTypes.bool,mute:_react2["default"].PropTypes.bool,poster:_react2["default"].PropTypes.string,width:_react2["default"].PropTypes.string,height:_react2["default"].PropTypes.string,volume:_react2["default"].PropTypes.number},Video.defaultProps={autoPlay:!1,loop:!1,controls:!0,autoHideControls:!0,volume:1,mute:!1,controlPanelStyle:"overlay",preload:"auto"},exports["default"]=Video,module.exports=exports["default"];
+	"use strict";function _interopRequireDefault(e){return e&&e.__esModule?e:{"default":e}}function _classCallCheck(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}function _inherits(e,t){if("function"!=typeof t&&null!==t)throw new TypeError("Super expression must either be null or a function, not "+typeof t);e.prototype=Object.create(t&&t.prototype,{constructor:{value:e,enumerable:!1,writable:!0,configurable:!0}}),t&&(e.__proto__=t)}Object.defineProperty(exports,"__esModule",{value:!0});var _extends=Object.assign||function(e){for(var t=1;t<arguments.length;t++){var a=arguments[t];for(var r in a)Object.prototype.hasOwnProperty.call(a,r)&&(e[r]=a[r])}return e},_createClass=function(){function e(e,t){for(var a=0;a<t.length;a++){var r=t[a];r.enumerable=r.enumerable||!1,r.configurable=!0,"value"in r&&(r.writable=!0),Object.defineProperty(e,r.key,r)}}return function(t,a,r){return a&&e(t.prototype,a),r&&e(t,r),t}}(),_get=function(e,t,a){for(var r=!0;r;){var i=e,l=t,s=a;o=u=n=void 0,r=!1;var o=Object.getOwnPropertyDescriptor(i,l);if(void 0!==o){if("value"in o)return o.value;var n=o.get;return void 0===n?void 0:n.call(s)}var u=Object.getPrototypeOf(i);if(null===u)return void 0;e=u,t=l,a=s,r=!0}},_react=__webpack_require__(75),_react2=_interopRequireDefault(_react),_path=__webpack_require__(862),_path2=_interopRequireDefault(_path),_utilsDateTimeJs=__webpack_require__(863),videoEvents=["play","pause","playing","abort","progress","ratechange","canplay","canplaythrough","durationchange","emptied","ended","loadeddata","loadedmetadata","loadstart","seeked","seeking","stalled","suspend","timeupdate","volumechange","waiting","error","encrypted","mozaudioavailable","interruptbegin","interruptend"],Video=function(e){function t(){var e=this;_classCallCheck(this,t),_get(Object.getPrototypeOf(t.prototype),"constructor",this).call(this),this.api={};var a=["togglePlay","setTime","fullscreen","volume"];a.forEach(function(t){e["_"+t]=e.api[t]=e["_"+t].bind(e)});var r=["metaDataLoaded","timeupdate","durationchange","progress"];r.forEach(function(t){return e["_"+t]=e["_"+t].bind(e)})}return _inherits(t,e),_createClass(t,[{key:"componentDidMount",value:function(){this.$wraper=_react2["default"].findDOMNode(this);var e=this.$video=this.api.$video=_react2["default"].findDOMNode(this.refs.video);e.addEventListener("loadedmetadata",this._metaDataLoaded),e.addEventListener("progress",this._progress),this.props.autoPlay&&!this.seekbarUpdateTimer&&this.seekbarUpdateInterval()}},{key:"_metaDataLoaded",value:function(e){this.props.metaDataLoaded&&"function"==typeof this.props.metaDataLoaded&&this.props.metaDataLoaded(this.api),this.$seekbarWraper=_react2["default"].findDOMNode(this.refs.seekbarWraper),this.setState({duration:_utilsDateTimeJs.formatTime(this.$video.duration)})}},{key:"seekbarUpdateInterval",value:function(){this.seekbarUpdateTimer=setInterval(this._timeupdate,80)}},{key:"_setTime",value:function(e,t){if(!(t&&e>100)){var a=t?e*this.$video.duration/100:e;this.$video.fastSeek?this.$video.fastSeek(a):this.$video.currentTime=a,this.setState({seekProgress:e})}}},{key:"_timeupdate",value:function(e){var t=this.$video.currentTime/this.$video.duration*100,a={seekProgress:t,currentTime:_utilsDateTimeJs.formatTime(this.$video.currentTime)};this.$video.currentTime>=this.$video.duration&&(a.isPlaying=!1),this.setState(a)}},{key:"_durationchange",value:function(){}},{key:"_progress",value:function(e){for(var t=this.$video.buffered,a=0,r=0;r<t.length;r++)a+=t.end(r)-t.start(r);this.setState({loadedProgress:a/this.$video.duration*100})}},{key:"_togglePlay",value:function(){this.seekbarUpdateTimer||this.seekbarUpdateInterval(),this.state.isPlaying?(this.$video.pause(),this.setState({isPlaying:!1})):(this.$video.currentTime>=this.$video.duration&&(this.$video.currentTime=0),this.$video.play(),this.setState({isPlaying:!0}))}},{key:"_fullscreen",value:function(e){for(var t=["requestFullScreen","mozRequestFullScreen","webkitRequestFullscreen","msRequestFullscreen"],a=0;a<t.length;a++)if(this.$video[t[a]])return this.$video[t[a]]()}},{key:"_volume",value:function(e){0>=e&&(e=0),e>1&&(e=1),this.$video.volume=e;var t={volume:e,isMuted:.05>=e?!0:!1};this.setState(t)}},{key:"_setSubtitle",value:function(e){this.$video.textTracks[this.state.activeSubtitle]&&(this.$video.textTracks[this.state.activeSubtitle].mode="disabled"),this.$video.textTracks[e].mode="showing",this.setState({activeSubtitle:e})}},{key:"$getSubtitleTracksMenu",value:function(){var e=this,t=[];if(!this.$video||this.$video.textTracks.length<=0)return t;for(var a=function(a){var r=e.$video.textTracks[a];t.push(_react2["default"].createElement("li",{key:a},_react2["default"].createElement("button",{onClick:function(t){return e._setSubtitle(a)}},r.label)))},r=0;r<this.$video.textTracks.length;r++)a(r);return this.subTitleMenu=_react2["default"].createElement("span",{className:"r5-subtitle"},_react2["default"].createElement("button",null,this.icons.subtitles),_react2["default"].createElement("ul",{className:"r5-subtitle-menu"},t)),this.subTitleMenu}},{key:"$getSubtitleTracks",value:function(e){if(!Array.isArray(e))return"";for(var t=[],a=0;a<e.length;a++){var r=e[a];t.push(_react2["default"].createElement("track",{src:r.src,kind:"subtitles",srclang:r.lang,label:r.label,key:a}))}return t}},{key:"$getSource",value:function(e){if(!Array.isArray(e))return[];for(var t=[],a=0;a<e.length;a++){var r=e[a],i=_path2["default"].extname(r).substr(1);t.push(_react2["default"].createElement("source",{src:r,type:"video/"+i,key:a}))}return t}},{key:"render",value:function(){var e=this,t=this.props,a=t.subtitles,r=t.loop,i=t.autoPlay,l=t.poster,s=t.preload,o=t.sources,n=t.controlPanelStyle,u=t.autoHideControls,c={loop:r,autoPlay:i,poster:l,preload:s},d={},h={},v=this.$video||{},p=this.props.width||v.videoWidth||v.clientWidth,f=this.props.height||v.videoHeight||v.clientHeight;c.width=p,c.height=f,d.width=p+"px",d.height=h.height=f+"px","fixed"==this.props.controlPanelStyle&&(d.height=f+50+"px");var m="r5-controls r5-controls--"+n+" "+(u?"r5-auto-hide":"")+" ";return this.props.controls||(m="r5-controls-hidden"),_react2["default"].createElement("div",{className:"r5-wraper",style:d},_react2["default"].createElement("video",_extends({ref:"video"},c),this.$getSource(o),a&&a.length>0?this.$getSubtitleTracks(a):""),_react2["default"].createElement("div",{className:"r5-overlay",onClick:this._togglePlay},!this.$video||this.$video.currentTime<=0?this.icons.playCircle:""),_react2["default"].createElement("div",{className:"r5-content",style:h},this.props.children),_react2["default"].createElement("div",{className:m},_react2["default"].createElement("div",{className:"r5-seekbar-wraper",ref:"seekbarWraper"},_react2["default"].createElement("div",{className:"r5-seekbar-loaded",ref:"seekbar",style:{width:this.state.loadedProgress+"%"}}),_react2["default"].createElement("div",{className:"r5-seekbar",ref:"loadedbar",style:{width:this.state.seekProgress+"%"}}),_react2["default"].createElement("input",{type:"range",min:"0.0",max:"100.0",step:"0.5",value:this.state.seekProgress,onChange:function(t){return e._setTime(t.target.value,!0)}})),_react2["default"].createElement("div",{className:"r5-panel"},_react2["default"].createElement("button",{className:"r5-play",onClick:this._togglePlay},this.state.isPlaying?this.icons.pause:this.icons.play),_react2["default"].createElement("div",{className:"r5-volume"},_react2["default"].createElement("button",null,this.state.isMuted?this.icons.mute:this.state.volume>.7?this.icons.volumeUp:this.icons.volumeDown),_react2["default"].createElement("div",{className:"r5-volume-inner",style:{width:"80px"}},_react2["default"].createElement("div",{className:"r5-volume-bar",style:{width:100*this.state.volume+"%"}}),_react2["default"].createElement("input",{type:"range",min:"0",max:"1",step:"0.05",value:this.state.volume,onChange:function(t){return e._volume(t.target.value)}}))),_react2["default"].createElement("span",{className:"r5-timecode"},this.state.currentTime+" / "+this.state.duration),_react2["default"].createElement("div",{className:"r5-pull-right"},this.$subTitleMenu||this.$getSubtitleTracksMenu()||"",_react2["default"].createElement("button",{className:"r5-fullscreen",onClick:this._fullscreen},this.icons.fullscreen)))))}},{key:"componentWillMount",value:function(){this.state={isPlaying:this.props.autoPlay?!0:!1,isMuted:!1,currentTime:"00:00",duration:"00:00",loadedProgress:0,seekProgress:0,volume:this.props.volume,activeSubtitle:null};var e="#ffffff";this.icons={},this.icons.play=_react2["default"].createElement("svg",{xmlns:"http://www.w3.org/2000/svg",width:"24",height:"24",viewBox:"0 0 24 24"},_react2["default"].createElement("path",{d:"M8 5v14l11-7z",fill:e}),_react2["default"].createElement("path",{d:"M0 0h24v24H0z",fill:"none"})),this.icons.pause=_react2["default"].createElement("svg",{xmlns:"http://www.w3.org/2000/svg",width:"24",height:"24",viewBox:"0 0 24 24"},_react2["default"].createElement("path",{d:"M6 19h4V5H6v14zm8-14v14h4V5h-4z",fill:e}),_react2["default"].createElement("path",{d:"M0 0h24v24H0z",fill:"none"})),this.icons.playCircle=_react2["default"].createElement("svg",{xmlns:"http://www.w3.org/2000/svg",viewBox:"0 0 24 24"},_react2["default"].createElement("path",{d:"M0 0h24v24H0z",fill:"none"}),_react2["default"].createElement("path",{d:"M10 16.5l6-4.5-6-4.5v9zM12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z",fill:e})),this.icons.volumeUp=_react2["default"].createElement("svg",{xmlns:"http://www.w3.org/2000/svg",width:"24",height:"24",viewBox:"0 0 24 24"},_react2["default"].createElement("path",{d:"M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z",fill:e}),_react2["default"].createElement("path",{d:"M0 0h24v24H0z",fill:"none"})),this.icons.volumeDown=_react2["default"].createElement("svg",{xmlns:"http://www.w3.org/2000/svg",width:"24",height:"24",viewBox:"0 0 24 24"},_react2["default"].createElement("path",{d:"M18.5 12c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM5 9v6h4l5 5V4L9 9H5z",fill:e}),_react2["default"].createElement("path",{d:"M0 0h24v24H0z",fill:"none"})),this.icons.mute=_react2["default"].createElement("svg",{xmlns:"http://www.w3.org/2000/svg",width:"24",height:"24",viewBox:"0 0 24 24"},_react2["default"].createElement("path",{d:"M7 9v6h4l5 5V4l-5 5H7z",fill:e}),_react2["default"].createElement("path",{d:"M0 0h24v24H0z",fill:"none"})),this.icons.subtitles=_react2["default"].createElement("svg",{xmlns:"http://www.w3.org/2000/svg",width:"24",height:"24",viewBox:"0 0 24 24"},_react2["default"].createElement("path",{d:"M0 0h24v24H0z",fill:"none"}),_react2["default"].createElement("path",{d:"M19 4H5c-1.11 0-2 .9-2 2v12c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm-8 7H9.5v-.5h-2v3h2V13H11v1c0 .55-.45 1-1 1H7c-.55 0-1-.45-1-1v-4c0-.55.45-1 1-1h3c.55 0 1 .45 1 1v1zm7 0h-1.5v-.5h-2v3h2V13H18v1c0 .55-.45 1-1 1h-3c-.55 0-1-.45-1-1v-4c0-.55.45-1 1-1h3c.55 0 1 .45 1 1v1z",fill:e})),this.icons.fullscreen=_react2["default"].createElement("svg",{xmlns:"http://www.w3.org/2000/svg",width:"24",height:"24",viewBox:"0 0 24 24"},_react2["default"].createElement("path",{d:"M0 0h24v24H0z",fill:"none"}),_react2["default"].createElement("path",{d:"M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z",fill:e}))}},{key:"componentWillUnmount",value:function(){this.seekbarUpdateTimer&&clearInterval(this.seekbarUpdateTimer)}}]),t}(_react2["default"].Component);Video.propTypes={metaDataLoaded:_react2["default"].PropTypes.func,sources:_react2["default"].PropTypes.array,subtitles:_react2["default"].PropTypes.array,autoPlay:_react2["default"].PropTypes.bool,controls:_react2["default"].PropTypes.bool,autoHideControls:_react2["default"].PropTypes.bool,controlPanelStyle:_react2["default"].PropTypes.oneOf(["overlay","fixed"]),preload:_react2["default"].PropTypes.oneOf(["auto","none","metadata"]),loop:_react2["default"].PropTypes.bool,mute:_react2["default"].PropTypes.bool,poster:_react2["default"].PropTypes.string,width:_react2["default"].PropTypes.string,height:_react2["default"].PropTypes.string,volume:_react2["default"].PropTypes.number},Video.defaultProps={autoPlay:!1,loop:!1,controls:!0,autoHideControls:!0,volume:1,mute:!1,controlPanelStyle:"overlay",preload:"auto"},exports["default"]=Video,module.exports=exports["default"];
 
 /***/ },
-/* 859 */
+/* 862 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {// Copyright Joyent, Inc. and other Node contributors.
@@ -91439,10 +91896,596 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(11)))
 
 /***/ },
-/* 860 */
+/* 863 */
 /***/ function(module, exports) {
 
 	"use strict";Object.defineProperty(exports,"__esModule",{value:!0});var time={};exports["default"]=time,time.formatTime=function(t,e){e=e||t;var o=Math.floor(t%60),r=Math.floor(t/60%60),a=Math.floor(t/3600),f=Math.floor(e/60%60),l=Math.floor(e/3600);return(isNaN(t)||t===1/0)&&(a=r=o="-"),a=a>0||l>0?a+":":"",r=((a||f>=10)&&10>r?"0"+r:r)+":",o=10>o?"0"+o:o,a+r+o},module.exports=exports["default"];
+
+/***/ },
+/* 864 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var _messages = __webpack_require__(233);
+
+	var _messages2 = _interopRequireDefault(_messages);
+
+	var _reactRouter = __webpack_require__(238);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	var host = "ec2-52-48-222-111.eu-west-1.compute.amazonaws.com";
+	//var host = "localhost"
+
+	var React = __webpack_require__(75);
+	var IntlMixin = __webpack_require__(295).IntlMixin;
+	var Select = __webpack_require__(641);
+	var MenuDashboard = __webpack_require__(483);
+	var Footer = __webpack_require__(484);
+	var LanguagesList = __webpack_require__(647);
+	var Loading = __webpack_require__(648);
+	var moment = __webpack_require__(524);
+
+
+	var HeaderProfile = React.createClass({
+		displayName: 'HeaderProfile',
+
+		render: function render() {
+			return React.createElement(
+				'header',
+				{ className: 'header-profile' },
+				React.createElement(
+					'div',
+					{ className: 'imageProfileHeaderBlock' },
+					React.createElement('img', { className: 'imageProfileHeader', src: this.props.profile && this.props.profile.photo_link ? this.props.profile.photo_link : this.props.profile && this.props.profile.gender == "female" ? "image/female_icon.png" : "image/male_icon.png" })
+				),
+				React.createElement(
+					'h2',
+					{ className: 'labelProfileHeader' },
+					this.props.profile ? this.props.profile.given_name + " " + this.props.profile.family_name : ""
+				)
+			);
+		}
+	});
+
+	var MenuProfile = React.createClass({
+		displayName: 'MenuProfile',
+
+		mixins: [IntlMixin],
+		/*<li><a className={this.props.currentEditBlock == 2 ? "currentEditBlock" : ""} onClick={this.props.setEditBlock.bind(null,2)}>{this.getIntlMessage('my_events')}</a></li>*/
+		render: function render() {
+			return React.createElement(
+				'div',
+				{ className: 'navigationInProfile' },
+				React.createElement(
+					'ul',
+					null,
+					React.createElement(
+						'li',
+						null,
+						React.createElement(
+							'a',
+							{ className: this.props.currentEditBlock == 0 ? "currentEditBlock" : "", onClick: this.props.setEditBlock.bind(null, 0) },
+							this.getIntlMessage('generaly')
+						)
+					),
+					React.createElement(
+						'li',
+						null,
+						React.createElement(
+							'a',
+							{ className: this.props.currentEditBlock == 1 ? "currentEditBlock" : "", onClick: this.props.setEditBlock.bind(null, 1) },
+							this.getIntlMessage('languages')
+						)
+					),
+					React.createElement(
+						'li',
+						null,
+						React.createElement(
+							'a',
+							{ className: this.props.currentEditBlock == 2 ? "currentEditBlock" : "" },
+							this.getIntlMessage('events')
+						)
+					)
+				)
+			);
+		}
+	});
+
+	var Information = React.createClass({
+		displayName: 'Information',
+
+		mixins: [IntlMixin],
+		render: function render() {
+			return React.createElement(
+				'div',
+				{ className: 'editblock' },
+				React.createElement(
+					'div',
+					{ className: 'container' },
+					React.createElement(
+						'div',
+						{ className: 'row' },
+						React.createElement(
+							'div',
+							{ className: 'col-md-12' },
+							React.createElement(
+								'h5',
+								{ className: 'contacts_header' },
+								this.getIntlMessage('information')
+							)
+						),
+						React.createElement(
+							'div',
+							{ className: 'col-md-4' },
+							React.createElement(
+								'div',
+								{ className: 'field' },
+								React.createElement(
+									'div',
+									{ className: 'field-title' },
+									this.getIntlMessage('given_name')
+								),
+								React.createElement(
+									'label',
+									null,
+									this.props.profile.given_name
+								)
+							),
+							React.createElement(
+								'div',
+								{ className: 'field' },
+								React.createElement(
+									'div',
+									{ className: 'field-title' },
+									this.getIntlMessage('family_name')
+								),
+								React.createElement(
+									'label',
+									null,
+									this.props.profile.family_name
+								)
+							),
+							React.createElement(
+								'div',
+								{ className: 'field' },
+								React.createElement(
+									'div',
+									{ className: 'field-title' },
+									this.getIntlMessage('gender')
+								),
+								React.createElement(
+									'label',
+									null,
+									this.getIntlMessage(this.props.profile.gender)
+								)
+							),
+							React.createElement(
+								'div',
+								{ className: 'field' },
+								React.createElement(
+									'div',
+									{ className: 'field-title' },
+									this.getIntlMessage('birthday')
+								),
+								React.createElement(
+									'label',
+									null,
+									moment(new Date(this.props.profile.birthday)).format("DD.MM.YYYY")
+								)
+							)
+						),
+						React.createElement(
+							'div',
+							{ className: 'col-md-4' },
+							React.createElement(
+								'div',
+								{ className: 'field' },
+								React.createElement(
+									'div',
+									{ className: 'field-title' },
+									this.getIntlMessage('country')
+								),
+								React.createElement(
+									'label',
+									null,
+									this.props.profile.country
+								)
+							),
+							React.createElement(
+								'div',
+								{ className: 'field' },
+								React.createElement(
+									'div',
+									{ className: 'field-title' },
+									this.getIntlMessage('city')
+								),
+								React.createElement(
+									'label',
+									null,
+									this.props.profile.city
+								)
+							),
+							React.createElement(
+								'div',
+								{ className: 'field' },
+								React.createElement(
+									'div',
+									{ className: 'field-title' },
+									this.getIntlMessage('education')
+								),
+								React.createElement(
+									'label',
+									null,
+									this.props.profile.education
+								)
+							),
+							React.createElement(
+								'div',
+								{ className: 'field' },
+								React.createElement(
+									'div',
+									{ className: 'field-title' },
+									this.getIntlMessage('occupation')
+								),
+								React.createElement(
+									'label',
+									null,
+									this.props.profile.occupation
+								)
+							)
+						),
+						React.createElement(
+							'div',
+							{ className: 'col-md-4' },
+							React.createElement(
+								'div',
+								{ className: 'field' },
+								React.createElement(
+									'div',
+									{ className: 'field-title' },
+									this.getIntlMessage('about_self')
+								),
+								React.createElement(
+									'label',
+									null,
+									this.props.profile.about_me
+								)
+							)
+						)
+					),
+					React.createElement(
+						'div',
+						{ className: 'row' },
+						React.createElement(
+							'div',
+							{ className: 'col-md-12' },
+							React.createElement(
+								'h5',
+								{ className: 'contacts_header' },
+								this.getIntlMessage('contacts')
+							)
+						),
+						React.createElement(
+							'div',
+							{ className: 'field', style: { marginTop: '30px' } },
+							React.createElement(
+								'div',
+								{ className: 'col-md-3' },
+								React.createElement(
+									'div',
+									{ className: 'form-group' },
+									React.createElement(
+										'div',
+										{ className: 'input-group' },
+										React.createElement(
+											'div',
+											{ className: 'input-group-addon' },
+											'VK'
+										),
+										React.createElement('input', { type: 'text', disabled: 'disabled', className: 'form-control-bootstrap', style: { borderRadius: '0 4px 4px 0' }, id: 'exampleInputAmount', placeholder: 'VKontakte', value: this.props.profile.contactsVkontakte })
+									)
+								)
+							),
+							React.createElement(
+								'div',
+								{ className: 'col-md-3' },
+								React.createElement(
+									'div',
+									{ className: 'form-group' },
+									React.createElement(
+										'div',
+										{ className: 'input-group' },
+										React.createElement(
+											'div',
+											{ className: 'input-group-addon' },
+											'F'
+										),
+										React.createElement('input', { type: 'text', disabled: 'disabled', className: 'form-control-bootstrap', style: { borderRadius: '0 4px 4px 0' }, id: 'exampleInputAmount', placeholder: 'Facebook', value: this.props.profile.contactsFacebook })
+									)
+								)
+							),
+							React.createElement(
+								'div',
+								{ className: 'col-md-3' },
+								React.createElement(
+									'div',
+									{ className: 'form-group' },
+									React.createElement(
+										'div',
+										{ className: 'input-group' },
+										React.createElement(
+											'div',
+											{ className: 'input-group-addon' },
+											'S'
+										),
+										React.createElement('input', { type: 'text', disabled: 'disabled', className: 'form-control-bootstrap', style: { borderRadius: '0 4px 4px 0' }, id: 'exampleInputAmount', placeholder: 'Skype', value: this.props.profile.contactsSkype })
+									)
+								)
+							),
+							React.createElement(
+								'div',
+								{ className: 'col-md-3' },
+								React.createElement(
+									'div',
+									{ className: 'form-group' },
+									React.createElement(
+										'div',
+										{ className: 'input-group' },
+										React.createElement(
+											'div',
+											{ className: 'input-group-addon' },
+											'E'
+										),
+										React.createElement('input', { type: 'text', disabled: 'disabled', className: 'form-control-bootstrap', style: { borderRadius: '0 4px 4px 0' }, id: 'exampleInputAmount', placeholder: 'E-mail', value: this.props.profile.contactsEmail })
+									)
+								)
+							)
+						)
+					)
+				)
+			);
+		}
+	});
+
+	var Languages = React.createClass({
+		displayName: 'Languages',
+
+		mixins: [IntlMixin],
+		render: function render() {
+			var langs = [];
+			this.props.profile.student_languages.forEach(function (el) {
+				langs.push({
+					language: el.language,
+					student: true,
+					teacher: false,
+					level: el.level
+				});
+			});
+			this.props.profile.teacher_languages.forEach(function (el) {
+				var newLang = true;
+				for (var i = 0; i < langs.length; i++) {
+					if (langs[i].language == el.language) {
+						newLang = false;
+						langs[i].teacher = true;
+					}
+				}
+				if (newLang) langs.push({
+					language: el.language,
+					student: false,
+					teacher: true,
+					level: el.level
+				});
+			});
+			var self = this;
+			var langs_list = langs.map(function (el, i) {
+				var labl = LanguagesList[langs[i].language];
+				return React.createElement(
+					'div',
+					{ className: 'row languageBlock addLanguageBlock', key: "lang" + i },
+					React.createElement(
+						'div',
+						{ className: 'col-md-11' },
+						React.createElement(
+							'h2',
+							null,
+							labl.name + " (" + labl.nativeName + ")"
+						)
+					),
+					React.createElement(
+						'div',
+						{ className: 'col-md-4' },
+						React.createElement(
+							'div',
+							{ className: 'checkbox' },
+							React.createElement(
+								'label',
+								null,
+								React.createElement('input', { type: 'checkbox', checked: langs[i].student }),
+								self.getIntlMessage('i_want_to_learn_language')
+							)
+						),
+						React.createElement(
+							'div',
+							{ className: 'checkbox' },
+							React.createElement(
+								'label',
+								null,
+								React.createElement('input', { type: 'checkbox', checked: langs[i].teacher }),
+								self.getIntlMessage('i_can_help_you_learn_the_language')
+							)
+						)
+					),
+					React.createElement(
+						'div',
+						{ className: 'col-md-8' },
+						React.createElement(
+							'div',
+							{ className: 'field-title' },
+							self.getIntlMessage('language_proficiency_level')
+						),
+						React.createElement(
+							'div',
+							{ className: 'btn-group btn-block display-only', 'data-toggle': 'buttons' },
+							React.createElement(
+								'label',
+								{ className: "btn btn-secondary" + (langs[i].level == 0 ? " active" : ""), disabled: langs[i].level != 0 },
+								React.createElement('input', { type: 'radio', name: 'options', id: 'option1', autoComplete: 'off' }),
+								' A1'
+							),
+							React.createElement(
+								'label',
+								{ className: "btn btn-secondary" + (langs[i].level == 1 ? " active" : ""), disabled: langs[i].level != 1 },
+								React.createElement('input', { type: 'radio', name: 'options', id: 'option2', autoComplete: 'off' }),
+								' A2'
+							),
+							React.createElement(
+								'label',
+								{ className: "btn btn-secondary" + (langs[i].level == 2 ? " active" : ""), disabled: langs[i].level != 2 },
+								React.createElement('input', { type: 'radio', name: 'options', id: 'option2', autoComplete: 'off' }),
+								' B1'
+							),
+							React.createElement(
+								'label',
+								{ className: "btn btn-secondary" + (langs[i].level == 3 ? " active" : ""), disabled: langs[i].level != 3 },
+								React.createElement('input', { type: 'radio', name: 'options', id: 'option1', autoComplete: 'off' }),
+								' B2'
+							),
+							React.createElement(
+								'label',
+								{ className: "btn btn-secondary" + (langs[i].level == 4 ? " active" : ""), disabled: langs[i].level != 4 },
+								React.createElement('input', { type: 'radio', name: 'options', id: 'option2', autoComplete: 'off' }),
+								' C1'
+							),
+							React.createElement(
+								'label',
+								{ className: "btn btn-secondary" + (langs[i].level == 5 ? " active" : ""), disabled: langs[i].level != 5 },
+								React.createElement('input', { type: 'radio', name: 'options', id: 'option2', autoComplete: 'off' }),
+								' C2'
+							),
+							React.createElement(
+								'label',
+								{ className: "btn btn-secondary" + (langs[i].level == 6 ? " active" : ""), disabled: langs[i].level != 6 },
+								React.createElement('input', { type: 'radio', name: 'options', id: 'option2', autoComplete: 'off' }),
+								' ',
+								self.getIntlMessage('native_language')
+							)
+						)
+					)
+				);
+			});
+			return React.createElement(
+				'div',
+				{ className: 'editblock' },
+				React.createElement(
+					'div',
+					{ className: 'container' },
+					langs_list
+				)
+			);
+		}
+	});
+
+	var User = React.createClass({
+		displayName: 'User',
+
+
+		getInitialState: function getInitialState() {
+			var locale = navigator.language.split('-');
+			locale = localStorage.getItem('userLocale') ? localStorage.getItem('userLocale') : locale[1] ? locale[0] + '-' + locale[1].toUpperCase() : navigator.language;
+			var strings = _messages2.default[locale] ? _messages2.default[locale] : _messages2.default['en'];
+
+			return {
+				currentLocale: locale,
+				messages: strings,
+				editblock: 0,
+				profile: null
+			};
+		},
+		componentWillMount: function componentWillMount() {
+			this.setupAjax();
+		},
+		setupAjax: function setupAjax() {
+			$.ajaxSetup({
+				'beforeSend': function beforeSend(xhr) {
+					if (localStorage.getItem('userToken')) {
+						xhr.setRequestHeader('Authorization', 'Bearer ' + localStorage.getItem('userToken'));
+					}
+				}
+			});
+		},
+		componentDidMount: function componentDidMount() {
+			$.ajax({
+				url: 'http://' + host + '/secured/user?user_id=' + this.props.location.query.id,
+				method: 'GET'
+			}).then(function (data, textStatus, jqXHR) {
+				this.setState({ profile: data });
+			}.bind(this), function (err) {
+				alert(err);
+			});
+			setTimeout(function () {
+				$('body').scrollspy({ target: '.navbar-fixed-top', offset: 60 });
+				$('#topNav').affix({ offset: { top: 50 } });
+				new WOW().init();
+			}, 500);
+		},
+
+		setCurrentLocale: function setCurrentLocale(locale) {
+			localStorage.setItem('userLocale', locale);
+			var strings = _messages2.default[locale] ? _messages2.default[locale] : _messages2.default['en'];
+			this.setState({
+				currentLocale: locale,
+				messages: strings
+			});
+		},
+
+		setEditBlock: function setEditBlock(block) {
+			this.setState({ editblock: block });
+		},
+
+		render: function render() {
+			return React.createElement(
+				'div',
+				null,
+				React.createElement(MenuDashboard, {
+					messages: this.state.messages,
+					currentLocale: this.state.currentLocale,
+					supportedLocales: _messages2.default.supportLanguages,
+					setCurrentLocale: this.setCurrentLocale }),
+				React.createElement(HeaderProfile, {
+					profile: this.state.profile }),
+				React.createElement(MenuProfile, {
+					messages: this.state.messages,
+					setEditBlock: this.setEditBlock,
+					currentEditBlock: this.state.editblock }),
+				this.state.profile == null ? React.createElement(
+					'div',
+					{ className: 'row vertical-align', style: { margin: 0 } },
+					React.createElement(
+						'div',
+						{ className: 'col-md-12', style: { minHeight: '50%', padding: '0', background: '#f9f9f9' } },
+						React.createElement(Loading, { type: 'bubbles', color: '#9C27B0' })
+					)
+				) : React.createElement(
+					'div',
+					null,
+					this.state.editblock == 0 && React.createElement(Information, {
+						messages: this.state.messages,
+						profile: this.state.profile,
+						submitGeneralInfo: this.submitGeneralInfo }),
+					this.state.editblock == 1 && React.createElement(Languages, {
+						messages: this.state.messages,
+						profile: this.state.profile,
+						submitLanguages: this.submitLanguages })
+				),
+				React.createElement(Footer, {
+					messages: this.state.messages })
+			);
+		}
+	});
+
+	module.exports = User;
 
 /***/ }
 /******/ ]);
