@@ -27007,7 +27007,7 @@
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	var host = "ec2-52-48-222-111.eu-west-1.compute.amazonaws.com";
+	var host = "ec2-52-30-233-144.eu-west-1.compute.amazonaws.com";
 	//var host = "localhost"
 
 	var React = __webpack_require__(75);
@@ -56437,7 +56437,7 @@
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	var host = "ec2-52-48-222-111.eu-west-1.compute.amazonaws.com";
+	var host = "ec2-52-30-233-144.eu-west-1.compute.amazonaws.com";
 	//var host = "localhost"
 
 	var React = __webpack_require__(75);
@@ -90448,7 +90448,7 @@
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	var host = "ec2-52-48-222-111.eu-west-1.compute.amazonaws.com";
+	var host = "ec2-52-30-233-144.eu-west-1.compute.amazonaws.com";
 	//var host = "localhost"
 
 	var React = __webpack_require__(75);
@@ -91228,7 +91228,7 @@
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	var host = "ec2-52-48-222-111.eu-west-1.compute.amazonaws.com";
+	var host = "ec2-52-30-233-144.eu-west-1.compute.amazonaws.com";
 	//var host = "localhost"
 
 	var React = __webpack_require__(75);
@@ -91915,7 +91915,7 @@
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	var host = "ec2-52-48-222-111.eu-west-1.compute.amazonaws.com";
+	var host = "ec2-52-30-233-144.eu-west-1.compute.amazonaws.com";
 	//var host = "localhost"
 
 	var React = __webpack_require__(75);
