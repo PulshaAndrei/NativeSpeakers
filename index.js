@@ -8,7 +8,7 @@ import App from './modules/App'
 import { Router, Route, hashHistory } from 'react-router'
 
 render((
-	<Router history={hashHistory}>
+	<Router onUpdate={() => window.scrollTo(0, 0)} history={hashHistory}>
 		<Route path="/" component={App}/>
 		<Route path="/dashboard" component={Dashboard}/>
 		<Route path="/profile" component={Profile}/>

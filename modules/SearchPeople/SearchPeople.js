@@ -17,6 +17,11 @@ var Header = React.createClass({
 	mixins: [IntlMixin],
 	render: function render (){
 		return <header style={{minHeight: '30%'}}>
+			<div className="header-content">
+				<div className="inner">
+					<h1 className="cursive">Native Speakers</h1>
+				</div>
+			</div>
 		</header>
 	}
 });
@@ -37,20 +42,22 @@ var SearchResults = React.createClass({
 			var stud_lang = "";
 			var teach_lang = "";
 			el.languages.forEach(function(el, i) {
-				if (el.student) stud_lang += (i == 0 ? "" : ", ") + LanguagesList[el.language].nativeName;
-				if (el.teacher) teach_lang += (i == 0 ? "" : ", ") + LanguagesList[el.language].nativeName;
+				if (el.student) stud_lang += ", " + LanguagesList[el.language].nativeName;
+				if (el.teacher) teach_lang += ", " + LanguagesList[el.language].nativeName;
 			});
+			stud_lang = stud_lang.substring(2);
+			teach_lang = teach_lang.substring(2);
 			if (i>=(self.state.activePage-1)*3 && i<=self.state.activePage*3-1)
 			return <div className="row listPeople" key={"listpeople"+i}>
-				<div className="col-md-3 imageSearchPeople">
+				<div className="col-md-3 col-sm-3 col-xs-12 imageSearchPeople">
 					<a href={"#user?id="+el.user_id} className="hrefTouser">
 						<img src={el.photo_link ? el.photo_link : (el.gender == "female" ? "image/female_icon.png" : "image/male_icon.png")} className="img-responsive pull-left"/>
 					</a>
 				</div>
-				<div className="col-md-9">
+				<div className="col-md-9 col-sm-9 col-xs-12">
 					<a href={"#user?id="+el.user_id} className="hrefTouser"><h2>{el.given_name + " " + el.family_name}</h2></a>
 					<p style={{marginBottom: '5px'}}><b>{self.getIntlMessage('studying_languages')+": "}</b> {stud_lang}</p>
-					<p><b>{self.getIntlMessage('fluenting_languages')+"; "}</b> {teach_lang}</p>
+					<p><b>{self.getIntlMessage('fluenting_languages')+": "}</b> {teach_lang}</p>
 				</div>
 			</div>
 		});
@@ -119,7 +126,7 @@ var Search = React.createClass({
 		});
 		return <div className="container-fluid">
 			<div className="row">
-				<div className="col-sm-12 col-md-4 parametrsSearch" style={{zIndex: 1}}>
+				<div className="col-sm-12 col-xs-12 col-md-4 parametrsSearch" style={{zIndex: 1}}>
 					<h2>{this.getIntlMessage('search_people')}</h2>
 					<div>
 						<div className="field-title">{this.getIntlMessage('language')}</div>
@@ -167,23 +174,23 @@ var Search = React.createClass({
 					</div>
 				</div>
 				{this.state.loading && 
-					<div className="col-sm-12 col-md-8" style={{paddingRight: 0, background: '#f9f9f9'}}>
+					<div className="col-sm-12 col-md-8 col-xs-12" style={{paddingRight: 0, background: '#f9f9f9'}}>
 						<div className="row vertical-align" style={{margin: 0, position:'relative'}}>
-							<div className="col-md-12" style={{minHeight: '80%', padding: '0'}}>
+							<div className="col-md-12 col-xs-12" style={{minHeight: '80%', padding: '0'}}>
 								<Loading type='bubbles' color='#9C27B0' />
 							</div>
 						</div>
 					</div>}
 				{this.state.no_result && 
-					<div className="col-sm-12 col-md-8" style={{paddingRight: 0, background: '#f9f9f9'}}>
+					<div className="col-sm-12 col-md-8 col-xs-12" style={{paddingRight: 0, background: '#f9f9f9'}}>
 						<div className="row vertical-align" style={{margin: 0, position:'relative'}}>
-							<div className="col-md-12" style={{minHeight: '80%', padding: '0'}}>
+							<div className="col-md-12 col-xs-12" style={{minHeight: '80%', padding: '0'}}>
 								<h4>{this.getIntlMessage('no_results_found')}</h4>
 							</div>
 						</div>
 					</div>}
 				{this.state.results && this.state.results.length>0 &&
-					<div className="col-sm-12 col-md-8" style={{background: '#f9f9f9'}}>
+					<div className="col-sm-12 col-md-8 col-xs-12" style={{background: '#f9f9f9'}}>
 						<div className="listPeopleDiv">
 							<SearchResults 
 								messages={this.state.messages} 

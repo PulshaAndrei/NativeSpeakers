@@ -17,7 +17,9 @@ var Header = React.createClass({
 					<h1 className="cursive">Native Speakers</h1>
 					<h4>"The limits of my language are the limits of my world." ‒ Ludwig Wittgenstein</h4>
 					<br />
-					<a className="btn btn-primary btn-xl header-link" href="#/search_people">{this.getIntlMessage('search_people')}</a><span> &nbsp;&nbsp;&nbsp; </span>
+					<a className="btn btn-primary btn-xl header-link" href="#/search_people">{this.getIntlMessage('search_people')}</a>
+					<span className="hidden-xs"> &nbsp;&nbsp;&nbsp; </span>
+					<div className="visible-xs-block" style={{height: '25px'}}></div>
 					<a className="btn btn-primary btn-xl header-link" href="#/dashboard">{this.getIntlMessage('search_events')}</a>
 				</div>
 			</div>
@@ -28,19 +30,23 @@ var Header = React.createClass({
 var PopularPeople = React.createClass({
 	mixins: [IntlMixin],
 	render() {
-		var array = [{}, {}, {}];
+		var array = [
+			{user_id: 'facebook|785087798288631', country_image:'image/belarus.jpg', given_name: "Андрей", family_name: 'Пульша', photo_link: 'https://s3-eu-west-1.amazonaws.com/nativespeakers/facebook|785087798288631'}, 
+			{user_id: 'facebook|785087798288631', country_image:'image/russia.jpg', given_name: "Russia", family_name: '', photo_link: 'image/male_icon.png'}, 
+			{user_id: 'facebook|785087798288631', country_image:'image/english.jpg', given_name: "English", family_name: '', photo_link: 'image/female_icon.png'}];
+		var self = this;
 		var users = array.map(function(el,i) {
-			return <div className="col-md-4" key={"usersDash"+i}>
+			return <div className={"col-md-4 col-sm-6"+(i == 2 ? " hidden-sm" : "")} key={"usersDash"+i}>
 						<div className="userTeam">
 							<div>
-								<img className="backgroundTeam" src="image/english.jpg"/>
+								<img className="backgroundTeam" src={el.country_image}/>
 								<div className="userImageTeam">
-									<img src="image/male_icon.png" />
+									<img src={el.photo_link ? el.photo_link : (el.gender == "female" ? "image/female_icon.png" : "image/male_icon.png")} />
 								</div>
 							</div>
 							<div className="userInfoTeam">
-								<h2>Имя пользователя</h2>
-								<button className="btn btn-blue-fill">Познакомиться</button> 
+								<h2>{el.given_name+" "+el.family_name}</h2>
+								<a href={"#/user?id="+el.user_id} className="btn btn-blue-fill" style={{lineHeight: '34px'}}>{self.getIntlMessage('become_acquainted')}</a> 
 							</div>
 						</div>
 					</div>;
@@ -48,8 +54,8 @@ var PopularPeople = React.createClass({
 
 		return <section className="teamDashboard">
 			<div className="container text-center">
-				<h1 className="text-primary">Найди команду</h1>
-				<h4>Работа в тандеме с носителем языка - лучший способ изучить его</h4>
+				<h1 className="text-primary">{this.getIntlMessage('find_command')}</h1>
+				<h4>{this.getIntlMessage('working_in_tandem_with_a_native_speaker_the_best_way_to_explore_it')}</h4>
 				<div className="row" style={{marginTop: '45px'}}>
 					{users}
 				</div>

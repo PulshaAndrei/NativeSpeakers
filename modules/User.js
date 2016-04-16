@@ -29,11 +29,17 @@ var MenuProfile = React.createClass({
 	/*<li><a className={this.props.currentEditBlock == 2 ? "currentEditBlock" : ""} onClick={this.props.setEditBlock.bind(null,2)}>{this.getIntlMessage('my_events')}</a></li>*/
 	render: function render() {
 		return <div className="navigationInProfile">
-			<ul>
+			<h2 className="text-center visible-xs-block" style={{marginTop: '50px'}}>{this.props.profile ? this.props.profile.given_name+" "+this.props.profile.family_name : ""}</h2>
+			<ul className="hidden-xs">
 				<li><a className={this.props.currentEditBlock == 0 ? "currentEditBlock" : ""} onClick={this.props.setEditBlock.bind(null,0)}>{this.getIntlMessage('generaly')}</a></li>
 				<li><a className={this.props.currentEditBlock == 1 ? "currentEditBlock" : ""} onClick={this.props.setEditBlock.bind(null,1)}>{this.getIntlMessage('languages')}</a></li>
-				<li><a className={this.props.currentEditBlock == 2 ? "currentEditBlock" : ""}>{this.getIntlMessage('events')}</a></li>
+				<li><a className={this.props.currentEditBlock == 2 ? "currentEditBlock" : ""}>{this.getIntlMessage('my_events')}</a></li>
 			</ul> 
+			<div className="visible-xs-block mobNavInProfile">
+				<a className={this.props.currentEditBlock == 0 ? "currentEditBlock" : ""} onClick={this.props.setEditBlock.bind(null,0)}>{this.getIntlMessage('generaly')}</a>
+				<a className={this.props.currentEditBlock == 1 ? "currentEditBlock" : ""} onClick={this.props.setEditBlock.bind(null,1)}>{this.getIntlMessage('languages')}</a>
+				<a className={this.props.currentEditBlock == 2 ? "currentEditBlock" : ""}>{this.getIntlMessage('my_events')}</a>
+			</div>
 		</div>
 	}
 });
@@ -284,6 +290,7 @@ var User = React.createClass({
 				profile={this.state.profile} />
 			<MenuProfile
 				messages={this.state.messages} 
+				profile={this.state.profile}
 				setEditBlock={this.setEditBlock}
 				currentEditBlock={this.state.editblock} />
 			{this.state.profile == null

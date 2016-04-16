@@ -36,7 +36,7 @@ var MenuDashboard = React.createClass({
 							<a href="#search_people">{this.getIntlMessage('search_people')}</a>
 						</li>
 						<li>
-							<a href="#">{this.getIntlMessage('events')}</a>
+							<a>{this.getIntlMessage('events')}</a>
 						</li>
 					</ul>
 					<ul className="nav navbar-nav navbar-right">

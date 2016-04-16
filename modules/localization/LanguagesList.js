@@ -16,7 +16,7 @@ var LanguagesList = [
       {"code":"bm","name":"Bambara","nativeName":"bamanankan"},
       {"code":"ba","name":"Bashkir","nativeName":"башҡорт теле"},
       {"code":"eu","name":"Basque","nativeName":"euskara, euskera"},
-      {"code":"be","name":"Belarusian","nativeName":"Беларуская"},
+      {"code":"be","name":"Belarusian","nativeName":"Беларуская мова"},
       {"code":"bn","name":"Bengali","nativeName":"বাংলা"},
       {"code":"bh","name":"Bihari","nativeName":"भोजपुरी"},
       {"code":"bi","name":"Bislama","nativeName":"Bislama"},

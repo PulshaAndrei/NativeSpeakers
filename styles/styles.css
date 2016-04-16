@@ -199,7 +199,6 @@ video{
 }
 .navigationInProfile {
     background: white;
-    height: 50px;
     border-bottom: 1px solid #f1f1f1;
 }
 .navigationInProfile ul {
@@ -207,7 +206,7 @@ video{
     list-style: none;
     padding-left: 0;
     margin-bottom: 0;
-    height: 100%;
+    height: 48px;
 }
 .navigationInProfile li:first-child {
     margin-left: 0;
@@ -232,6 +231,12 @@ video{
     color: black!important;
     padding-bottom: 13px!important;
     border-bottom: black 1px solid;
+}
+.mobNavInProfile{
+    padding: 0 35px;
+}
+.mobNavInProfile .currentEditBlock{
+    border: none;
 }
 .editblock {
     background: #f9f9f9;
@@ -324,9 +329,11 @@ video{
 .languageBlock .btn-group label{
     line-height: 22px;
     width: 10%;
+    min-width: 50px;
 }
 .languageBlock .btn-group label:last-child{
     width: 40%;
+    min-width: 110px;
 }
 .languageBlock .btn-group label.active, .field-radio label.active{
     background: #e6e6e6;
@@ -372,6 +379,7 @@ video{
     width: 180px;
     margin-right: 15px;
     border-radius: 100%;
+    box-shadow: 0 0 10px rgba(0,0,0,0.5);
 }
 .userTeam {
     position: relative;
@@ -379,6 +387,7 @@ video{
     /*box-shadow: 0 2px 3px rgba(0, 0, 0, 0.07);*/
     box-shadow: 1px 2px 8px rgba(0,0,0,0.2);
     border-radius: 4px;
+    margin-bottom: 20px;
 }
 .userInfoTeam {
     padding: 0 25px 40px 25px;
@@ -453,7 +462,7 @@ video{
     background: #fff;
     box-shadow: 1px 2px 8px rgba(0,0,0,0.2);
     border-radius: 5px;
-    padding: 25px 40px;
+    padding: 25px;
     margin-bottom: 25px;
 }
 .listPeopleDiv{
@@ -461,6 +470,28 @@ video{
 }
 @media(max-width:640px){
     .listPeopleDiv{
+        padding: 20px;
+    }
+    .listPeople{
+        padding: 25px 20px;
+    }
+}
+@media(max-width: 767px){
+    .hrefTouser{
+        text-align: center;
+    }
+    .hrefTouser img{
+        float: none!important;
+        margin: 0 auto;
+    }
+    .imageProfileHeaderBlock{
+        left:0;
+        width: 100%;
+    }
+    .labelProfileHeader{
+        display: none;
+    }
+    .languageBlock{
         padding: 20px;
     }
 }

@@ -103,7 +103,7 @@ var EditLanguages = React.createClass({
 		var langs_list = this.state.langs.map(function(el, i){
 			var labl = LanguagesList[self.state.langs[i].language];
 			return <div className="row languageBlock addLanguageBlock" key={"lang"+i}>
-					<div className="col-md-11"><h2>{labl.name + " (" + labl.nativeName + ")"}</h2></div>
+					<div className="col-md-11 col-xs-11"><h2>{labl.name + " (" + labl.nativeName + ")"}</h2></div>
 					<div className="col-md-1 removeLangButton" onClick={self.removeLang.bind(null,i)}></div>
 					<div className="col-md-4">
 						<div className="field-title">{self.getIntlMessage('language')}</div>
@@ -162,7 +162,7 @@ var EditLanguages = React.createClass({
 			<div className="container">
 				{langs_list}
 				<div className="row languageBlock addLanguageBlock">
-					<div className="col-md-4">
+					<div className="col-md-4 col-xs-11">
 						<div className="field-title">{self.getIntlMessage('language')}</div>
 						<Select
 						    value={this.state.currentLang.language}
@@ -216,7 +216,8 @@ var EditLanguages = React.createClass({
 							<div className="levelDescription">{this.getIntlMessage("level_"+this.state.currentLang.level)}</div>}
 					</div>
 					<div className="col-md-12 text-center">
-						<button type="button" className="btn btn-info btn-lg" style={{minWidth: '280px', marginTop: '10px'}} onClick={this.addLanguage}>{self.getIntlMessage('add_language')}</button>
+						<button type="button" className="btn btn-info btn-lg hidden-xs" style={{minWidth: '280px', marginTop: '10px'}} onClick={this.addLanguage}>{self.getIntlMessage('add_language')}</button>
+						<button type="button" className="btn btn-info btn-lg visible-xs-inline" style={{width: '100%', marginTop: '10px'}} onClick={this.addLanguage}>{self.getIntlMessage('add_language')}</button>
 					</div>
 				</div>
 				<div className="row text-center" style={{marginTop: '20px'}}>

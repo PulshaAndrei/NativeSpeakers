@@ -71,5 +71,8 @@
   "does_not_matter":"Не важно",
   "from":"от",
   "to":"до",
-  "about_self":"О себе"
+  "about_self":"О себе",
+  "become_acquainted":"Познакомиться",
+  "find_command":"Найди команду",
+  "working_in_tandem_with_a_native_speaker_the_best_way_to_explore_it":"Работа в тандеме с носителем языка - лучший способ изучить его"
 }
