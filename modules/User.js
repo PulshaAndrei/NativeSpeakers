@@ -10,7 +10,8 @@ var LanguagesList = require('./localization/LanguagesList');
 var Loading = require('react-loading');
 var moment = require('moment');
 import messages from './localization/messages';
-import { browserHistory } from 'react-router'
+import { browserHistory } from 'react-router';
+import AlertContainer from 'react-alert';
 
 var HeaderProfile = React.createClass({
 	render: function render() {
@@ -33,12 +34,10 @@ var MenuProfile = React.createClass({
 			<ul className="hidden-xs">
 				<li><a className={this.props.currentEditBlock == 0 ? "currentEditBlock" : ""} onClick={this.props.setEditBlock.bind(null,0)}>{this.getIntlMessage('generaly')}</a></li>
 				<li><a className={this.props.currentEditBlock == 1 ? "currentEditBlock" : ""} onClick={this.props.setEditBlock.bind(null,1)}>{this.getIntlMessage('languages')}</a></li>
-				<li><a className={this.props.currentEditBlock == 2 ? "currentEditBlock" : ""}>{this.getIntlMessage('my_events')}</a></li>
 			</ul> 
 			<div className="visible-xs-block mobNavInProfile">
 				<a className={this.props.currentEditBlock == 0 ? "currentEditBlock" : ""} onClick={this.props.setEditBlock.bind(null,0)}>{this.getIntlMessage('generaly')}</a>
 				<a className={this.props.currentEditBlock == 1 ? "currentEditBlock" : ""} onClick={this.props.setEditBlock.bind(null,1)}>{this.getIntlMessage('languages')}</a>
-				<a className={this.props.currentEditBlock == 2 ? "currentEditBlock" : ""}>{this.getIntlMessage('my_events')}</a>
 			</div>
 		</div>
 	}
@@ -251,13 +250,14 @@ var User = React.createClass({
 		});
 	},
 	componentDidMount: function componentDidMount() {
+		var self = this;
 		$.ajax({
 			url: 'http://'+host+'/secured/user?user_id='+this.props.location.query.id,
 			method: 'GET'
 		}).then(function (data, textStatus, jqXHR) {
 			this.setState({ profile: data });
 		}.bind(this), function (err) {
-			alert(err);
+			self.showAlertError(err.statusText);
 		});
 		setTimeout(function(){
 			$('body').scrollspy({target:'.navbar-fixed-top',offset:60});
@@ -279,6 +279,13 @@ var User = React.createClass({
 		this.setState({editblock: block})
 	},
 
+	showAlertError(err){
+	    this.msg.show('Error: '+err, {
+	      time: 2000,
+	      type: 'error',
+	      icon: <img src="image/icon_error.png" />
+	    });
+	},
 	render: function render() {
 		return <div>
 			<MenuDashboard
@@ -314,6 +321,13 @@ var User = React.createClass({
 			}
 			<Footer 
 				messages={this.state.messages} />
+			<AlertContainer 
+				ref={a => this.msg = a} 
+				offset={0}
+				position='bottom left'
+				theme='dark'      
+				time={5000}
+				transition='scale' />
 		</div>
 	}
 })

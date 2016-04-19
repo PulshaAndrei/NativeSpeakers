@@ -9,6 +9,7 @@ var EditLanguages = require('./EditLanguages');
 var Loading = require('react-loading');
 import messages from './../localization/messages';
 import { browserHistory } from 'react-router';
+import AlertContainer from 'react-alert';
 
 var MenuDashboard = require('./../elements/MenuDashboard');
 var HeaderProfile = require('./../elements/HeaderProfile');
@@ -22,12 +23,10 @@ var MenuProfile = React.createClass({
 			<ul className="hidden-xs">
 				<li><a className={this.props.currentEditBlock == 0 ? "currentEditBlock" : ""} onClick={this.props.setEditBlock.bind(null,0)}>{this.getIntlMessage('generaly')}</a></li>
 				<li><a className={this.props.currentEditBlock == 1 ? "currentEditBlock" : ""} onClick={this.props.setEditBlock.bind(null,1)}>{this.getIntlMessage('languages')}</a></li>
-				<li><a className={this.props.currentEditBlock == 2 ? "currentEditBlock" : ""}>{this.getIntlMessage('my_events')}</a></li>
 			</ul> 
 			<div className="visible-xs-block mobNavInProfile">
 				<a className={this.props.currentEditBlock == 0 ? "currentEditBlock" : ""} onClick={this.props.setEditBlock.bind(null,0)}>{this.getIntlMessage('generaly')}</a>
 				<a className={this.props.currentEditBlock == 1 ? "currentEditBlock" : ""} onClick={this.props.setEditBlock.bind(null,1)}>{this.getIntlMessage('languages')}</a>
-				<a className={this.props.currentEditBlock == 2 ? "currentEditBlock" : ""}>{this.getIntlMessage('my_events')}</a>
 			</div>
 		</div>
 	}
@@ -91,32 +90,35 @@ var Profile = React.createClass({
 	},
 
 	submitGeneralInfo: function submitGeneralInfo(profile) {
+		var self = this;
 		$.ajax({
 			url: 'http://'+host+'/secured/edit_profile',
 			method: 'POST',
 			data: profile
 		}).then(function (data, textStatus, jqXHR) {
-			alert("success");
+			this.showAlertSuccess();
 			this.setState({ profile: Object.assign(this.state.profile, profile) });
 		}.bind(this), function (err) {
-			alert("error")
+			self.showAlertError(err.statusText);
 		});
 	},
 	submitLanguages: function submitLanguages(data) {
+		var self = this;
 		$.ajax({
 			url: 'http://'+host+'/secured/edit_languages',
 			method: 'POST',
 			data: {languages_list: JSON.stringify(data)}
 		}).then(function (dt, textStatus, jqXHR) {
-			alert("success");
+			this.showAlertSuccess()
 			var profile = this.state.profile;
 			profile.languages = data;
 			this.setState({ profile: profile });
 		}.bind(this), function (err) {
-			alert("error")
+			self.showAlertError(err.statusText);
 		});
 	},
 	uploadAvatar: function uploadAvatar(dataUri) {
+		var self = this;
 		$.ajax({
 			url: 'http://'+host+'/secured/uploadPhoto',
 			method: 'POST',
@@ -124,12 +126,24 @@ var Profile = React.createClass({
 			cache: false,
 			data: { img_data:dataUri }			
 		}).then(function (dt, textStatus, jqXHR) {
-			alert("success");
-			console.log(dt)
+			this.showAlertSuccess()
 		}.bind(this), function (err) {
-			console.log(err)
-			alert("error")
+			self.showAlertError(err.statusText);
 		});
+	},
+	showAlertSuccess(){
+	    this.msg.show('Success', {
+	      time: 10000,
+	      type: 'success',
+	      icon: <img src="image/icon_success.png" />
+	    });
+	},
+	showAlertError(err){
+	    this.msg.show('Error: '+err, {
+	      time: 2000,
+	      type: 'error',
+	      icon: <img src="image/icon_error.png" />
+	    });
 	},
 	render: function render() {
 		return <div>
@@ -165,7 +179,15 @@ var Profile = React.createClass({
 							submitLanguages={this.submitLanguages} />}
 				</div>
 			}
-			<Footer messages={this.state.messages} />
+			<Footer 
+				messages={this.state.messages} />
+			<AlertContainer 
+				ref={a => this.msg = a} 
+				offset={0}
+				position='bottom left'
+				theme='dark'      
+				time={5000}
+				transition='scale' />
 		</div>
 	}
 })

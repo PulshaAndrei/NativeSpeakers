@@ -21,6 +21,10 @@ var HomeNavigation = React.createClass({
 		var listLocalesMobile = this.props.supportedLocales.map(function(locale){
 			return <a className={self.props.currentLocale == locale.shortName ? "currentLanguage currentLocaleMobile" : "currentLanguage"} href="#" key={locale.shortName} onClick={setCurrentLocale.bind(this, locale.shortName)}>{locale.shortName}</a>
 		});
+		/*						<li>
+							<a className="page-scroll" href="#three">{this.getIntlMessage('choose_language')}</a>
+						</li>
+*/
 
 		return <nav id="topNav" className="navbar navbar-default navbar-fixed-top">
 			<div className="container-fluid">
@@ -37,9 +41,6 @@ var HomeNavigation = React.createClass({
 					<ul className="nav navbar-nav">
 						<li>
 							<a className="page-scroll" href="#two">{this.getIntlMessage('about_project')}</a>
-						</li>
-						<li>
-							<a className="page-scroll" href="#three">{this.getIntlMessage('choose_language')}</a>
 						</li>
 						<li>
 							<a className="page-scroll" href="#last">{this.getIntlMessage('contact_us')}</a>
@@ -93,8 +94,10 @@ var Header = React.createClass({
 					<a onClick={this.showLock} className="btn btn-primary btn-xl header-link" id="login">{this.getIntlMessage('join')}</a>
 				</div>
 			</div>
-			<Video sources={["video/Globe_SouthAmerica1_Videvo.mp4"]} autoPlay={true} constrols={false} width="100%" height="auto" loop={true}></Video>
-		</header>
+			<div className="hidden-xs">
+				<Video sources={["video/Globe_SouthAmerica1_Videvo.mp4"]} autoPlay={true} constrols={false} width="100%" height="auto" loop={true}></Video>
+			</div>
+			</header>
 	}
 })
 
@@ -216,6 +219,7 @@ var Home = React.createClass({
 		this.state.messages = strings
 	},
 	render() {
+		/*<PopularLanguages messages={this.state.messages} />*/
 		return <div style={{backgroundColor:'#282828'}} className="bodyHome">
 			<HomeNavigation  
 				messages={this.state.messages} 
@@ -226,8 +230,7 @@ var Home = React.createClass({
 				lock={this.props.lock} 
 				messages={this.state.messages} 
 				currentLocale={this.state.currentLocale}/>
-			<About messages={this.state.messages} />
-			<PopularLanguages messages={this.state.messages} />
+			<About messages={this.state.messages} />			
 			<ContactUs messages={this.state.messages} />
 			<Footer messages={this.state.messages} />
 		</div>

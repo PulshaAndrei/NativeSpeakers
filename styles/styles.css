@@ -363,6 +363,7 @@ video{
 }
 .teamDashboard{
     background: #f9f9f9;
+    padding: 30px 0;
 }
 .teamDashboard h2{
     font-weight: bold;
@@ -468,6 +469,9 @@ video{
 .listPeopleDiv{
     padding: 50px 70px;
 }
+.react-alerts{
+    margin: 60px 40px!important;
+}
 @media(max-width:640px){
     .listPeopleDiv{
         padding: 20px;
@@ -494,4 +498,30 @@ video{
     .languageBlock{
         padding: 20px;
     }
+    .gallery-box-caption, .gallery-box{
+        opacity: 1!important;
+        background: rgba(44,44,44,.5)!important;
+    }
+    .imageProfileHeaderBlock>div{
+        width: 160px;
+        height: 160px;
+        margin-left: auto;
+        margin-right: auto;
+        left: 0;
+        right: 0;
+    }
+    .react-alerts{
+        width: 100%!important;
+        margin: 0!important;
+        padding: 60px 20px;
+    }
+    .alert{
+        width: 100%!important;
+    }
+}
+
+.search_people_btn:hover{
+    color: white;
+    background: #86119A;
+    border-color: #86119A;
 }

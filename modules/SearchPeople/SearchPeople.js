@@ -12,6 +12,7 @@ var LinkedStateMixin = require('react-addons-linked-state-mixin');
 import messages from './../localization/messages';
 import { browserHistory } from 'react-router'
 import Pagination from "react-js-pagination";
+import AlertContainer from 'react-alert';
 
 var Header = React.createClass({
 	mixins: [IntlMixin],
@@ -79,7 +80,7 @@ var Search = React.createClass({
 	mixins: [LinkedStateMixin, IntlMixin],
 	getInitialState: function getInitialState(){
 		return {
-			lang: null,
+			lang: parseInt(this.props.initLang),
 			gender: null,
 			age_from: null,
 			age_to: null,
@@ -100,7 +101,8 @@ var Search = React.createClass({
 		this.setState({ gender: gender });
 	},
 	submit: function submit(){
-		this.setState({ loading: true });
+		var self = this;
+		this.setState({ loading: true, results: null });
 		$.ajax({
 			url: 'http://'+host+'/secured/users?gender='+(this.state.gender ? this.state.gender : "") 
 				+'&age_from='+(this.state.age_from ? this.state.age_from : "")
@@ -116,8 +118,8 @@ var Search = React.createClass({
 				no_result: data.length == 0,
 				results: data
 			});
-		}.bind(this), function () {
-			alert("Server error!");
+		}.bind(this), function (err) {
+			self.props.showAlertError(err.statusText);
 		});
 	},
 	render: function render (){
@@ -245,6 +247,14 @@ var SearchPeople = React.createClass({
 		})
 	},
 
+	showAlertError(err){
+	    this.msg.show('Error: '+err, {
+	      time: 2000,
+	      type: 'error',
+	      icon: <img src="image/icon_error.png" />
+	    });
+	},
+
 	render: function render() {
 		return <div className="searchPeoplePage">
 			<MenuDashboard
@@ -255,9 +265,18 @@ var SearchPeople = React.createClass({
 			<Header 
 				messages={this.state.messages} />
 			<Search 
-				messages={this.state.messages} />
+				messages={this.state.messages}
+				initLang={this.props.location.query.language} 
+				showAlertError={this.showAlertError}/>
 			<Footer 
 				messages={this.state.messages} />
+			<AlertContainer 
+				ref={a => this.msg = a} 
+				offset={0}
+				position='bottom left'
+				theme='dark'      
+				time={5000}
+				transition='scale' />
 		</div>
 	}
 })

@@ -3,7 +3,10 @@ var IntlMixin = require('react-intl').IntlMixin;
 
 var MenuDashboard = React.createClass({
 	mixins: [IntlMixin],
-	/*<a href="#events">{this.getIntlMessage('events')}</a>*/
+	/*
+						<li>
+							<a>{this.getIntlMessage('events')}</a>
+						</li>*/
 	render: function render() {
 		var self = this;
 		var setCurrentLocale = function(locale) {
@@ -34,9 +37,6 @@ var MenuDashboard = React.createClass({
 						</li>
 						<li>
 							<a href="#search_people">{this.getIntlMessage('search_people')}</a>
-						</li>
-						<li>
-							<a>{this.getIntlMessage('events')}</a>
 						</li>
 					</ul>
 					<ul className="nav navbar-nav navbar-right">
