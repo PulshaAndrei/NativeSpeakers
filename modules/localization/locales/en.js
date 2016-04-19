@@ -74,5 +74,8 @@
   "about_self":"About myself",
   "become_acquainted": "Become acquainted",
   "find_command":"Find command",
-  "working_in_tandem_with_a_native_speaker_the_best_way_to_explore_it":"Working in tandem with a native speaker - the best way to explore it"
+  "working_in_tandem_with_a_native_speaker_the_best_way_to_explore_it":"Working in tandem with a native speaker - the best way to explore it",
+  "data_saccessfully_chaged": "Data successfully changed",
+  "error": "Error",
+  "thank_you_for_your_message": "Thank you for leaving a review!"
 }

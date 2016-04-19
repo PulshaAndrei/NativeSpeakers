@@ -132,14 +132,14 @@ var Profile = React.createClass({
 		});
 	},
 	showAlertSuccess(){
-	    this.msg.show('Success', {
+	    this.msg.show(this.state.messages.data_saccessfully_chaged, {
 	      time: 10000,
 	      type: 'success',
 	      icon: <img src="image/icon_success.png" />
 	    });
 	},
 	showAlertError(err){
-	    this.msg.show('Error: '+err, {
+	    this.msg.show(this.state.messages.error+': '+err, {
 	      time: 2000,
 	      type: 'error',
 	      icon: <img src="image/icon_error.png" />

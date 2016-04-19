@@ -74,5 +74,8 @@
   "about_self":"О себе",
   "become_acquainted":"Познакомиться",
   "find_command":"Найти команду",
-  "working_in_tandem_with_a_native_speaker_the_best_way_to_explore_it":"Работа в тандеме с носителем языка - лучший способ изучить его"
+  "working_in_tandem_with_a_native_speaker_the_best_way_to_explore_it":"Работа в тандеме с носителем языка - лучший способ изучить его",
+  "data_saccessfully_chaged": "Данные успешно изменены",
+  "error": "Ошибка",
+  "thank_you_for_your_message": "Спасибо за оставленный отзыв!"
 }

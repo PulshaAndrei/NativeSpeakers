@@ -472,6 +472,17 @@ video{
 .react-alerts{
     margin: 60px 40px!important;
 }
+.modal-dialog{
+    max-width: 90%;
+}
+.modal-content, .modal-content canvas{
+    max-width: 100%;
+}
+.modal-content input[type="range"]{
+    max-width: 100%;
+    background: #1d1d1d;
+    border: #1d1d1d!important;
+}
 @media(max-width:640px){
     .listPeopleDiv{
         padding: 20px;
@@ -517,6 +528,9 @@ video{
     }
     .alert{
         width: 100%!important;
+    }
+    .languageBlock .btn-group label:last-child{
+        width: auto!important;
     }
 }
 

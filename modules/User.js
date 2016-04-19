@@ -280,7 +280,7 @@ var User = React.createClass({
 	},
 
 	showAlertError(err){
-	    this.msg.show('Error: '+err, {
+	    this.msg.show(this.state.messages.error+': '+err, {
 	      time: 2000,
 	      type: 'error',
 	      icon: <img src="image/icon_error.png" />

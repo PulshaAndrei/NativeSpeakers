@@ -5,8 +5,10 @@ var React = require('react');
 var Video = require('react-h5-video');
 var IntlMixin = require('react-intl').IntlMixin;
 var Footer = require('./elements/Footer');
+var LinkedStateMixin = require('react-addons-linked-state-mixin');
 import messages from './localization/messages';
 import { browserHistory } from 'react-router';
+import AlertContainer from 'react-alert';
 
 var HomeNavigation = React.createClass({
 	mixins: [IntlMixin],
@@ -160,7 +162,48 @@ var PopularLanguages = React.createClass({
 })
 
 var ContactUs = React.createClass({
-	mixins: [IntlMixin],
+	mixins: [LinkedStateMixin, IntlMixin],
+	getInitialState: function getInitialState() {
+		return {
+			name: null,
+			email: null,
+			phone_number: null,
+			message: null
+		}
+	},
+	send: function send(){
+		console.log(this.state);
+		this.setState({
+			name: null,
+			email: null,
+			phone_number: null,
+			message: null
+		});
+		var self= this;
+		$.ajax({
+			url: 'http://'+host+'/contact_us',
+			method: 'POST',
+			data: this.state
+		}).then(function (data, textStatus, jqXHR) {
+			this.showAlertSuccess()
+		}, function (err) {
+			self.showAlertError(err.statusText)
+		});
+	},
+	showAlertSuccess(){
+	    this.msg.show(this.getIntlMessage('thank_you_for_your_message'), {
+	      time: 10000,
+	      type: 'success',
+	      icon: <img src="image/icon_success.png" />
+	    });
+	},
+	showAlertError(err){
+	    this.msg.show(this.getIntlMessage('error')+': '+err, {
+	      time: 2000,
+	      type: 'error',
+	      icon: <img src="image/icon_error.png" />
+	    });
+	},
 	render() {
 		return <section id="last">
 			<div className="container">
@@ -174,28 +217,35 @@ var ContactUs = React.createClass({
 						<form className="contact-form row">
 							<div className="col-md-4">
 								<label></label>
-								<input type="text" className="form-control" placeholder={this.getIntlMessage('name')} />
+								<input type="text" className="form-control" placeholder={this.getIntlMessage('name')} valueLink={this.linkState('name')}/>
 							</div>
 							<div className="col-md-4">
 								<label></label>
-								<input type="text" className="form-control" placeholder="Email" />
+								<input type="email" className="form-control" placeholder="Email"  valueLink={this.linkState('email')}/>
 							</div>
 							<div className="col-md-4">
 								<label></label>
-								<input type="text" className="form-control" placeholder={this.getIntlMessage('phone_number')} />
+								<input type="text" className="form-control" placeholder={this.getIntlMessage('phone_number')}  valueLink={this.linkState('phone_number')}/>
 							</div>
 							<div className="col-md-12">
 								<label></label>
-								<textarea className="form-control" rows="9" placeholder={this.getIntlMessage('your_message')}></textarea>
+								<textarea className="form-control" rows="9" placeholder={this.getIntlMessage('your_message')} valueLink={this.linkState('message')}></textarea>
 							</div>
 							<div className="col-md-4 col-md-offset-4">
 								<label></label>
-								<button type="button" data-toggle="modal" data-target="#alertModal" className="btn btn-primary btn-block btn-lg"><span>{this.getIntlMessage('send')}</span> <i className="ion-android-arrow-forward"></i></button>
+								<button type="button" data-toggle="modal" data-target="#alertModal" className="btn btn-primary btn-block btn-lg" onClick={this.send}><span>{this.getIntlMessage('send')}</span> <i className="ion-android-arrow-forward"></i></button>
 							</div>
 						</form>
 					</div>
 				</div>
 			</div>
+			<AlertContainer 
+				ref={a => this.msg = a} 
+				offset={0}
+				position='bottom left'
+				theme='dark'      
+				time={5000}
+				transition='scale' />
 		</section>
 	}
 })
