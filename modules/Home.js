@@ -109,7 +109,7 @@ var About = React.createClass({
 		return <section id="two">
 			<div className="container">
 				<div className="row">
-					<div className="col-md-3">
+					<div className="col-md-3 hidden-xs">
 						<img src="image/iphone.png" width="100%"/>
 					</div>
 					<div className="col-md-6 text-center">
@@ -123,11 +123,11 @@ var About = React.createClass({
 						<h2 className="margin-top-0 wow fadeIn">{this.getIntlMessage('mobile_application')}</h2>
 						<p>{this.getIntlMessage('mobile_application_details')}</p>
 						<div className="row">
-							<div className="col-md-6"><a style={{opacity: 0.4}}><img src="image/app_store.png" width="100%"/></a></div>
-							<div className="col-md-6"><a href=""><img src="image/google_play.png" width="100%"/></a></div>
+							<div className="col-md-6" style={{paddingTop: '10px'}}><a style={{opacity: 0.4}}><img src="image/app_store.png" width="100%"/></a></div>
+							<div className="col-md-6" style={{paddingTop: '10px'}}><a href=""><img src="image/google_play.png" width="100%"/></a></div>
 						</div>
 					</div>
-					<div className="col-md-3">
+					<div className="col-md-3 hidden-xs">
 						<img src="image/nexus.png" width="100%"/>
 					</div>
 				</div>
