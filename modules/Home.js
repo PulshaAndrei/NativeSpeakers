@@ -104,9 +104,35 @@ var Header = React.createClass({
 })
 
 var About = React.createClass({
+	mixins: [IntlMixin],
 	render() {
 		return <section id="two">
-			</section>
+			<div className="container">
+				<div className="row">
+					<div className="col-md-3">
+						<img src="image/iphone.png" width="100%"/>
+					</div>
+					<div className="col-md-6 text-center">
+						<h2 className="margin-top-0 wow fadeIn">{this.getIntlMessage('about_project')}</h2>
+						<hr className="primary"/>
+						<p>{this.getIntlMessage('about_project_details')}</p>
+						<br />
+						<br />
+						<br />
+						<br />
+						<h2 className="margin-top-0 wow fadeIn">{this.getIntlMessage('mobile_application')}</h2>
+						<p>{this.getIntlMessage('mobile_application_details')}</p>
+						<div className="row">
+							<div className="col-md-6"><a style={{opacity: 0.4}}><img src="image/app_store.png" width="100%"/></a></div>
+							<div className="col-md-6"><a href=""><img src="image/google_play.png" width="100%"/></a></div>
+						</div>
+					</div>
+					<div className="col-md-3">
+						<img src="image/nexus.png" width="100%"/>
+					</div>
+				</div>
+			</div>
+		</section>
 	}
 })
 
@@ -185,7 +211,7 @@ var ContactUs = React.createClass({
 			method: 'POST',
 			data: this.state
 		}).then(function (data, textStatus, jqXHR) {
-			this.showAlertSuccess()
+			self.showAlertSuccess()
 		}, function (err) {
 			self.showAlertError(err.statusText)
 		});

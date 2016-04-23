@@ -77,5 +77,8 @@
   "working_in_tandem_with_a_native_speaker_the_best_way_to_explore_it":"Работа в тандеме с носителем языка - лучший способ изучить его",
   "data_saccessfully_chaged": "Данные успешно изменены",
   "error": "Ошибка",
-  "thank_you_for_your_message": "Спасибо за оставленный отзыв!"
+  "thank_you_for_your_message": "Спасибо за оставленный отзыв!",
+  "about_project_details": "NativeSpeakers поможет тебе найти настоящих носителей языка. Самый лучший способ довести иностранный язык до совершенства - это разговаривать на нем. Изучай именно то, что понадобится тебе в реальной жизни.",
+  "mobile_application":"Мобильное приложение",
+  "mobile_application_details": "Установи мобильное приложение для iOS или Android и находи друзей ещё удобнее!"
 }

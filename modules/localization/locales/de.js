@@ -77,5 +77,8 @@
   "working_in_tandem_with_a_native_speaker_the_best_way_to_explore_it":"Im Zusammenspiel mit einem Muttersprachler - der beste Weg, es zu lernen",
   "data_saccessfully_chaged": "Die Daten wurden erfolgreich geändert",
   "error": "Fehler",
-  "thank_you_for_your_message": "Vielen Dank für das Verlassen Sie eine Rezension!"
+  "thank_you_for_your_message": "Vielen Dank für das Verlassen Sie eine Rezension!",
+  "about_project_details": "NativeSpeakers helfen, die wirklichen Muttersprachler finden. Der beste Weg, Fremdsprache zu perfektionieren - ist es zu sprechen. Erfahren Sie genau, was Sie im wirklichen Leben brauchen.",
+  "mobile_application":"Mobile-Anwendung",
+  "mobile_application_details": "Installieren Sie eine mobile Anwendung für iOS und Android, und Freunde finden noch bequemer!"
 }

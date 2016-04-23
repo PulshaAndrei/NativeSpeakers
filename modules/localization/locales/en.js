@@ -77,5 +77,8 @@
   "working_in_tandem_with_a_native_speaker_the_best_way_to_explore_it":"Working in tandem with a native speaker - the best way to explore it",
   "data_saccessfully_chaged": "Data successfully changed",
   "error": "Error",
-  "thank_you_for_your_message": "Thank you for leaving a review!"
+  "thank_you_for_your_message": "Thank you for leaving a review!",
+  "about_project_details": "NativeSpeakers help you find the real native speakers. The best way to bring foreign language to perfection - is to speak it. Learn exactly what you need in real life.",
+  "mobile_application":"Mobile application",
+  "mobile_application_details": "Install a mobile application for iOS and Android, and find friends even more convenient!"
 }
