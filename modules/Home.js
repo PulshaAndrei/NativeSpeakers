@@ -109,7 +109,7 @@ var About = React.createClass({
 		return <section id="two">
 			<div className="container">
 				<div className="row">
-					<div className="col-md-3 hidden-xs">
+					<div className="col-md-3 hidden-xs mobileImages">
 						<img src="image/iphone.png" width="100%"/>
 					</div>
 					<div className="col-md-6 text-center">
@@ -127,7 +127,7 @@ var About = React.createClass({
 							<div className="col-md-6" style={{paddingTop: '10px'}}><a href=""><img src="image/google_play.png" width="100%"/></a></div>
 						</div>
 					</div>
-					<div className="col-md-3 hidden-xs">
+					<div className="col-md-3 hidden-xs mobileImages">
 						<img src="image/nexus.png" width="100%"/>
 					</div>
 				</div>
@@ -280,7 +280,7 @@ var Home = React.createClass({
 	getInitialState: function getInitialState() {
 		var locale = navigator.language.split('-')
 		locale = localStorage.getItem('userLocale') ? localStorage.getItem('userLocale') 
-			: locale[1] ? `${locale[0]}-${locale[1].toUpperCase()}` : navigator.language
+			: (locale[0] ? locale[0] : 'en')
 		var strings = messages[locale] ? messages[locale] : messages['en']
 
 		return {

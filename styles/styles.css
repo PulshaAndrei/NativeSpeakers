@@ -491,6 +491,11 @@ video{
         padding: 25px 20px;
     }
 }
+@media(max-width: 991px){
+    .mobileImages{
+        display: none;
+    }
+}
 @media(max-width: 767px){
     .hrefTouser{
         text-align: center;
@@ -524,7 +529,6 @@ video{
     .react-alerts{
         width: 100%!important;
         margin: 0!important;
-        padding: 60px 20px;
     }
     .alert{
         width: 100%!important;
