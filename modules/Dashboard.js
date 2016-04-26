@@ -127,7 +127,7 @@ var Dashboard = React.createClass({
 	getInitialState: function getInitialState() {
 		var locale = navigator.language.split('-')
 		locale = localStorage.getItem('userLocale') ? localStorage.getItem('userLocale') 
-			: locale[1] ? `${locale[0]}-${locale[1].toUpperCase()}` : navigator.language
+			: (locale[0] ? locale[0] : 'en')
 		var strings = messages[locale] ? messages[locale] : messages['en']
 
 		return {
