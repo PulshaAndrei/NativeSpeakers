@@ -35,9 +35,9 @@ var PopularPeople = React.createClass({
 	mixins: [IntlMixin],
 	render() {
 		var array = [
-			{user_id: 'facebook|785087798288631', country_image:'image/belarus.jpg', given_name: "Андрей", family_name: 'Пульша', photo_link: 'https://s3-eu-west-1.amazonaws.com/nativespeakers/facebook|785087798288631'}, 
-			{user_id: 'facebook|785087798288631', country_image:'image/russia.jpg', given_name: "Russia", family_name: '', photo_link: 'image/male_icon.png'}, 
-			{user_id: 'facebook|785087798288631', country_image:'image/english.jpg', given_name: "English", family_name: '', photo_link: 'image/female_icon.png'}];
+			{user_id: 'facebook|785087798288631', country_image:'image/russia.jpg', given_name: "Андрей", family_name: 'Пульша', photo_link: 'https://s3-eu-west-1.amazonaws.com/nativespeakers/facebook|785087798288631'}, 
+			{user_id: 'auth0|573e36e37fc909a6226271b6', country_image:'image/germany.jpg', given_name: "Ruben", family_name: 'Biewald', photo_link: 'https://s3-eu-west-1.amazonaws.com/nativespeakers/auth0|573e36e37fc909a6226271b6'}, 
+			{user_id: 'auth0|573e38390a999f9358844a75', country_image:'image/english.jpg', given_name: "Emmi", family_name: 'Makela', photo_link: 'https://s3-eu-west-1.amazonaws.com/nativespeakers/auth0|573e38390a999f9358844a75'}];
 		var self = this;
 		var users = array.map(function(el,i) {
 			return <div className={"col-md-4 col-sm-6"+(i == 2 ? " hidden-sm" : "")} key={"usersDash"+i}>
